@@ -1,5 +1,7 @@
 ﻿using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Web.Models;
+using MyCashFlow.Web.ViewModels;
 using System.Collections.Generic;
 using System;
 
@@ -8,15 +10,37 @@ namespace MyCashFlow.Web.Services
 	public class UserService : IUserService
 	{
 		private readonly IRepository<User> userRepository;
+		private readonly IReadOnlyRepository<Country> countryRepository;
+		private readonly IRepository<Address> addressRepository;
+		private readonly IRepository<Contact> contactRepository;
 
-		public UserService(IRepository<User> userRepository)
+		public UserService(
+			IRepository<User> userRepository,
+			IReadOnlyRepository<Country> countryRepository,
+			IRepository<Address> addressRepository,
+			IRepository<Contact> contactRepository)
 		{
 			if (userRepository == null)
 			{
 				throw new ArgumentNullException(nameof(userRepository));
 			}
+			if (countryRepository == null)
+			{
+				throw new ArgumentNullException(nameof(countryRepository));
+			}
+			if (addressRepository == null)
+			{
+				throw new ArgumentNullException(nameof(addressRepository));
+			}
+			if (contactRepository == null)
+			{
+				throw new ArgumentNullException(nameof(contactRepository));
+			}
 
 			this.userRepository = userRepository;
+			this.countryRepository = countryRepository;
+			this.addressRepository = addressRepository;
+			this.contactRepository = contactRepository;
 		}
 
 		public User GetUser(int userId)
@@ -31,22 +55,68 @@ namespace MyCashFlow.Web.Services
 			return users;
 		}
 
-		public void InsertUser(User user)
+		public void InsertUpdateUser(UserVm userVm)
 		{
-			userRepository.Insert(user);
-			userRepository.Save();
-		}
+			try
+			{
+				switch (userVm.DatabaseOperation)
+				{
+					case DatabaseOperation.Insert:
+						userRepository.Insert(userVm.User);
+						break;
+					case DatabaseOperation.Update:
+						userRepository.Update(userVm.User);
+						break;
+				}
 
-		public void UpdateUser(User user)
-		{
-			userRepository.Update(user);
-			userRepository.Save();
+				if(!userVm.User.AddressID.HasValue)
+				{
+					addressRepository.Insert(userVm.User.Address);
+				}
+				else
+				{
+					addressRepository.Update(userVm.User.Address);
+				}
+
+				if (!userVm.User.ContactID.HasValue)
+				{
+					contactRepository.Insert(userVm.User.Contact);
+				}
+				else
+				{
+					contactRepository.Update(userVm.User.Contact);
+				}
+
+				userRepository.Save();
+				addressRepository.Save();
+				contactRepository.Save();
+			}
+			catch
+			{
+				throw;
+			}
 		}
 
 		public void DeleteUser(int userId)
 		{
 			userRepository.Delete(userId);
 			userRepository.Save();
+		}
+
+		public UserVm BuildCreateUpdateUserVm(int? userId = null)
+		{
+			var result = new UserVm
+			{
+				Countries = countryRepository.Get()
+			};
+
+			if (userId.HasValue)
+			{
+				result.User = GetUser(userId.Value);
+				result.DatabaseOperation = DatabaseOperation.Update;
+			}
+
+			return result;
 		}
 	}
 }

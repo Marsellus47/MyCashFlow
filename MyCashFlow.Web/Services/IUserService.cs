@@ -1,4 +1,5 @@
 ﻿using MyCashFlow.Domains.DataObject;
+using MyCashFlow.Web.ViewModels;
 using System.Collections.Generic;
 
 namespace MyCashFlow.Web.Services
@@ -7,8 +8,8 @@ namespace MyCashFlow.Web.Services
 	{
 		User GetUser(int userId);
 		IEnumerable<User> GetAllUsers();
-		void InsertUser(User user);
-		void UpdateUser(User user);
+		void InsertUpdateUser(UserVm userVm);
 		void DeleteUser(int userId);
+		UserVm BuildCreateUpdateUserVm(int? userId = null);
 	}
 }

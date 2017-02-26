@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace MyCashFlow.Web.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View();
-        }
-    }
+	public partial class HomeController : Controller
+	{
+		public virtual ActionResult Index()
+		{
+			return View();
+		}
+	}
 }

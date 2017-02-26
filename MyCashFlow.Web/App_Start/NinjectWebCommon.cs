@@ -71,6 +71,7 @@ namespace MyCashFlow.Web
 
 			kernel.Bind<DatabaseContext>().ToSelf().InRequestScope().WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
 			kernel.Bind<IRepository<User>>().To<Repository<User>>();
-        }        
+			kernel.Bind<IReadOnlyRepository<Country>>().To<ReadOnlyRepository<Country>>();
+		}        
     }
 }

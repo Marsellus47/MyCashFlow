@@ -1,93 +1,74 @@
-﻿using MyCashFlow.Domains.DataObject;
-using MyCashFlow.Web.Services;
+﻿using MyCashFlow.Web.Services;
+using MyCashFlow.Web.ViewModels;
 using System.Web.Mvc;
 using System;
 
 namespace MyCashFlow.Web.Controllers
 {
-	public class UserController : Controller
-    {
+	public partial class UserController : Controller
+	{
 		private IUserService userService;
 
 		public UserController(IUserService userService)
 		{
-			if(userService == null)
+			if (userService == null)
 			{
 				throw new ArgumentNullException(nameof(userService));
 			}
 
 			this.userService = userService;
 		}
-		
-        public ActionResult Index()
-        {
+
+		public virtual ActionResult Index()
+		{
 			var users = userService.GetAllUsers();
-            return View(users);
-        }
-		
-        public ActionResult Details(int id)
-        {
-			var user = userService.GetUser(id);
-            return View(user);
-        }
-		
-        public ActionResult Create()
-        {
-            return View();
-        }
-		
-        [HttpPost]
-        public ActionResult Create(User user)
-        {
-            try
-            {
-				userService.InsertUser(user);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-		
-        public ActionResult Edit(int id)
-        {
-			var user = userService.GetUser(id);
-            return View(user);
-        }
-		
-        [HttpPost]
-        public ActionResult Edit(User user)
-        {
-            try
-            {
-				userService.UpdateUser(user);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-		
-        public ActionResult Delete(int id)
+			return View(users);
+		}
+
+		public virtual ActionResult Details(int id)
 		{
 			var user = userService.GetUser(id);
 			return View(user);
-        }
-		
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
+		}
+
+		public virtual ActionResult Modify(int? id = null)
+		{
+			var model = userService.BuildCreateUpdateUserVm(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		public virtual ActionResult Modify(UserVm userVm)
+		{
+			try
+			{
+				userService.InsertUpdateUser(userVm);
+				return RedirectToAction(MVC.User.ActionNames.Index);
+			}
+			catch
+			{
+				return View(userVm);
+			}
+		}
+
+		public virtual ActionResult Delete(int id)
+		{
+			var user = userService.GetUser(id);
+			return View(user);
+		}
+
+		[HttpPost]
+		public virtual ActionResult Delete(int id, FormCollection collection)
+		{
+			try
+			{
 				userService.DeleteUser(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
+				return RedirectToAction(MVC.User.ActionNames.Index);
+			}
+			catch
+			{
+				return View();
+			}
+		}
+	}
 }

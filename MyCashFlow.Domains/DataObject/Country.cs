@@ -15,6 +15,7 @@ namespace MyCashFlow.Domains.DataObject
 		#region Standard fields
 
 		[Index(IsUnique = true)]
+		[StringLength(128)]
 		public string Name { get; set; }
 
 		[Column(TypeName = "char")]

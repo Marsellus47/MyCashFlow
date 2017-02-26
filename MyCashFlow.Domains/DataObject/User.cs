@@ -17,6 +17,7 @@ namespace MyCashFlow.Domains.DataObject
 
 		public string Login { get; set; }
 
+		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
 		[Required]
