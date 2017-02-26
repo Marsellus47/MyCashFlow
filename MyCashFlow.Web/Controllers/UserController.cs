@@ -44,7 +44,7 @@ namespace MyCashFlow.Web.Controllers
 				userService.InsertUser(user);
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch
             {
                 return View();
             }
