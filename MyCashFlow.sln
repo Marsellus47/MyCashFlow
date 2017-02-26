@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCashFlow.Domains", "MyCashFlow.Domains\MyCashFlow.Domains.csproj", "{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCashFlow.Repositories", "MyCashFlow.Repositories\MyCashFlow.Repositories.csproj", "{86CF0DA5-7000-42FF-9CEC-F62D1B5D3C8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86CF0DA5-7000-42FF-9CEC-F62D1B5D3C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CF0DA5-7000-42FF-9CEC-F62D1B5D3C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CF0DA5-7000-42FF-9CEC-F62D1B5D3C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CF0DA5-7000-42FF-9CEC-F62D1B5D3C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
