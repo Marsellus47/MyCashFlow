@@ -8,9 +8,7 @@ namespace MyCashFlow.Domains.DataObject
 	public class User
 	{
 		#region Primary keys
-
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		
 		public int ID { get; set; }
 
 		#endregion

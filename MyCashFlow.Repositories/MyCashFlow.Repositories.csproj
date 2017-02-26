@@ -60,7 +60,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">
       <Project>{2194d66d-dfb0-458c-b8f4-0d6aa8334acb}</Project>
