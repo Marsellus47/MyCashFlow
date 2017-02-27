@@ -68,7 +68,7 @@ namespace MyCashFlow.Web.Services
 						userRepository.Update(userVm.User);
 						break;
 				}
-
+				
 				if(!userVm.User.AddressID.HasValue)
 				{
 					addressRepository.Insert(userVm.User.Address);
@@ -79,6 +79,7 @@ namespace MyCashFlow.Web.Services
 				}
 
 				if (!userVm.User.ContactID.HasValue)
+
 				{
 					contactRepository.Insert(userVm.User.Contact);
 				}
@@ -100,10 +101,24 @@ namespace MyCashFlow.Web.Services
 		public void DeleteUser(int userId)
 		{
 			userRepository.Delete(userId);
+			var user = GetUser(userId);
+
+			if (user.AddressID.HasValue)
+			{
+				addressRepository.Delete(user.AddressID.Value);
+			}
+
+			if (user.ContactID.HasValue)
+			{
+				contactRepository.Delete(user.ContactID.Value);
+			}
+
 			userRepository.Save();
+			addressRepository.Save();
+			contactRepository.Save();
 		}
 
-		public UserVm BuildCreateUpdateUserVm(int? userId = null)
+		public UserVm BuildUserVm(int? userId = null)
 		{
 			var result = new UserVm
 			{

@@ -30,12 +30,5 @@ namespace MyCashFlow.Domains.DataObject
 		public bool Active { get; set; } = true;
 
 		#endregion
-
-		#region Foreign keys
-
-		public short CountryID { get; set; }
-		public virtual Country Country { get; set; }
-
-		#endregion
 	}
 }

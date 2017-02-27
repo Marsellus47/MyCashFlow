@@ -20,12 +20,12 @@ namespace MyCashFlow.Domains.DataObject
 
 		[Column(TypeName = "char")]
 		[StringLength(2)]
-		[Display(Name = "ISO code 2")]
+		[Display(Name = "Short ISO code")]
 		public string ISOCode2 { get; set; }
 
 		[Column(TypeName = "char")]
 		[StringLength(3)]
-		[Display(Name = "ISO code 3")]
+		[Display(Name = "Long ISO code")]
 		public string ISOCode3 { get; set; }
 
 		[Display(Name = "Telephone country code")]

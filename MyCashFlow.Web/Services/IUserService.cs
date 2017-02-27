@@ -10,6 +10,6 @@ namespace MyCashFlow.Web.Services
 		IEnumerable<User> GetAllUsers();
 		void InsertUpdateUser(UserVm userVm);
 		void DeleteUser(int userId);
-		UserVm BuildCreateUpdateUserVm(int? userId = null);
+		UserVm BuildUserVm(int? userId = null);
 	}
 }

@@ -33,11 +33,12 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual ActionResult Modify(int? id = null)
 		{
-			var model = userService.BuildCreateUpdateUserVm(id);
+			var model = userService.BuildUserVm(id);
 			return View(model);
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public virtual ActionResult Modify(UserVm userVm)
 		{
 			try
@@ -47,7 +48,7 @@ namespace MyCashFlow.Web.Controllers
 			}
 			catch
 			{
-				return View(userVm);
+				return RedirectToAction(MVC.User.ActionNames.Modify, new { id = userVm.User.ID });
 			}
 		}
 
@@ -58,6 +59,7 @@ namespace MyCashFlow.Web.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public virtual ActionResult Delete(int id, FormCollection collection)
 		{
 			try

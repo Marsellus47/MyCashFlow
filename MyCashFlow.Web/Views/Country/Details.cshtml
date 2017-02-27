@@ -1,0 +1,49 @@
+﻿@model MyCashFlow.Domains.DataObject.Country
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISOCode2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISOCode2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISOCode3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISOCode3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelephoneCountryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneCountryCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
