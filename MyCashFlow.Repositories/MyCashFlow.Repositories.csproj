@@ -58,13 +58,13 @@
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">
       <Project>{2194d66d-dfb0-458c-b8f4-0d6aa8334acb}</Project>
       <Name>MyCashFlow.Domains</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

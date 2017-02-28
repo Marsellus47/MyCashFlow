@@ -27,6 +27,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static MyCashFlow.Web.Controllers.AccountController Account = new MyCashFlow.Web.Controllers.T4MVC_AccountController();
     public static MyCashFlow.Web.Controllers.CountryController Country = new MyCashFlow.Web.Controllers.T4MVC_CountryController();
     public static MyCashFlow.Web.Controllers.HomeController Home = new MyCashFlow.Web.Controllers.T4MVC_HomeController();
     public static MyCashFlow.Web.Controllers.UserController User = new MyCashFlow.Web.Controllers.T4MVC_UserController();
@@ -76,10 +77,6 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
-        public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
-        public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
-        public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
         public static readonly string jquery_3_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.intellisense.min.js") ? Url("jquery-3.1.1.intellisense.min.js") : Url("jquery-3.1.1.intellisense.js");
         public static readonly string jquery_3_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.min.js") ? Url("jquery-3.1.1.min.js") : Url("jquery-3.1.1.js");
         public static readonly string jquery_3_1_1_min_js = Url("jquery-3.1.1.min.js");
@@ -121,9 +118,6 @@ namespace Links
             {
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
-                public const string jquery_1_10_2_intellisense_js = "~/Scripts/jquery-1.10.2.intellisense.js"; 
-                public const string jquery_1_10_2_js = "~/Scripts/jquery-1.10.2.js"; 
-                public const string jquery_1_10_2_min_js = "~/Scripts/jquery-1.10.2.min.js"; 
                 public const string jquery_3_1_1_intellisense_js = "~/Scripts/jquery-3.1.1.intellisense.js"; 
                 public const string jquery_3_1_1_js = "~/Scripts/jquery-3.1.1.js"; 
                 public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 

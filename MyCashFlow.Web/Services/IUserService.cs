@@ -1,5 +1,5 @@
 ﻿using MyCashFlow.Domains.DataObject;
-using MyCashFlow.Web.ViewModels;
+using MyCashFlow.Web.ViewModels.User;
 using System.Collections.Generic;
 
 namespace MyCashFlow.Web.Services

@@ -10,7 +10,8 @@ namespace MyCashFlow.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			Database.SetInitializer(new DatabaseInitializer());
         }
     }

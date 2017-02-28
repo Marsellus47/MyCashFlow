@@ -1,7 +1,7 @@
 ﻿using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Repositories.Repository;
 using MyCashFlow.Web.Models;
-using MyCashFlow.Web.ViewModels;
+using MyCashFlow.Web.ViewModels.User;
 using System.Collections.Generic;
 using System;
 

@@ -189,10 +189,10 @@ namespace MyCashFlow.Web.Controllers
         }
 
         [NonAction]
-        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.ViewModels.UserVm userVm);
+        partial void ModifyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.ViewModels.User.UserVm userVm);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Modify(MyCashFlow.Web.ViewModels.UserVm userVm)
+        public override System.Web.Mvc.ActionResult Modify(MyCashFlow.Web.ViewModels.User.UserVm userVm)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Modify);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userVm", userVm);

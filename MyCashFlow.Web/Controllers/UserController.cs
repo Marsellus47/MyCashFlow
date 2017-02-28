@@ -1,5 +1,5 @@
 ﻿using MyCashFlow.Web.Services;
-using MyCashFlow.Web.ViewModels;
+using MyCashFlow.Web.ViewModels.User;
 using System.Web.Mvc;
 using System;
 
