@@ -6,7 +6,7 @@ namespace MyCashFlow.Domains.DataObject
 	[Table("Country", Schema = "System")]
 	public class Country
 	{
-		#region Primary keys
+		#region Primary key
 
 		public short ID { get; set; }
 
@@ -30,9 +30,6 @@ namespace MyCashFlow.Domains.DataObject
 
 		[Display(Name = "Telephone country code")]
 		public short TelephoneCountryCode { get; set; }
-
-		[ScaffoldColumn(false)]
-		public bool Active { get; set; } = true;
 
 		#endregion
 	}

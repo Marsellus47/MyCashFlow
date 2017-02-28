@@ -6,7 +6,7 @@ namespace MyCashFlow.Domains.DataObject
 	[Table("Address", Schema = "Configuration")]
 	public class Address
 	{
-		#region Primary keys
+		#region Primary key
 
 		public int ID { get; set; }
 
@@ -25,9 +25,6 @@ namespace MyCashFlow.Domains.DataObject
 		public string Zip { get; set; }
 
 		public string District { get; set; }
-
-		[ScaffoldColumn(false)]
-		public bool Active { get; set; } = true;
 
 		#endregion
 	}

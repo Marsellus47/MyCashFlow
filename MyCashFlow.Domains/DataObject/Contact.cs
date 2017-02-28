@@ -6,7 +6,7 @@ namespace MyCashFlow.Domains.DataObject
 	[Table("Contact", Schema = "Configuration")]
 	public class Contact
 	{
-		#region Primary keys
+		#region Primary key
 
 		public int ID { get; set; }
 
@@ -15,13 +15,8 @@ namespace MyCashFlow.Domains.DataObject
 		#region Standard fields
 
 		public string Phone { get; set; }
-
 		public string Mobile { get; set; }
-
 		public string Email { get; set; }
-
-		[ScaffoldColumn(false)]
-		public bool Active { get; set; } = true;
 
 		#endregion
 	}

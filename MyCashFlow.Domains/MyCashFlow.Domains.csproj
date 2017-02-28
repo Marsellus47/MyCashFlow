@@ -53,6 +53,10 @@
     <Compile Include="DataObject\Address.cs" />
     <Compile Include="DataObject\Contact.cs" />
     <Compile Include="DataObject\Country.cs" />
+    <Compile Include="DataObject\PaymentType.cs" />
+    <Compile Include="DataObject\Project.cs" />
+    <Compile Include="DataObject\Transaction.cs" />
+    <Compile Include="DataObject\TransactionType.cs" />
     <Compile Include="DataObject\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

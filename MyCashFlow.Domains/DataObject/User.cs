@@ -7,7 +7,7 @@ namespace MyCashFlow.Domains.DataObject
 	[Table("User", Schema = "Configuration")]
 	public class User
 	{
-		#region Primary keys
+		#region Primary key
 		
 		public int ID { get; set; }
 
@@ -36,9 +36,6 @@ namespace MyCashFlow.Domains.DataObject
 
 		[Display(Name = "Last name")]
 		public string LastName { get; set; }
-
-		[ScaffoldColumn(false)]
-		public bool Active { get; set; } = true;
 
 		#endregion
 
