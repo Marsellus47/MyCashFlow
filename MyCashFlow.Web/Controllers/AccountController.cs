@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Managers;
-using MyCashFlow.Identity.Models;
 using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.ViewModels.Account;
 using System.Linq;
@@ -123,7 +123,7 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+				var user = new User { UserName = model.Email, Email = model.Email };
 				var result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
@@ -315,7 +315,7 @@ namespace MyCashFlow.Web.Controllers
 				{
 					return View(MVC.Account.Views.ExternalLoginFailure);
 				}
-				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+				var user = new User { UserName = model.Email, Email = model.Email };
 				var result = await UserManager.CreateAsync(user);
 				if (result.Succeeded)
 				{

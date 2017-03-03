@@ -3,14 +3,14 @@ using MyCashFlow.Domains.DataObject;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace MyCashFlow.Identity.Models
+namespace MyCashFlow.Identity.Extensions
 {
-	public class ApplicationUser : User
+	public static class UserExtensions
 	{
-		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+		public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this User user, UserManager<User> manager)
 		{
 			// Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-			var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+			var userIdentity = await manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 			// Add custom user claims here
 			return userIdentity;
 		}

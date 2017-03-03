@@ -2,22 +2,23 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin;
-using MyCashFlow.Identity.Models;
+using MyCashFlow.Domains.DataObject;
+using MyCashFlow.Identity.Extensions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MyCashFlow.Identity.Managers
 {
-	public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+	public class ApplicationSignInManager : SignInManager<User, string>
 	{
 		public ApplicationSignInManager(
-			UserManager<ApplicationUser, string> userManager,
+			UserManager<User, string> userManager,
 			IAuthenticationManager authenticationManager)
 			: base(userManager, authenticationManager)
 		{
 		}
 
-		public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+		public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
 		{
 			return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
 		}

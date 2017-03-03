@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Managers;
-using MyCashFlow.Identity.Models;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
@@ -16,7 +16,7 @@ namespace MyCashFlow.Web.Infrastructure.Controllers
 
 		public UserManagerBasedController(ApplicationUserManager userManager)
 		{
-
+			UserManager = userManager;
 		}
 
 		public ApplicationUserManager UserManager
@@ -31,13 +31,13 @@ namespace MyCashFlow.Web.Infrastructure.Controllers
 			}
 		}
 
-		protected async Task<ApplicationUser> GetCurrentUserAsync()
+		protected async Task<User> GetCurrentUserAsync()
 		{
 			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 			return user;
 		}
 
-		protected ApplicationUser GetCurrentUser()
+		protected User GetCurrentUser()
 		{
 			var user = UserManager.FindById(User.Identity.GetUserId());
 			return user;
