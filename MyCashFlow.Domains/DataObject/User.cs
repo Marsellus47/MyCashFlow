@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyCashFlow.Domains.DataObject
 {
 	[Table("User", Schema = "Configuration")]
+	public class User : IdentityUser
 	{
 		#region Primary key
 		

@@ -73,9 +73,9 @@ namespace MyCashFlow.Web.Controllers
 				case SignInStatus.Success:
 					return RedirectToLocal(returnUrl);
 				case SignInStatus.LockedOut:
-					return View("Lockout");
+					return View(MVC.Shared.Views.Lockout);
 				case SignInStatus.RequiresVerification:
-					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+					return RedirectToAction(MVC.Account.ActionNames.SendCode, new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 				case SignInStatus.Failure:
 				default:
 					ModelState.AddModelError("", "Invalid login attempt.");
@@ -89,7 +89,7 @@ namespace MyCashFlow.Web.Controllers
 			// Require that the user has already logged in via username/password or external login
 			if (!await SignInManager.HasBeenVerifiedAsync())
 			{
-				return View("Error");
+				return View(MVC.Shared.Views.Error);
 			}
 			return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
 		}
@@ -114,7 +114,7 @@ namespace MyCashFlow.Web.Controllers
 				case SignInStatus.Success:
 					return RedirectToLocal(model.ReturnUrl);
 				case SignInStatus.LockedOut:
-					return View("Lockout");
+					return View(MVC.Shared.Views.Lockout);
 				case SignInStatus.Failure:
 				default:
 					ModelState.AddModelError("", "Invalid code.");
@@ -147,7 +147,7 @@ namespace MyCashFlow.Web.Controllers
 					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-					return RedirectToAction("Index", "User");
+					return RedirectToAction(MVC.User.ActionNames.Index, MVC.User.Name);
 				}
 				AddErrors(result);
 			}
@@ -161,10 +161,10 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (userId == null || code == null)
 			{
-				return View("Error");
+				return View(MVC.Shared.Views.Error);
 			}
 			var result = await UserManager.ConfirmEmailAsync(userId, code);
-			return View(result.Succeeded ? "ConfirmEmail" : "Error");
+			return View(result.Succeeded ? MVC.Account.Views.ConfirmEmail : MVC.Shared.Views.Error);
 		}
 
 		[AllowAnonymous]
@@ -184,7 +184,7 @@ namespace MyCashFlow.Web.Controllers
 				if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
 				{
 					// Don't reveal that the user does not exist or is not confirmed
-					return View("ForgotPasswordConfirmation");
+					return View(MVC.Account.Views.ForgotPasswordConfirmation);
 				}
 
 				// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -208,7 +208,7 @@ namespace MyCashFlow.Web.Controllers
 		[AllowAnonymous]
 		public virtual ActionResult ResetPassword(string code)
 		{
-			return code == null ? View("Error") : View();
+			return code == null ? View(MVC.Shared.Views.Error) : View();
 		}
 
 		[HttpPost]
@@ -224,12 +224,12 @@ namespace MyCashFlow.Web.Controllers
 			if (user == null)
 			{
 				// Don't reveal that the user does not exist
-				return RedirectToAction("ResetPasswordConfirmation", "Account");
+				return RedirectToAction(MVC.Account.ActionNames.ResetPasswordConfirmation, MVC.Account.Name);
 			}
 			var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
 			if (result.Succeeded)
 			{
-				return RedirectToAction("ResetPasswordConfirmation", "Account");
+				return RedirectToAction(MVC.Account.ActionNames.ResetPasswordConfirmation, MVC.Account.Name);
 			}
 			AddErrors(result);
 			return View();
@@ -247,7 +247,7 @@ namespace MyCashFlow.Web.Controllers
 		public virtual ActionResult ExternalLogin(string provider, string returnUrl)
 		{
 			// Request a redirect to the external login provider
-			return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+			return new ChallengeResult(provider, Url.Action(MVC.Account.ActionNames.ExternalLoginCallback, MVC.Account.Name, new { ReturnUrl = returnUrl }));
 		}
 
 		[AllowAnonymous]
@@ -256,7 +256,7 @@ namespace MyCashFlow.Web.Controllers
 			var userId = await SignInManager.GetVerifiedUserIdAsync();
 			if (userId == null)
 			{
-				return View("Error");
+				return View(MVC.Shared.Views.Error);
 			}
 			var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
 			var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
@@ -276,9 +276,9 @@ namespace MyCashFlow.Web.Controllers
 			// Generate the token and send it
 			if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
 			{
-				return View("Error");
+				return View(MVC.Shared.Views.Error);
 			}
-			return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+			return RedirectToAction(MVC.Account.ActionNames.VerifyCode, new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
 		}
 
 		[AllowAnonymous]
@@ -287,7 +287,7 @@ namespace MyCashFlow.Web.Controllers
 			var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 			if (loginInfo == null)
 			{
-				return RedirectToAction("Login");
+				return RedirectToAction(MVC.Account.ActionNames.Login);
 			}
 
 			// Sign in the user with this external login provider if the user already has a login
@@ -297,15 +297,15 @@ namespace MyCashFlow.Web.Controllers
 				case SignInStatus.Success:
 					return RedirectToLocal(returnUrl);
 				case SignInStatus.LockedOut:
-					return View("Lockout");
+					return View(MVC.Shared.Views.Lockout);
 				case SignInStatus.RequiresVerification:
-					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+					return RedirectToAction(MVC.Account.ActionNames.SendCode, new { ReturnUrl = returnUrl, RememberMe = false });
 				case SignInStatus.Failure:
 				default:
 					// If the user does not have an account, then prompt the user to create an account
 					ViewBag.ReturnUrl = returnUrl;
 					ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-					return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+					return View(MVC.Account.Views.ExternalLoginConfirmation, new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
 			}
 		}
 
@@ -316,7 +316,7 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (User.Identity.IsAuthenticated)
 			{
-				return RedirectToAction("Index", "Manage");
+				return RedirectToAction(MVC.Manage.ActionNames.Index, MVC.Manage.Name);
 			}
 
 			if (ModelState.IsValid)
@@ -325,7 +325,7 @@ namespace MyCashFlow.Web.Controllers
 				var info = await AuthenticationManager.GetExternalLoginInfoAsync();
 				if (info == null)
 				{
-					return View("ExternalLoginFailure");
+					return View(MVC.Account.Views.ExternalLoginFailure);
 				}
 				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 				var result = await UserManager.CreateAsync(user);
@@ -350,7 +350,7 @@ namespace MyCashFlow.Web.Controllers
 		public virtual ActionResult LogOut()
 		{
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
 		}
 
 		[AllowAnonymous]
@@ -406,7 +406,7 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return Redirect(returnUrl);
 			}
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
 		}
 
 		internal class ChallengeResult : HttpUnauthorizedResult
