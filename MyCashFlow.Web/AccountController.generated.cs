@@ -137,7 +137,7 @@ namespace MyCashFlow.Web.Controllers
             public readonly string SendCode = "SendCode";
             public readonly string ExternalLoginCallback = "ExternalLoginCallback";
             public readonly string ExternalLoginConfirmation = "ExternalLoginConfirmation";
-            public readonly string LogOff = "LogOff";
+            public readonly string LogOut = "LogOut";
             public readonly string ExternalLoginFailure = "ExternalLoginFailure";
         }
 
@@ -156,7 +156,7 @@ namespace MyCashFlow.Web.Controllers
             public const string SendCode = "SendCode";
             public const string ExternalLoginCallback = "ExternalLoginCallback";
             public const string ExternalLoginConfirmation = "ExternalLoginConfirmation";
-            public const string LogOff = "LogOff";
+            public const string LogOut = "LogOut";
             public const string ExternalLoginFailure = "ExternalLoginFailure";
         }
 
@@ -514,13 +514,13 @@ namespace MyCashFlow.Web.Controllers
         }
 
         [NonAction]
-        partial void LogOffOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void LogOutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult LogOff()
+        public override System.Web.Mvc.ActionResult LogOut()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOff);
-            LogOffOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOut);
+            LogOutOverride(callInfo);
             return callInfo;
         }
 

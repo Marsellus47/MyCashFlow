@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Context\DatabaseInitializer.cs" />
     <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -99,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Stores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">
+      <Project>{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}</Project>
+      <Name>MyCashFlow.Domains</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

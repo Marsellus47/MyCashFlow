@@ -48,7 +48,7 @@ namespace MyCashFlow.Web.Controllers
 			}
 			catch
 			{
-				return RedirectToAction(MVC.User.ActionNames.Modify, new { id = userVm.User.ID });
+				return RedirectToAction(MVC.User.ActionNames.Modify, new { id = userVm.User.Id });
 			}
 		}
 

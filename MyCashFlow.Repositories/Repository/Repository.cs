@@ -1,4 +1,4 @@
-﻿using MyCashFlow.Repositories.Context;
+﻿using MyCashFlow.Identity.Context;
 using System.Data.Entity;
 
 namespace MyCashFlow.Repositories.Repository
@@ -6,7 +6,7 @@ namespace MyCashFlow.Repositories.Repository
 	public class Repository<TEntity> : ReadOnlyRepository<TEntity>, IRepository<TEntity>
 		where TEntity : class
 	{
-		public Repository(DatabaseContext context) : base(context) { }
+		public Repository(ApplicationDbContext context) : base(context) { }
 
 		public void Insert(TEntity record)
 		{

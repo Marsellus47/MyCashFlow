@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace MyCashFlow.Repositories.Context
+namespace MyCashFlow.Identity.Context
 {
-	public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
+	public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
 	{
-		protected override void Seed(DatabaseContext context)
+		protected override void Seed(ApplicationDbContext context)
 		{
 			var countries = new List<Country>
 			{

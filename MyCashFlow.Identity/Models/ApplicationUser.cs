@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
+using MyCashFlow.Domains.DataObject;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MyCashFlow.Identity.Models
 {
-	public class ApplicationUser : IdentityUser
+	public class ApplicationUser : User
 	{
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
 		{

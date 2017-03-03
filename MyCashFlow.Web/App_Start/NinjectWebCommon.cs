@@ -1,5 +1,5 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MyCashFlow.Web.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MyCashFlow.Web.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(MyCashFlow.Web.NinjectWebCommon), "Stop")]
 
 namespace MyCashFlow.Web
 {
@@ -13,7 +13,7 @@ namespace MyCashFlow.Web
 	using Ninject.Web.Common;
 	using Repositories.Repository;
 	using Domains.DataObject;
-	using Repositories.Context;
+	using Identity.Context;
 
 	public static class NinjectWebCommon 
     {
@@ -69,9 +69,17 @@ namespace MyCashFlow.Web
 				.SelectAllClasses()
 				.BindDefaultInterface());
 
-			kernel.Bind<DatabaseContext>().ToSelf().InRequestScope().WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
+			kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope().WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
 			kernel.Bind<IRepository<User>>().To<Repository<User>>();
 			kernel.Bind<IReadOnlyRepository<Country>>().To<ReadOnlyRepository<Country>>();
-		}        
+		}
+
+		public static ApplicationDbContext ApplicationDbContext
+		{
+			get
+			{
+				return bootstrapper.Kernel.Get<ApplicationDbContext>();
+			}
+		}
     }
 }

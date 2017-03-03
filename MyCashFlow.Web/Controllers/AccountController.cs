@@ -147,7 +147,7 @@ namespace MyCashFlow.Web.Controllers
 					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "User");
 				}
 				AddErrors(result);
 			}
@@ -347,7 +347,7 @@ namespace MyCashFlow.Web.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult LogOff()
+		public virtual ActionResult LogOut()
 		{
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 			return RedirectToAction("Index", "Home");

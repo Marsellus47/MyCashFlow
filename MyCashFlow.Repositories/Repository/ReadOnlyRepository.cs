@@ -1,9 +1,9 @@
-﻿using MyCashFlow.Repositories.Context;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq.Expressions;
 using System.Linq;
 using System;
+using MyCashFlow.Identity.Context;
 
 namespace MyCashFlow.Repositories.Repository
 {
@@ -12,10 +12,10 @@ namespace MyCashFlow.Repositories.Repository
 	{
 		private bool disposed = false;
 
-		protected DatabaseContext context;
+		protected ApplicationDbContext context;
 		protected DbSet<TEntity> dbSet;
 
-		public ReadOnlyRepository(DatabaseContext context)
+		public ReadOnlyRepository(ApplicationDbContext context)
 		{
 			this.context = context;
 			dbSet = context.Set<TEntity>();
