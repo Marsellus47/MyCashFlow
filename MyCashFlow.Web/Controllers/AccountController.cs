@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Identity.Managers;
 using MyCashFlow.Identity.Models;
+using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.ViewModels.Account;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +12,15 @@ using System.Web;
 
 namespace MyCashFlow.Web.Controllers
 {
-	public partial class AccountController : Controller
+	public partial class AccountController : UserManagerBasedController
 	{
 		private ApplicationSignInManager signInManager;
-		private ApplicationUserManager userManager;
 
 		public AccountController() { }
 
 		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+			: base(userManager)
 		{
-			UserManager = userManager;
 			SignInManager = signInManager;
 		}
 
@@ -33,18 +33,6 @@ namespace MyCashFlow.Web.Controllers
 			private set
 			{
 				signInManager = value;
-			}
-		}
-
-		public ApplicationUserManager UserManager
-		{
-			get
-			{
-				return userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-			}
-			private set
-			{
-				userManager = value;
 			}
 		}
 
@@ -363,12 +351,6 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (disposing)
 			{
-				if (userManager != null)
-				{
-					userManager.Dispose();
-					userManager = null;
-				}
-
 				if (signInManager != null)
 				{
 					signInManager.Dispose();

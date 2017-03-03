@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Identity.Managers;
+using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.ViewModels.Manage;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,18 +11,17 @@ using System.Web;
 
 namespace MyCashFlow.Web.Controllers
 {
-	public partial class ManageController : Controller
+	public partial class ManageController : UserManagerBasedController
 	{
 		private ApplicationSignInManager _signInManager;
-		private ApplicationUserManager _userManager;
 
 		public ManageController()
 		{
 		}
 
 		public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+			: base(userManager)
 		{
-			UserManager = userManager;
 			SignInManager = signInManager;
 		}
 
@@ -34,18 +34,6 @@ namespace MyCashFlow.Web.Controllers
 			private set
 			{
 				_signInManager = value;
-			}
-		}
-
-		public ApplicationUserManager UserManager
-		{
-			get
-			{
-				return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-			}
-			private set
-			{
-				_userManager = value;
 			}
 		}
 
@@ -80,7 +68,7 @@ namespace MyCashFlow.Web.Controllers
 			var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
 			if (result.Succeeded)
 			{
-				var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+				var user = await GetCurrentUserAsync();
 				if (user != null)
 				{
 					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -126,7 +114,7 @@ namespace MyCashFlow.Web.Controllers
 		public virtual async Task<ActionResult> EnableTwoFactorAuthentication()
 		{
 			await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
-			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+			var user = await GetCurrentUserAsync();
 			if (user != null)
 			{
 				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -139,7 +127,7 @@ namespace MyCashFlow.Web.Controllers
 		public virtual async Task<ActionResult> DisableTwoFactorAuthentication()
 		{
 			await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
-			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+			var user = await GetCurrentUserAsync();
 			if (user != null)
 			{
 				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -165,7 +153,7 @@ namespace MyCashFlow.Web.Controllers
 			var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
 			if (result.Succeeded)
 			{
-				var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+				var user = await GetCurrentUserAsync();
 				if (user != null)
 				{
 					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -186,7 +174,7 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.Error });
 			}
-			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+			var user = await GetCurrentUserAsync();
 			if (user != null)
 			{
 				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -210,7 +198,7 @@ namespace MyCashFlow.Web.Controllers
 			var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
 			if (result.Succeeded)
 			{
-				var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+				var user = await GetCurrentUserAsync();
 				if (user != null)
 				{
 					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -235,7 +223,7 @@ namespace MyCashFlow.Web.Controllers
 				var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
 				if (result.Succeeded)
 				{
-					var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+					var user = await GetCurrentUserAsync();
 					if (user != null)
 					{
 						await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -255,7 +243,7 @@ namespace MyCashFlow.Web.Controllers
 				message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
 				: message == ManageMessageId.Error ? "An error has occurred."
 				: "";
-			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+			var user = await GetCurrentUserAsync();
 			if (user == null)
 			{
 				return View(MVC.Shared.Views.Error);
@@ -289,17 +277,6 @@ namespace MyCashFlow.Web.Controllers
 			return result.Succeeded ? RedirectToAction(MVC.Manage.ActionNames.ManageLogins) : RedirectToAction(MVC.Manage.ActionNames.ManageLogins, new { Message = ManageMessageId.Error });
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && _userManager != null)
-			{
-				_userManager.Dispose();
-				_userManager = null;
-			}
-
-			base.Dispose(disposing);
-		}
-
 		#region Helpers
 
 		// Used for XSRF protection when adding external logins
@@ -323,7 +300,7 @@ namespace MyCashFlow.Web.Controllers
 
 		private bool HasPassword()
 		{
-			var user = UserManager.FindById(User.Identity.GetUserId());
+			var user = GetCurrentUser();
 			if (user != null)
 			{
 				return user.PasswordHash != null;
@@ -333,7 +310,7 @@ namespace MyCashFlow.Web.Controllers
 
 		private bool HasPhoneNumber()
 		{
-			var user = UserManager.FindById(User.Identity.GetUserId());
+			var user = GetCurrentUser();
 			if (user != null)
 			{
 				return user.PhoneNumber != null;
