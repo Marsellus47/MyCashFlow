@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+<p class="text-success">@Model.StatusMessage</p>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
@@ -29,7 +29,7 @@
                         <tr>
                             <td>@account.LoginProvider</td>
                             <td>
-                                @if (ViewBag.ShowRemoveButton)
+                                @if (Model.ShowRemoveButton)
                                 {
                                     using (Html.BeginForm(MVC.Manage.ActionNames.RemoveLogin, MVC.Manage.Name))
                                     {

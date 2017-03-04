@@ -236,10 +236,10 @@ namespace MyCashFlow.Web.Controllers
         public T4MVC_ManageController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Controllers.ManageController.ManageMessageId? message);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Models.Manage.ManageMessageId? message);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(MyCashFlow.Web.Controllers.ManageController.ManageMessageId? message)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(MyCashFlow.Web.Models.Manage.ManageMessageId? message)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "message", message);
@@ -387,10 +387,10 @@ namespace MyCashFlow.Web.Controllers
         }
 
         [NonAction]
-        partial void ManageLoginsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Controllers.ManageController.ManageMessageId? message);
+        partial void ManageLoginsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Models.Manage.ManageMessageId? message);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins(MyCashFlow.Web.Controllers.ManageController.ManageMessageId? message)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins(MyCashFlow.Web.Models.Manage.ManageMessageId? message)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ManageLogins);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "message", message);

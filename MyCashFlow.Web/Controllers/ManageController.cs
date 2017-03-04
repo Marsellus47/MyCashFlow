@@ -3,25 +3,37 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Identity.Managers;
 using MyCashFlow.Web.Infrastructure.Controllers;
+using MyCashFlow.Web.Models.Manage;
+using MyCashFlow.Web.Services.Manage;
 using MyCashFlow.Web.ViewModels.Manage;
-using System.Linq;
+using Resource = MyCashFlow.Resources.Localization.Views.Manage;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
+using System;
 
 namespace MyCashFlow.Web.Controllers
 {
 	public partial class ManageController : UserManagerBasedController
 	{
 		private ApplicationSignInManager _signInManager;
+		private readonly IManageService _manageService;
 
-		public ManageController()
-		{
-		}
+		public ManageController(IManageService manageService)
+			: this(manageService, null, null) { }
 
-		public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		public ManageController(
+			IManageService manageService,
+			ApplicationUserManager userManager,
+			ApplicationSignInManager signInManager)
 			: base(userManager)
 		{
+			if(manageService == null)
+			{
+				throw new ArgumentNullException(nameof(manageService));
+			}
+
+			_manageService = manageService;
 			SignInManager = signInManager;
 		}
 
@@ -39,24 +51,7 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual async Task<ActionResult> Index(ManageMessageId? message)
 		{
-			ViewBag.StatusMessage =
-				message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-				: message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-				: message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-				: message == ManageMessageId.Error ? "An error has occurred."
-				: message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-				: message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-				: "";
-
-			var userId = User.Identity.GetUserId();
-			var model = new IndexViewModel
-			{
-				HasPassword = HasPassword(),
-				PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-				TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-				Logins = await UserManager.GetLoginsAsync(userId),
-				BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-			};
+			var model = await _manageService.BuildIndexViewModelAsync(User, GetCurrentUser(), UserManager, AuthenticationManager, message);
 			return View(model);
 		}
 
@@ -64,21 +59,7 @@ namespace MyCashFlow.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
 		{
-			ManageMessageId? message;
-			var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-			if (result.Succeeded)
-			{
-				var user = await GetCurrentUserAsync();
-				if (user != null)
-				{
-					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-				}
-				message = ManageMessageId.RemoveLoginSuccess;
-			}
-			else
-			{
-				message = ManageMessageId.Error;
-			}
+			var message = await _manageService.RemoveLoginAsync(User, GetCurrentUser(), UserManager, SignInManager, loginProvider, providerKey);
 			return RedirectToAction(MVC.Manage.ActionNames.ManageLogins, new { Message = message });
 		}
 
@@ -95,17 +76,8 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return View(model);
 			}
-			// Generate the token and send it
-			var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-			if (UserManager.SmsService != null)
-			{
-				var message = new IdentityMessage
-				{
-					Destination = model.Number,
-					Body = "Your security code is: " + code
-				};
-				await UserManager.SmsService.SendAsync(message);
-			}
+
+			await _manageService.SendSmsTokenAsync(User, UserManager, model);
 			return RedirectToAction(MVC.Manage.ActionNames.VerifyPhoneNumber, new { PhoneNumber = model.Number });
 		}
 
@@ -113,12 +85,7 @@ namespace MyCashFlow.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual async Task<ActionResult> EnableTwoFactorAuthentication()
 		{
-			await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
-			var user = await GetCurrentUserAsync();
-			if (user != null)
-			{
-				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-			}
+			await _manageService.SetTwoFactorAuthenticationAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager, true);
 			return RedirectToAction(MVC.Manage.ActionNames.Index, MVC.Manage.Name);
 		}
 
@@ -126,20 +93,14 @@ namespace MyCashFlow.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual async Task<ActionResult> DisableTwoFactorAuthentication()
 		{
-			await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
-			var user = await GetCurrentUserAsync();
-			if (user != null)
-			{
-				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-			}
+			await _manageService.SetTwoFactorAuthenticationAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager, false);
 			return RedirectToAction(MVC.Manage.ActionNames.Index, MVC.Manage.Name);
 		}
 
 		public virtual async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
 		{
-			var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-			// Send an SMS through the SMS provider to verify the phone number
-			return phoneNumber == null ? View(MVC.Shared.Views.Error) : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
+			var model = await _manageService.BuildVerifyPhoneNumberViewModelAsync(User, UserManager, phoneNumber);
+			return phoneNumber == null ? View(MVC.Shared.Views.Error) : View(model);
 		}
 
 		[HttpPost]
@@ -150,18 +111,13 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return View(model);
 			}
-			var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
+			var result = await _manageService.VerifyPhoneNumberAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager, model);
 			if (result.Succeeded)
 			{
-				var user = await GetCurrentUserAsync();
-				if (user != null)
-				{
-					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-				}
 				return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.AddPhoneSuccess });
 			}
 			// If we got this far, something failed, redisplay form
-			ModelState.AddModelError("", "Failed to verify phone");
+			ModelState.AddModelError("", Resource.VerifyPhoneNumber.FailedToVerifyPhone);
 			return View(model);
 		}
 
@@ -169,17 +125,13 @@ namespace MyCashFlow.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual async Task<ActionResult> RemovePhoneNumber()
 		{
-			var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
-			if (!result.Succeeded)
+			var result = await _manageService.RemovePhoneNumberAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager);
+			if(result.Succeeded)
 			{
-				return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.Error });
+				return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.RemovePhoneSuccess });
 			}
-			var user = await GetCurrentUserAsync();
-			if (user != null)
-			{
-				await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-			}
-			return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.RemovePhoneSuccess });
+
+			return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.Error });
 		}
 
 		public virtual ActionResult ChangePassword()
@@ -195,14 +147,9 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return View(model);
 			}
-			var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+			var result = await _manageService.ChangePasswordAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager, model);
 			if (result.Succeeded)
 			{
-				var user = await GetCurrentUserAsync();
-				if (user != null)
-				{
-					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-				}
 				return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.ChangePasswordSuccess });
 			}
 			AddErrors(result);
@@ -220,14 +167,9 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+				var result = await _manageService.SetPasswordAsync(User, await GetCurrentUserAsync(), UserManager, SignInManager, model);
 				if (result.Succeeded)
 				{
-					var user = await GetCurrentUserAsync();
-					if (user != null)
-					{
-						await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-					}
 					return RedirectToAction(MVC.Manage.ActionNames.Index, new { Message = ManageMessageId.SetPasswordSuccess });
 				}
 				AddErrors(result);
@@ -239,23 +181,12 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual async Task<ActionResult> ManageLogins(ManageMessageId? message)
 		{
-			ViewBag.StatusMessage =
-				message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-				: message == ManageMessageId.Error ? "An error has occurred."
-				: "";
-			var user = await GetCurrentUserAsync();
-			if (user == null)
+			var model = await _manageService.BuildManageLoginsAsync(User, await GetCurrentUserAsync(), UserManager, AuthenticationManager, message);
+			if (model == null)
 			{
 				return View(MVC.Shared.Views.Error);
 			}
-			var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-			var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
-			ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
-			return View(new ManageLoginsViewModel
-			{
-				CurrentLogins = userLogins,
-				OtherLogins = otherLogins
-			});
+			return View(model);
 		}
 
 		[HttpPost]
@@ -268,19 +199,13 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual async Task<ActionResult> LinkLoginCallback()
 		{
-			var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
-			if (loginInfo == null)
-			{
-				return RedirectToAction(MVC.Manage.ActionNames.ManageLogins, new { Message = ManageMessageId.Error });
-			}
-			var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
-			return result.Succeeded ? RedirectToAction(MVC.Manage.ActionNames.ManageLogins) : RedirectToAction(MVC.Manage.ActionNames.ManageLogins, new { Message = ManageMessageId.Error });
+			var result = await _manageService.LinkLoginAsync(User, UserManager, AuthenticationManager);
+			return result == null || !result.Succeeded
+				? RedirectToAction(MVC.Manage.ActionNames.ManageLogins, new { Message = ManageMessageId.Error })
+				: RedirectToAction(MVC.Manage.ActionNames.ManageLogins);
 		}
 
 		#region Helpers
-
-		// Used for XSRF protection when adding external logins
-		private const string XsrfKey = "XsrfId";
 
 		private IAuthenticationManager AuthenticationManager
 		{
@@ -296,37 +221,6 @@ namespace MyCashFlow.Web.Controllers
 			{
 				ModelState.AddModelError("", error);
 			}
-		}
-
-		private bool HasPassword()
-		{
-			var user = GetCurrentUser();
-			if (user != null)
-			{
-				return user.PasswordHash != null;
-			}
-			return false;
-		}
-
-		private bool HasPhoneNumber()
-		{
-			var user = GetCurrentUser();
-			if (user != null)
-			{
-				return user.PhoneNumber != null;
-			}
-			return false;
-		}
-
-		public enum ManageMessageId
-		{
-			AddPhoneSuccess,
-			ChangePasswordSuccess,
-			SetTwoFactorSuccess,
-			SetPasswordSuccess,
-			RemoveLoginSuccess,
-			RemovePhoneSuccess,
-			Error
 		}
 
 		#endregion

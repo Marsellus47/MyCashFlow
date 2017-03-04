@@ -50,6 +50,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VerifyCode.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Views\Manage\AddPhoneNumber.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddPhoneNumber.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Views\Manage\ManageLogins.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManageLogins.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Views\Manage\VerifyPhoneNumber.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VerifyPhoneNumber.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Views\Manage\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +80,22 @@
     <EmbeddedResource Include="Localization\Views\Account\VerifyCode.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>VerifyCode.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Manage\AddPhoneNumber.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddPhoneNumber.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Manage\ManageLogins.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageLogins.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Manage\VerifyPhoneNumber.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>VerifyPhoneNumber.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Manage\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

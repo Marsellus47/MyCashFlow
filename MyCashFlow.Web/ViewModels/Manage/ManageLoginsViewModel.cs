@@ -8,5 +8,7 @@ namespace MyCashFlow.Web.ViewModels.Manage
 	{
 		public IList<UserLoginInfo> CurrentLogins { get; set; }
 		public IList<AuthenticationDescription> OtherLogins { get; set; }
+		public string StatusMessage { get; set; }
+		public bool ShowRemoveButton { get; set; }
 	}
 }
