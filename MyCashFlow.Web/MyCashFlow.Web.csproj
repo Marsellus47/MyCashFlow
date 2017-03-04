@@ -235,8 +235,10 @@
     <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseOperation.cs" />
+    <Compile Include="Models\Shared\DatabaseOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Account\AccountService.cs" />
+    <Compile Include="Services\Account\IAccountService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\ICountryService.cs" />
     <Compile Include="Services\IUserService.cs" />
@@ -328,6 +330,10 @@
     <ProjectReference Include="..\MyCashFlow.Repositories\MyCashFlow.Repositories.csproj">
       <Project>{86cf0da5-7000-42ff-9cec-f62d1b5d3c8e}</Project>
       <Name>MyCashFlow.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyCashFlow.Resources\MyCashFlow.Resources.csproj">
+      <Project>{0ac1f2cc-30c9-4080-bedc-e9c699833199}</Project>
+      <Name>MyCashFlow.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

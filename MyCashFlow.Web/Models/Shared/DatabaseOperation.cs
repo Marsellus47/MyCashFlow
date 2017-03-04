@@ -1,4 +1,4 @@
-﻿namespace MyCashFlow.Web.Models
+﻿namespace MyCashFlow.Web.Models.Shared
 {
 	public enum DatabaseOperation
 	{

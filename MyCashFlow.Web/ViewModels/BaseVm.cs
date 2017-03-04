@@ -1,4 +1,4 @@
-﻿using MyCashFlow.Web.Models;
+﻿using MyCashFlow.Web.Models.Shared;
 
 namespace MyCashFlow.Web.ViewModels
 {
