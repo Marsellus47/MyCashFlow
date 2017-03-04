@@ -1,26 +1,38 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Managers;
 using MyCashFlow.Web.Infrastructure.Controllers;
+using MyCashFlow.Web.Services.Account;
 using MyCashFlow.Web.ViewModels.Account;
-using System.Linq;
+using Resource = MyCashFlow.Resources.Localization.Views.Account;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
+using System;
 
 namespace MyCashFlow.Web.Controllers
 {
 	public partial class AccountController : UserManagerBasedController
 	{
-		private ApplicationSignInManager signInManager;
+		private ApplicationSignInManager _signInManager;
+		private readonly IAccountService _accountService;
 
-		public AccountController() { }
+		public AccountController(IAccountService accountService)
+			: this(accountService, null, null) { }
 
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		public AccountController(
+			IAccountService accountService,
+			ApplicationUserManager userManager,
+			ApplicationSignInManager signInManager)
 			: base(userManager)
 		{
+			if (accountService == null)
+			{
+				throw new ArgumentNullException(nameof(accountService));
+			}
+
+			_accountService = accountService;
 			SignInManager = signInManager;
 		}
 
@@ -28,11 +40,11 @@ namespace MyCashFlow.Web.Controllers
 		{
 			get
 			{
-				return signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+				return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
 			}
 			private set
 			{
-				signInManager = value;
+				_signInManager = value;
 			}
 		}
 
@@ -66,7 +78,7 @@ namespace MyCashFlow.Web.Controllers
 					return RedirectToAction(MVC.Account.ActionNames.SendCode, new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 				case SignInStatus.Failure:
 				default:
-					ModelState.AddModelError("", "Invalid login attempt.");
+					ModelState.AddModelError("", Resource.Login.InvalidLoginAttempt);
 					return View(model);
 			}
 		}
@@ -79,7 +91,8 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return View(MVC.Shared.Views.Error);
 			}
-			return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+			var model = _accountService.BuildVerifyCodeViewModel(provider, returnUrl, rememberMe);
+			return View(model);
 		}
 
 		[HttpPost]
@@ -105,7 +118,7 @@ namespace MyCashFlow.Web.Controllers
 					return View(MVC.Shared.Views.Lockout);
 				case SignInStatus.Failure:
 				default:
-					ModelState.AddModelError("", "Invalid code.");
+					ModelState.AddModelError("", Resource.VerifyCode.InvalidCode);
 					return View(model);
 			}
 		}
@@ -123,18 +136,9 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new User { UserName = model.Email, Email = model.Email };
-				var result = await UserManager.CreateAsync(user, model.Password);
+				var result = await _accountService.RegisterUserAsync(UserManager, SignInManager, model);
 				if (result.Succeeded)
 				{
-					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-					// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-					// Send an email with this link
-					// string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
 					return RedirectToAction(MVC.User.ActionNames.Index, MVC.User.Name);
 				}
 				AddErrors(result);
@@ -208,13 +212,7 @@ namespace MyCashFlow.Web.Controllers
 			{
 				return View(model);
 			}
-			var user = await UserManager.FindByNameAsync(model.Email);
-			if (user == null)
-			{
-				// Don't reveal that the user does not exist
-				return RedirectToAction(MVC.Account.ActionNames.ResetPasswordConfirmation, MVC.Account.Name);
-			}
-			var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+			var result = await _accountService.ResetPasswordAsync(UserManager, model);
 			if (result.Succeeded)
 			{
 				return RedirectToAction(MVC.Account.ActionNames.ResetPasswordConfirmation, MVC.Account.Name);
@@ -241,14 +239,12 @@ namespace MyCashFlow.Web.Controllers
 		[AllowAnonymous]
 		public virtual async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
 		{
-			var userId = await SignInManager.GetVerifiedUserIdAsync();
-			if (userId == null)
+			var model = await _accountService.BuildSendCodeViewModelAsync(UserManager, SignInManager, returnUrl, rememberMe);
+			if(model == null)
 			{
 				return View(MVC.Shared.Views.Error);
 			}
-			var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-			var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-			return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+			return View(model);
 		}
 
 		[HttpPost]
@@ -309,22 +305,14 @@ namespace MyCashFlow.Web.Controllers
 
 			if (ModelState.IsValid)
 			{
-				// Get the information about the user from the external login provider
-				var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-				if (info == null)
+				var result = await _accountService.ConfirmExternalLogin(AuthenticationManager, UserManager, SignInManager, model);
+				if (result == null)
 				{
 					return View(MVC.Account.Views.ExternalLoginFailure);
 				}
-				var user = new User { UserName = model.Email, Email = model.Email };
-				var result = await UserManager.CreateAsync(user);
 				if (result.Succeeded)
 				{
-					result = await UserManager.AddLoginAsync(user.Id, info.Login);
-					if (result.Succeeded)
-					{
-						await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-						return RedirectToLocal(returnUrl);
-					}
+					return RedirectToLocal(returnUrl);
 				}
 				AddErrors(result);
 			}
@@ -351,10 +339,10 @@ namespace MyCashFlow.Web.Controllers
 		{
 			if (disposing)
 			{
-				if (signInManager != null)
+				if (_signInManager != null)
 				{
-					signInManager.Dispose();
-					signInManager = null;
+					_signInManager.Dispose();
+					_signInManager = null;
 				}
 			}
 
