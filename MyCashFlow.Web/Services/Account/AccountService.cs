@@ -2,15 +2,45 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Domains.DataObject;
+using MyCashFlow.Repositories.Repository;
 using MyCashFlow.Web.ViewModels.Account;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System;
 
 namespace MyCashFlow.Web.Services.Account
 {
 	public class AccountService : IAccountService
 	{
+		private readonly IRepository<Country> _countryRepository;
+
+		public AccountService(IRepository<Country> countryRepository)
+		{
+			if(countryRepository == null)
+			{
+				throw new ArgumentNullException(nameof(countryRepository));
+			}
+
+			_countryRepository = countryRepository;
+		}
+
+		public RegisterViewModel BuildRegisterViewModel()
+		{
+			var model = new RegisterViewModel
+			{
+				Countries = GetCountries()
+			};
+			return model;
+		}
+
+		public IEnumerable<Country> GetCountries()
+		{
+			var countries = _countryRepository.Get();
+			return countries;
+		}
+
 		public VerifyCodeViewModel BuildVerifyCodeViewModel(
 			string provider,
 			string returnUrl,
@@ -30,10 +60,17 @@ namespace MyCashFlow.Web.Services.Account
 			SignInManager<User, string> signInManager,
 			RegisterViewModel model)
 		{
+			// TODO: use automapper
 			var user = new User
 			{
-				UserName = model.Email,
-				Email = model.Email
+				UserName = model.UserName,
+				Email = model.Email,
+				PhoneNumber = model.PhoneNumber,
+				CountryID = model.CountryID,
+				Gender = model.Gender,
+				FirstName = model.FirstName,
+				MiddleName = model.MiddleName,
+				LastName = model.LastName
 			};
 
 			var result = await userManager.CreateAsync(user, model.Password);

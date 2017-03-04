@@ -126,7 +126,8 @@ namespace MyCashFlow.Web.Controllers
 		[AllowAnonymous]
 		public virtual ActionResult Register()
 		{
-			return View();
+			var model = _accountService.BuildRegisterViewModel();
+			return View(model);
 		}
 
 		[HttpPost]
@@ -145,6 +146,7 @@ namespace MyCashFlow.Web.Controllers
 			}
 
 			// If we got this far, something failed, redisplay form
+			model.Countries = _accountService.GetCountries();
 			return View(model);
 		}
 

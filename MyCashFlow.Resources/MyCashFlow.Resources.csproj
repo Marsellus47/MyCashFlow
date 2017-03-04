@@ -45,6 +45,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Views\Account\Register.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Views\Account\VerifyCode.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,6 +81,10 @@
     <EmbeddedResource Include="Localization\Views\Account\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Account\Register.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Views\Account\VerifyCode.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -3,12 +3,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Web.ViewModels.Account;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyCashFlow.Web.Services.Account
 {
 	public interface IAccountService
 	{
+		RegisterViewModel BuildRegisterViewModel();
+
+		IEnumerable<Country> GetCountries();
+
 		VerifyCodeViewModel BuildVerifyCodeViewModel(
 			string provider,
 			string returnUrl,
