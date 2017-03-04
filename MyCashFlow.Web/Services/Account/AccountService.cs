@@ -6,7 +6,6 @@ using MyCashFlow.Web.ViewModels.Account;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using System;
 
 namespace MyCashFlow.Web.Services.Account
 {
@@ -90,7 +89,7 @@ namespace MyCashFlow.Web.Services.Account
 			return result;
 		}
 
-		public async Task<IdentityResult> ConfirmExternalLogin(
+		public async Task<IdentityResult> ConfirmExternalLoginAsync(
 			IAuthenticationManager authenticationManager,
 			UserManager<User> userManager,
 			SignInManager<User, string> signInManager,

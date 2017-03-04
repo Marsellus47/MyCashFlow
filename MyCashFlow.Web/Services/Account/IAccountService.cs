@@ -29,7 +29,7 @@ namespace MyCashFlow.Web.Services.Account
 			string returnUrl,
 			bool rememberMe);
 
-		Task<IdentityResult> ConfirmExternalLogin(
+		Task<IdentityResult> ConfirmExternalLoginAsync(
 			IAuthenticationManager authenticationManager,
 			UserManager<User> userManager,
 			SignInManager<User, string> signInManager,

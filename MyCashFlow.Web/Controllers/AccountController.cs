@@ -5,7 +5,7 @@ using MyCashFlow.Identity.Managers;
 using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.Services.Account;
 using MyCashFlow.Web.ViewModels.Account;
-using Resource = MyCashFlow.Resources.Localization.Views.Account;
+using Rsx = MyCashFlow.Resources.Localization.Views.Account;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
@@ -78,7 +78,7 @@ namespace MyCashFlow.Web.Controllers
 					return RedirectToAction(MVC.Account.ActionNames.SendCode, new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 				case SignInStatus.Failure:
 				default:
-					ModelState.AddModelError("", Resource.Login.InvalidLoginAttempt);
+					ModelState.AddModelError("", Rsx.Login.InvalidLoginAttempt);
 					return View(model);
 			}
 		}
@@ -118,7 +118,7 @@ namespace MyCashFlow.Web.Controllers
 					return View(MVC.Shared.Views.Lockout);
 				case SignInStatus.Failure:
 				default:
-					ModelState.AddModelError("", Resource.VerifyCode.InvalidCode);
+					ModelState.AddModelError("", Rsx.VerifyCode.InvalidCode);
 					return View(model);
 			}
 		}
@@ -305,7 +305,7 @@ namespace MyCashFlow.Web.Controllers
 
 			if (ModelState.IsValid)
 			{
-				var result = await _accountService.ConfirmExternalLogin(AuthenticationManager, UserManager, SignInManager, model);
+				var result = await _accountService.ConfirmExternalLoginAsync(AuthenticationManager, UserManager, SignInManager, model);
 				if (result == null)
 				{
 					return View(MVC.Account.Views.ExternalLoginFailure);
