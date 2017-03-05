@@ -1,12 +1,13 @@
 ﻿using MyCashFlow.Domains.Artificial;
 using MyCashFlow.Domains.DataObject;
+using MyCashFlow.Web.Infrastructure.Automapper;
 using Rsx = MyCashFlow.Resources.Localization.Views.Account.Register;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyCashFlow.Web.ViewModels.Account
 {
-	public class RegisterViewModel
+	public class RegisterViewModel : IMapTo<Domains.DataObject.User>
 	{
 		[Required]
 		[StringLength(128)]

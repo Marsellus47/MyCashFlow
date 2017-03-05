@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
+using AutoMapper;
 
 namespace MyCashFlow.Web.Services.Account
 {
@@ -60,18 +61,7 @@ namespace MyCashFlow.Web.Services.Account
 			SignInManager<User, string> signInManager,
 			RegisterViewModel model)
 		{
-			// TODO: use automapper
-			var user = new User
-			{
-				UserName = model.UserName,
-				Email = model.Email,
-				PhoneNumber = model.PhoneNumber,
-				CountryID = model.CountryID,
-				Gender = model.Gender,
-				FirstName = model.FirstName,
-				MiddleName = model.MiddleName,
-				LastName = model.LastName
-			};
+			var user = Mapper.Map<User>(model);
 
 			var result = await userManager.CreateAsync(user, model.Password);
 			if (result.Succeeded)
