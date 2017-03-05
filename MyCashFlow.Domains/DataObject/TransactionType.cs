@@ -14,13 +14,12 @@ namespace MyCashFlow.Domains.DataObject
 		#region Standard fields
 
 		public string Name { get; set; }
-		public bool Income { get; set; }
 
 		#endregion
 
 		#region Foreign keys
 
-		public int CreatorID { get; set; }
+		public int? CreatorID { get; set; }
 
 		public virtual User Creator { get; set; }
 

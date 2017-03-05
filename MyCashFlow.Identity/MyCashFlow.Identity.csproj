@@ -86,7 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
-    <Compile Include="Context\DatabaseInitializer.cs" />
+    <Compile Include="Initializer\DatabaseInitializer.cs" />
     <Compile Include="Extensions\ApplicationUserExtensions.cs" />
     <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />

@@ -31,6 +31,7 @@ public static partial class MVC
     public static MyCashFlow.Web.Controllers.CountryController Country = new MyCashFlow.Web.Controllers.T4MVC_CountryController();
     public static MyCashFlow.Web.Controllers.HomeController Home = new MyCashFlow.Web.Controllers.T4MVC_HomeController();
     public static MyCashFlow.Web.Controllers.ManageController Manage = new MyCashFlow.Web.Controllers.T4MVC_ManageController();
+    public static MyCashFlow.Web.Controllers.ProjectController Project = new MyCashFlow.Web.Controllers.T4MVC_ProjectController();
     public static MyCashFlow.Web.Controllers.UserController User = new MyCashFlow.Web.Controllers.T4MVC_UserController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }

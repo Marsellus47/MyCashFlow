@@ -38,10 +38,22 @@ namespace MyCashFlow.Web.Infrastructure.Controllers
 			return user;
 		}
 
+		protected async Task<int> GetCurrentUserIdAsync()
+		{
+			var user = await GetCurrentUserAsync();
+			return user.Id;
+		}
+
 		protected User GetCurrentUser()
 		{
 			var user = UserManager.FindById(GetUserId(User));
 			return user;
+		}
+
+		protected int GetCurrentUserId()
+		{
+			var user = GetCurrentUser();
+			return user.Id;
 		}
 
 		protected override void Dispose(bool disposing)

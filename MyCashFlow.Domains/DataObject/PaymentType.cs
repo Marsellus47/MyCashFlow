@@ -19,7 +19,7 @@ namespace MyCashFlow.Domains.DataObject
 
 		#region Foreign keys
 
-		public int CreatorID { get; set; }
+		public int? CreatorID { get; set; }
 
 		public virtual User Creator { get; set; }
 

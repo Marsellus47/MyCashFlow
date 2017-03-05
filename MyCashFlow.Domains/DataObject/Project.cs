@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System;
 
@@ -15,15 +16,10 @@ namespace MyCashFlow.Domains.DataObject
 
 		#region Standard fields
 
+		[Required]
 		public string Name { get; set; }
-
-		[Display(Name = "Valid from")]
 		public DateTime? ValidFrom { get; set; }
-
-		[Display(Name = "Valid till")]
 		public DateTime? ValidTill { get; set; }
-
-		[Display(Name = "Sequence number")]
 		public int SequenceNumber { get; set; }
 
 		#endregion
@@ -33,6 +29,7 @@ namespace MyCashFlow.Domains.DataObject
 		public int CreatorID { get; set; }
 
 		public virtual User Creator { get; set; }
+		public virtual List<Transaction> Transactions { get; set; }
 
 		#endregion
 	}

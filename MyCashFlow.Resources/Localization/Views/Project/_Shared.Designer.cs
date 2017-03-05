@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCashFlow.Resources.Localization.Views.Account {
+namespace MyCashFlow.Resources.Localization.Views.Project {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Login {
+    public class _Shared {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Login() {
+        internal _Shared() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Account.Login", typeof(Login).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project._Shared", typeof(_Shared).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,38 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string Field_Password {
+        public static string Field_Name {
             get {
-                return ResourceManager.GetString("Field_Password", resourceCulture);
+                return ResourceManager.GetString("Field_Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remember me?.
+        ///   Looks up a localized string similar to Sequence number.
         /// </summary>
-        public static string Field_RememberMe {
+        public static string Field_SequenceNumber {
             get {
-                return ResourceManager.GetString("Field_RememberMe", resourceCulture);
+                return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username.
+        ///   Looks up a localized string similar to Valid from.
         /// </summary>
-        public static string Field_UserName {
+        public static string Field_ValidFrom {
             get {
-                return ResourceManager.GetString("Field_UserName", resourceCulture);
+                return ResourceManager.GetString("Field_ValidFrom", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid login attempt..
+        ///   Looks up a localized string similar to Valid till.
         /// </summary>
-        public static string InvalidLoginAttempt {
+        public static string Field_ValidTill {
             get {
-                return ResourceManager.GetString("InvalidLoginAttempt", resourceCulture);
+                return ResourceManager.GetString("Field_ValidTill", resourceCulture);
             }
         }
     }

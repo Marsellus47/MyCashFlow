@@ -21,6 +21,10 @@ namespace MyCashFlow.Identity.Context
 		public DbSet<Address> Addresses { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<Country> Countries { get; set; }
+		public DbSet<Transaction> Transactions { get; set; }
+		public DbSet<TransactionType> TransactionTypes { get; set; }
+		public DbSet<Project> Projects { get; set; }
+		public DbSet<PaymentType> PaymentTypes { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
