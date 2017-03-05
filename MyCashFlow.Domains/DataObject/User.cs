@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using MyCashFlow.Domains.Artificial;
-using System.ComponentModel.DataAnnotations;
+using MyCashFlow.Domains.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyCashFlow.Domains.DataObject
 {
 	[Table("User", Schema = "Configuration")]
-	public class User : IdentityUser
+	public class User : IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>
 	{
 		#region Primary key
 		

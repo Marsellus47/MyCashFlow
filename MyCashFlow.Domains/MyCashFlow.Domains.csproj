@@ -66,6 +66,10 @@
     <Compile Include="DataObject\Transaction.cs" />
     <Compile Include="DataObject\TransactionType.cs" />
     <Compile Include="DataObject\User.cs" />
+    <Compile Include="Identity\CustomRole.cs" />
+    <Compile Include="Identity\CustomUserClaim.cs" />
+    <Compile Include="Identity\CustomUserLogin.cs" />
+    <Compile Include="Identity\CustomUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

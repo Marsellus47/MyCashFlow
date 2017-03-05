@@ -151,7 +151,7 @@ namespace MyCashFlow.Web.Controllers
 		}
 
 		[AllowAnonymous]
-		public virtual async Task<ActionResult> ConfirmEmail(string userId, string code)
+		public virtual async Task<ActionResult> ConfirmEmail(int userId, string code)
 		{
 			if (userId == null || code == null)
 			{

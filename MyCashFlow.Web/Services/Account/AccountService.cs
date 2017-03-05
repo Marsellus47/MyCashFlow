@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Domains.DataObject;
@@ -9,7 +10,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
-using AutoMapper;
 
 namespace MyCashFlow.Web.Services.Account
 {
@@ -57,8 +57,8 @@ namespace MyCashFlow.Web.Services.Account
 		}
 
 		public async Task<IdentityResult> RegisterUserAsync(
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			RegisterViewModel model)
 		{
 			var user = Mapper.Map<User>(model);
@@ -79,7 +79,7 @@ namespace MyCashFlow.Web.Services.Account
 		}
 
 		public async Task<IdentityResult> ResetPasswordAsync(
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			ResetPasswordViewModel model)
 		{
 			var user = await userManager.FindByNameAsync(model.Email);
@@ -94,8 +94,8 @@ namespace MyCashFlow.Web.Services.Account
 		}
 
 		public async Task<SendCodeViewModel> BuildSendCodeViewModelAsync(
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			string returnUrl,
 			bool rememberMe)
 		{
@@ -118,8 +118,8 @@ namespace MyCashFlow.Web.Services.Account
 
 		public async Task<IdentityResult> ConfirmExternalLoginAsync(
 			IAuthenticationManager authenticationManager,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			ExternalLoginConfirmationViewModel model)
 		{
 			// Get the information about the user from the external login provider
@@ -129,6 +129,7 @@ namespace MyCashFlow.Web.Services.Account
 				return null;
 			}
 
+			// TODO: Automapper
 			var user = new User
 			{
 				UserName = model.Email,

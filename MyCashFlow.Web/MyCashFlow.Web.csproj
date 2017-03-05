@@ -242,7 +242,6 @@
     <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="MappingProfiles\Account\UserProfile.cs" />
     <Compile Include="Models\Manage\ManageMessageId.cs" />
     <Compile Include="Models\Shared\DatabaseOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

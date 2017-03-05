@@ -369,10 +369,10 @@ namespace MyCashFlow.Web.Controllers
         }
 
         [NonAction]
-        partial void ConfirmEmailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string userId, string code);
+        partial void ConfirmEmailOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int userId, string code);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ConfirmEmail(string userId, string code)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ConfirmEmail(int userId, string code)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConfirmEmail);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userId", userId);

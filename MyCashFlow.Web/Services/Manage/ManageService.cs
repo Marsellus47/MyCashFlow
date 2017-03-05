@@ -16,7 +16,7 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<IndexViewModel> BuildIndexViewModelAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			IAuthenticationManager authenticationManager,
 			ManageMessageId? message)
 		{
@@ -27,7 +27,7 @@ namespace MyCashFlow.Web.Services.Manage
 				PhoneNumber = await userManager.GetPhoneNumberAsync(userId),
 				TwoFactor = await userManager.GetTwoFactorEnabledAsync(userId),
 				Logins = await userManager.GetLoginsAsync(userId),
-				BrowserRemembered = await authenticationManager.TwoFactorBrowserRememberedAsync(userId),
+				BrowserRemembered = await authenticationManager.TwoFactorBrowserRememberedAsync(userId.ToString()),
 				StatusMessage =
 					message == ManageMessageId.ChangePasswordSuccess ? Rsx.Index.ChangePasswordSuccess
 					: message == ManageMessageId.SetPasswordSuccess ? Rsx.Index.SetPasswordSuccess
@@ -44,8 +44,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<ManageMessageId> RemoveLoginAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			string loginProvider,
 			string providerKey)
 		{
@@ -65,7 +65,7 @@ namespace MyCashFlow.Web.Services.Manage
 
 		public async Task SendSmsTokenAsync(
 			IPrincipal principal,
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			AddPhoneNumberViewModel model)
 		{
 			// Generate the token and send it
@@ -84,8 +84,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task SetTwoFactorAuthenticationAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			bool enabled)
 		{
 			await userManager.SetTwoFactorEnabledAsync(GetUserId(principal), enabled);
@@ -94,7 +94,7 @@ namespace MyCashFlow.Web.Services.Manage
 
 		public async Task<VerifyPhoneNumberViewModel> BuildVerifyPhoneNumberViewModelAsync(
 			IPrincipal principal,
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			string phoneNumber)
 		{
 			var code = await userManager.GenerateChangePhoneNumberTokenAsync(GetUserId(principal), phoneNumber);
@@ -110,8 +110,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<IdentityResult> VerifyPhoneNumberAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			VerifyPhoneNumberViewModel model)
 		{
 			var result = await userManager.ChangePhoneNumberAsync(GetUserId(principal), model.PhoneNumber, model.Code);
@@ -126,8 +126,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<IdentityResult> RemovePhoneNumberAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager)
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager)
 		{
 			var result = await userManager.SetPhoneNumberAsync(GetUserId(principal), null);
 			if (result.Succeeded)
@@ -140,8 +140,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<IdentityResult> ChangePasswordAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			ChangePasswordViewModel model)
 		{
 			var result = await userManager.ChangePasswordAsync(GetUserId(principal), model.OldPassword, model.NewPassword);
@@ -155,8 +155,8 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<IdentityResult> SetPasswordAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			SetPasswordViewModel model)
 		{
 			var result = await userManager.AddPasswordAsync(GetUserId(principal), model.NewPassword);
@@ -170,7 +170,7 @@ namespace MyCashFlow.Web.Services.Manage
 		public async Task<ManageLoginsViewModel> BuildManageLoginsAsync(
 			IPrincipal principal,
 			User currentUser,
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			IAuthenticationManager authenticationManager,
 			ManageMessageId? message)
 		{
@@ -200,11 +200,11 @@ namespace MyCashFlow.Web.Services.Manage
 
 		public async Task<IdentityResult> LinkLoginAsync(
 			IPrincipal principal,
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			IAuthenticationManager authenticationManager)
 		{
 			const string XsrfKey = "XsrfId";
-			var loginInfo = await authenticationManager.GetExternalLoginInfoAsync(XsrfKey, GetUserId(principal));
+			var loginInfo = await authenticationManager.GetExternalLoginInfoAsync(XsrfKey, GetUserId(principal).ToString());
 			if (loginInfo == null)
 			{
 				return null;
@@ -216,9 +216,9 @@ namespace MyCashFlow.Web.Services.Manage
 
 		#region Helpers
 
-		private string GetUserId(IPrincipal principal)
+		private int GetUserId(IPrincipal principal)
 		{
-			var userId = principal.Identity.GetUserId();
+			var userId = principal.Identity.GetUserId<int>();
 			return userId;
 		}
 
@@ -232,7 +232,7 @@ namespace MyCashFlow.Web.Services.Manage
 		}
 
 		private async Task TrySignInAsync(
-			SignInManager<User, string> signInManager,
+			SignInManager<User, int> signInManager,
 			User currentUser)
 		{
 			if (currentUser != null)

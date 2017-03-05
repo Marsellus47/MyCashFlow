@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace MyCashFlow.Identity.Managers
 {
-	public class ApplicationSignInManager : SignInManager<User, string>
+	public class ApplicationSignInManager : SignInManager<User, int>
 	{
 		public ApplicationSignInManager(
-			UserManager<User, string> userManager,
+			UserManager<User, int> userManager,
 			IAuthenticationManager authenticationManager)
 			: base(userManager, authenticationManager)
 		{

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Managers;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
@@ -33,13 +34,13 @@ namespace MyCashFlow.Web.Infrastructure.Controllers
 
 		protected async Task<User> GetCurrentUserAsync()
 		{
-			var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+			var user = await UserManager.FindByIdAsync(GetUserId(User));
 			return user;
 		}
 
 		protected User GetCurrentUser()
 		{
-			var user = UserManager.FindById(User.Identity.GetUserId());
+			var user = UserManager.FindById(GetUserId(User));
 			return user;
 		}
 
@@ -56,5 +57,15 @@ namespace MyCashFlow.Web.Infrastructure.Controllers
 
 			base.Dispose(disposing);
 		}
+
+		#region Helpers
+
+		private int GetUserId(IPrincipal principal)
+		{
+			var userId = principal.Identity.GetUserId<int>();
+			return userId;
+		}
+
+		#endregion
 	}
 }

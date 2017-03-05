@@ -20,24 +20,24 @@ namespace MyCashFlow.Web.Services.Account
 			bool rememberMe);
 
 		Task<IdentityResult> RegisterUserAsync(
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			RegisterViewModel model);
 
 		Task<IdentityResult> ResetPasswordAsync(
-			UserManager<User> userManager,
+			UserManager<User, int> userManager,
 			ResetPasswordViewModel model);
 
 		Task<SendCodeViewModel> BuildSendCodeViewModelAsync(
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			string returnUrl,
 			bool rememberMe);
 
 		Task<IdentityResult> ConfirmExternalLoginAsync(
 			IAuthenticationManager authenticationManager,
-			UserManager<User> userManager,
-			SignInManager<User, string> signInManager,
+			UserManager<User, int> userManager,
+			SignInManager<User, int> signInManager,
 			ExternalLoginConfirmationViewModel model);
 	}
 }

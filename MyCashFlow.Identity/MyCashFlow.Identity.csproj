@@ -87,23 +87,22 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Context\DatabaseInitializer.cs" />
-    <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="Extensions\ApplicationUserExtensions.cs" />
     <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\SmsService.cs" />
+    <Compile Include="Stores\CustomRoleStore.cs" />
+    <Compile Include="Stores\CustomUserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Stores\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">
-      <Project>{2194D66D-DFB0-458C-B8F4-0D6AA8334ACB}</Project>
+      <Project>{2194d66d-dfb0-458c-b8f4-0d6aa8334acb}</Project>
       <Name>MyCashFlow.Domains</Name>
     </ProjectReference>
   </ItemGroup>

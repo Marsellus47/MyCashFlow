@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace MyCashFlow.Identity.Extensions
 {
-	public static class UserExtensions
+	public static class ApplicationUserExtensions
 	{
-		public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this User user, UserManager<User> manager)
+		public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this User user, UserManager<User, int> manager)
 		{
 			// Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
 			var userIdentity = await manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
