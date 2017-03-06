@@ -30,7 +30,7 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual ActionResult Create()
 		{
-			return View();
+			return View(new ProjectCreateViewModel());
 		}
 
 		[HttpPost]
@@ -52,6 +52,26 @@ namespace MyCashFlow.Web.Controllers
 		{
 			var model = _projectService.BuildProjectEditViewModel(id);
 			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual async Task<ActionResult> Edit(ProjectEditViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			model.CreatorID = await GetCurrentUserIdAsync();
+			_projectService.EditProject(model);
+
+			return RedirectToAction(MVC.Project.ActionNames.Index);
+		}
+
+		public virtual ActionResult Delete(int id)
+		{
+			return View();
 		}
 	}
 }

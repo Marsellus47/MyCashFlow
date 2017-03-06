@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCashFlow.Resources.Localization.Views.Project {
+namespace MyCashFlow.Resources.Localization.Views.Shared {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class _Shared {
+    public class Edit {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Shared() {
+        internal Edit() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project._Shared", typeof(_Shared).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Shared.Edit", typeof(Edit).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,11 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Edit {0}.
         /// </summary>
-        public static string Field_Name {
+        public static string Header {
             get {
-                return ResourceManager.GetString("Field_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sequence number.
-        /// </summary>
-        public static string Field_SequenceNumber {
-            get {
-                return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid from.
-        /// </summary>
-        public static string Field_ValidFrom {
-            get {
-                return ResourceManager.GetString("Field_ValidFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid till.
-        /// </summary>
-        public static string Field_ValidTill {
-            get {
-                return ResourceManager.GetString("Field_ValidTill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string MenuItem {
-            get {
-                return ResourceManager.GetString("MenuItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("Header", resourceCulture);
             }
         }
     }

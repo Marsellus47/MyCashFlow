@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Rsx = MyCashFlow.Resources.Localization.Views;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,16 +19,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@Html.ActionLink("My Cashflow", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				@Html.ActionLink("My Cashflow", MVC.Home.ActionNames.Index, MVC.Home.Name, new { area = "" }, new { @class = "navbar-brand" })
 			</div>
 			<div class="navbar-collapse collapse">
 				@if (Request.IsAuthenticated)
 				{
 					<ul class="nav navbar-nav">
-						<li>@Html.ActionLink("Home", "Index", "Home")</li>
-						<li>@Html.ActionLink("About", "About", "Home")</li>
-						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-						<li>@Html.ActionLink("Project", MVC.Project.ActionNames.Index, MVC.Project.Name)</li>
+						<li>@Html.ActionLink(Rsx.Home._Shared.MenuItem, MVC.Home.ActionNames.Index, MVC.Home.Name)</li>
+						<li>@Html.ActionLink(Rsx.Project._Shared.MenuItem, MVC.Project.ActionNames.Index, MVC.Project.Name)</li>
 					</ul>
 				}
 				@Html.Partial("_LoginPartial")

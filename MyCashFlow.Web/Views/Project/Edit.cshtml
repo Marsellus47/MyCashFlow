@@ -1,18 +1,17 @@
 ﻿@model MyCashFlow.Web.ViewModels.Project.ProjectEditViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>Edit</h2>
+<h2>@Model.Header</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-	@Html.HiddenFor(model => model.CreatorID)
+	@Html.HiddenFor(model => model.ProjectID)
     
     <div class="form-horizontal">
-        <h4>ProjectEditViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

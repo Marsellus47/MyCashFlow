@@ -140,7 +140,7 @@ namespace MyCashFlow.Web.Controllers
 				var result = await _accountService.RegisterUserAsync(UserManager, SignInManager, model);
 				if (result.Succeeded)
 				{
-					return RedirectToAction(MVC.User.ActionNames.Index, MVC.User.Name);
+					return RedirectToAction(MVC.Project.ActionNames.Index, MVC.Project.Name);
 				}
 				AddErrors(result);
 			}

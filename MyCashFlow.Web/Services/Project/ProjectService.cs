@@ -44,5 +44,12 @@ namespace MyCashFlow.Web.Services.Project
 			var model = Mapper.Map<ProjectEditViewModel>(project);
 			return model;
 		}
+
+		public void EditProject(ProjectEditViewModel model)
+		{
+			var project = Mapper.Map<Domains.DataObject.Project>(model);
+			_projectRepository.Update(project);
+			_projectRepository.Save();
+		}
 	}
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCashFlow.Resources.Localization.Views.Project {
+namespace MyCashFlow.Resources.Localization.Views.Home {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project._Shared", typeof(_Shared).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Home._Shared", typeof(_Shared).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,43 +61,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        public static string Field_Name {
-            get {
-                return ResourceManager.GetString("Field_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sequence number.
-        /// </summary>
-        public static string Field_SequenceNumber {
-            get {
-                return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid from.
-        /// </summary>
-        public static string Field_ValidFrom {
-            get {
-                return ResourceManager.GetString("Field_ValidFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid till.
-        /// </summary>
-        public static string Field_ValidTill {
-            get {
-                return ResourceManager.GetString("Field_ValidTill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string MenuItem {
             get {
@@ -106,7 +70,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Project.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Title {
             get {
