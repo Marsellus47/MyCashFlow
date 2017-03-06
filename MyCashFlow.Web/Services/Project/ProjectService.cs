@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyCashFlow.Repositories;
 using MyCashFlow.Web.ViewModels.Project;
+using Rsx = MyCashFlow.Resources.Localization.Views;
 using System.Collections.Generic;
 using System;
 
@@ -50,6 +51,17 @@ namespace MyCashFlow.Web.Services.Project
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
 			_unitOfWork.ProjectReppsitory.Update(project);
 			_unitOfWork.Save();
+		}
+
+		public ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId)
+		{
+			var project = _unitOfWork.ProjectReppsitory.GetByID(projectId);
+			var model = Mapper.Map<ProjectDeleteViewModel>(project);
+
+			model.DeleteIncludingTransactionsButtonLabel = Rsx.Project.Delete.Button_DeleteIncludingTransactions;
+			model.DeleteProjectOnlyButtonLabel = Rsx.Project.Delete.Button_DeleteProjectOnly;
+
+			return model;
 		}
 	}
 }

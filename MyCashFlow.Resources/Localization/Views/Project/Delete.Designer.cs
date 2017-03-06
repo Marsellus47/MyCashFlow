@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCashFlow.Resources.Localization.Views.Shared {
+namespace MyCashFlow.Resources.Localization.Views.Project {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Shared.Delete", typeof(Delete).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project.Delete", typeof(Delete).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this?.
+        ///   Looks up a localized string similar to Delete including transactions.
         /// </summary>
-        public static string ConfirmQuestion {
+        public static string Button_DeleteIncludingTransactions {
             get {
-                return ResourceManager.GetString("ConfirmQuestion", resourceCulture);
+                return ResourceManager.GetString("Button_DeleteIncludingTransactions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete {0}.
+        ///   Looks up a localized string similar to Delete project only.
         /// </summary>
-        public static string Header {
+        public static string Button_DeleteProjectOnly {
             get {
-                return ResourceManager.GetString("Header", resourceCulture);
+                return ResourceManager.GetString("Button_DeleteProjectOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string Field_Name {
+            get {
+                return ResourceManager.GetString("Field_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are going to delete project. It is possible to delete project with all its transactions or delete project and leave transactions..
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
     }

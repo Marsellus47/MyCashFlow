@@ -8,5 +8,6 @@ namespace MyCashFlow.Web.Services.Project
 		void CreateProject(ProjectCreateViewModel model);
 		ProjectEditViewModel BuildProjectEditViewModel(int projectId);
 		void EditProject(ProjectEditViewModel model);
+		ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId);
 	}
 }

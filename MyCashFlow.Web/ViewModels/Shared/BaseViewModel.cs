@@ -1,4 +1,6 @@
-﻿namespace MyCashFlow.Web.ViewModels.Shared
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyCashFlow.Web.ViewModels.Shared
 {
 	public abstract class BaseViewModel
 	{
@@ -8,7 +10,10 @@
 			Header = header;
 		}
 
+		[ScaffoldColumn(false)]
 		public string Title { get; set; }
+
+		[ScaffoldColumn(false)]
 		public string Header { get; set; }
 	}
 }

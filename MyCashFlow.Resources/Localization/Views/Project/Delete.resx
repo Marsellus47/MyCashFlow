@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmQuestion" xml:space="preserve">
-    <value>Are you sure you want to delete this?</value>
+  <data name="Button_DeleteIncludingTransactions" xml:space="preserve">
+    <value>Delete including transactions</value>
   </data>
-  <data name="Header" xml:space="preserve">
-    <value>Delete {0}</value>
+  <data name="Button_DeleteProjectOnly" xml:space="preserve">
+    <value>Delete project only</value>
+  </data>
+  <data name="Field_Name" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>You are going to delete project. It is possible to delete project with all its transactions or delete project and leave transactions.</value>
   </data>
 </root>

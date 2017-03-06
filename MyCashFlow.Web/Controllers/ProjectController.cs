@@ -4,6 +4,7 @@ using MyCashFlow.Web.ViewModels.Project;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
+using MyCashFlow.Web.Infrastructure.Attributes;
 
 namespace MyCashFlow.Web.Controllers
 {
@@ -71,7 +72,24 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual ActionResult Delete(int id)
 		{
-			return View();
+			var model = _projectService.BuildProjectDeleteViewModel(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		[MultipleButton(Name = "action", Argument = nameof(DeleteIncludingTransactions))]
+		public virtual ActionResult DeleteIncludingTransactions(int id)
+		{
+			throw new NotImplementedException(nameof(DeleteIncludingTransactions));
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		[MultipleButton(Name = "action", Argument = nameof(DeleteProjectOnly))]
+		public virtual ActionResult DeleteProjectOnly(int id)
+		{
+			throw new NotImplementedException(nameof(DeleteProjectOnly));
 		}
 	}
 }

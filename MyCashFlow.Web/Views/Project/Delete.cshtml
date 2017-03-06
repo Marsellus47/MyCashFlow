@@ -1,0 +1,33 @@
+﻿@model MyCashFlow.Web.ViewModels.Project.ProjectDeleteViewModel
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared.Delete
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Header</h2>
+
+<h3>@Rsx.ConfirmQuestion</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Model.DeleteIncludingTransactionsButtonLabel" name="action:@MVC.Project.ActionNames.DeleteIncludingTransactions" class="btn btn-default" /> |
+			<input type="submit" value="@Model.DeleteProjectOnlyButtonLabel" name="action:@MVC.Project.ActionNames.DeleteProjectOnly" class="btn btn-default" /> |
+            @Html.ActionLink("Back", MVC.Project.ActionNames.Index)
+        </div>
+    }
+</div>

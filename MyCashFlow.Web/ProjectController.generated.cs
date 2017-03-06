@@ -62,6 +62,24 @@ namespace MyCashFlow.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Delete()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteIncludingTransactions()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteIncludingTransactions);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteProjectOnly()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteProjectOnly);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ProjectController Actions { get { return MVC.Project; } }
@@ -81,6 +99,9 @@ namespace MyCashFlow.Web.Controllers
             public readonly string Index = "Index";
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
+            public readonly string Delete = "Delete";
+            public readonly string DeleteIncludingTransactions = "DeleteIncludingTransactions";
+            public readonly string DeleteProjectOnly = "DeleteProjectOnly";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -89,6 +110,9 @@ namespace MyCashFlow.Web.Controllers
             public const string Index = "Index";
             public const string Create = "Create";
             public const string Edit = "Edit";
+            public const string Delete = "Delete";
+            public const string DeleteIncludingTransactions = "DeleteIncludingTransactions";
+            public const string DeleteProjectOnly = "DeleteProjectOnly";
         }
 
 
@@ -109,6 +133,30 @@ namespace MyCashFlow.Web.Controllers
             public readonly string id = "id";
             public readonly string model = "model";
         }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DeleteIncludingTransactions s_params_DeleteIncludingTransactions = new ActionParamsClass_DeleteIncludingTransactions();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteIncludingTransactions DeleteIncludingTransactionsParams { get { return s_params_DeleteIncludingTransactions; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteIncludingTransactions
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DeleteProjectOnly s_params_DeleteProjectOnly = new ActionParamsClass_DeleteProjectOnly();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteProjectOnly DeleteProjectOnlyParams { get { return s_params_DeleteProjectOnly; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteProjectOnly
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -120,10 +168,12 @@ namespace MyCashFlow.Web.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Create = "Create";
+                public readonly string Delete = "Delete";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
             public readonly string Create = "~/Views/Project/Create.cshtml";
+            public readonly string Delete = "~/Views/Project/Delete.cshtml";
             public readonly string Edit = "~/Views/Project/Edit.cshtml";
             public readonly string Index = "~/Views/Project/Index.cshtml";
         }
@@ -190,6 +240,42 @@ namespace MyCashFlow.Web.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             EditOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Delete(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteIncludingTransactionsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteIncludingTransactions(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteIncludingTransactions);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteIncludingTransactionsOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteProjectOnlyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteProjectOnly(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteProjectOnly);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteProjectOnlyOverride(callInfo, id);
+            return callInfo;
         }
 
     }

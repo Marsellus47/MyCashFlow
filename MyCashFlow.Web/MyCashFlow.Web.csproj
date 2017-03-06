@@ -231,6 +231,7 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\MultipleButtonAttribute.cs" />
     <Compile Include="Infrastructure\Automapper\ICustomMappings.cs" />
     <Compile Include="Infrastructure\Automapper\IMapFrom.cs" />
     <Compile Include="Infrastructure\Automapper\IMapTo.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\Project\ProjectDeleteViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\LoginViewModel.cs" />
@@ -311,6 +313,7 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
