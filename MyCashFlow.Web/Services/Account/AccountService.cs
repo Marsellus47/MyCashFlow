@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyCashFlow.Domains.DataObject;
-using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Repositories;
 using MyCashFlow.Web.ViewModels.Account;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +15,16 @@ namespace MyCashFlow.Web.Services.Account
 {
 	public class AccountService : IAccountService
 	{
-		private readonly IRepository<Country> _countryRepository;
+		private readonly IUnitOfWork _unitOfWork;
 
-		public AccountService(IRepository<Country> countryRepository)
+		public AccountService(IUnitOfWork unitOfWork)
 		{
-			if(countryRepository == null)
+			if(unitOfWork == null)
 			{
-				throw new ArgumentNullException(nameof(countryRepository));
+				throw new ArgumentNullException(nameof(unitOfWork));
 			}
 
-			_countryRepository = countryRepository;
+			_unitOfWork = unitOfWork;
 		}
 
 		public RegisterViewModel BuildRegisterViewModel()
@@ -38,7 +38,7 @@ namespace MyCashFlow.Web.Services.Account
 
 		public IEnumerable<Country> GetCountries()
 		{
-			var countries = _countryRepository.Get();
+			var countries = _unitOfWork.CountryReppsitory.Get();
 			return countries;
 		}
 

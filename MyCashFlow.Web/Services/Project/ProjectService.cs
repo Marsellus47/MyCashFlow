@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Repositories;
 using MyCashFlow.Web.ViewModels.Project;
 using System.Collections.Generic;
 using System;
@@ -8,21 +8,21 @@ namespace MyCashFlow.Web.Services.Project
 {
 	public class ProjectService : IProjectService
 	{
-		private readonly IRepository<Domains.DataObject.Project> _projectRepository;
+		private readonly IUnitOfWork _unitOfWork;
 
-		public ProjectService(IRepository<Domains.DataObject.Project> projectRepository)
+		public ProjectService(IUnitOfWork unitOfWork)
 		{
-			if(projectRepository == null)
+			if(unitOfWork == null)
 			{
-				throw new ArgumentNullException(nameof(projectRepository));
+				throw new ArgumentNullException(nameof(unitOfWork));
 			}
 
-			_projectRepository = projectRepository;
+			_unitOfWork = unitOfWork;
 		}
 
 		public ProjectIndexViewModel BuildProjectIndexViewModel(int userId)
 		{
-			var projects = _projectRepository.Get(filter: (project) => project.CreatorID == userId);
+			var projects = _unitOfWork.ProjectReppsitory.Get(filter: (project) => project.CreatorID == userId);
 			var items = Mapper.Map<IList<ProjectIndexItemViewModel>>(projects);
 			var model = new ProjectIndexViewModel
 			{
@@ -34,13 +34,13 @@ namespace MyCashFlow.Web.Services.Project
 		public void CreateProject(ProjectCreateViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_projectRepository.Insert(project);
-			_projectRepository.Save();
+			_unitOfWork.ProjectReppsitory.Insert(project);
+			_unitOfWork.Save();
 		}
 
 		public ProjectEditViewModel BuildProjectEditViewModel(int projectId)
 		{
-			var project = _projectRepository.GetByID(projectId);
+			var project = _unitOfWork.ProjectReppsitory.GetByID(projectId);
 			var model = Mapper.Map<ProjectEditViewModel>(project);
 			return model;
 		}
@@ -48,8 +48,8 @@ namespace MyCashFlow.Web.Services.Project
 		public void EditProject(ProjectEditViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_projectRepository.Update(project);
-			_projectRepository.Save();
+			_unitOfWork.ProjectReppsitory.Update(project);
+			_unitOfWork.Save();
 		}
 	}
 }

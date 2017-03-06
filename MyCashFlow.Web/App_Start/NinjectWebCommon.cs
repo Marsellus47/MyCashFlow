@@ -70,8 +70,6 @@ namespace MyCashFlow.Web
 				.BindDefaultInterface());
 
 			kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope().WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
-			kernel.Bind<IRepository<User>>().To<Repository<User>>();
-			kernel.Bind<IReadOnlyRepository<Country>>().To<ReadOnlyRepository<Country>>();
 		}
 
 		public static ApplicationDbContext ApplicationDbContext
