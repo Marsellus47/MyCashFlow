@@ -81,7 +81,7 @@ namespace MyCashFlow.Web
 		}
 
 		/// <summary>
-		/// Load all types that implement interface <see cref="ICustomMappings"/>
+		/// Load all types that implement interface <see cref="IHaveCustomMappings"/>
 		/// and register their mapping
 		/// </summary>
 		/// <param name="cfg">Automapper config</param>
@@ -90,10 +90,10 @@ namespace MyCashFlow.Web
 		{
 			var maps = (from t in types
 						from i in t.GetInterfaces()
-						where typeof(ICustomMappings).IsAssignableFrom(t)
+						where typeof(IHaveCustomMappings).IsAssignableFrom(t)
 							&& !t.IsAbstract
 							&& !t.IsInterface
-						select (ICustomMappings)Activator.CreateInstance(t)).ToArray();
+						select (IHaveCustomMappings)Activator.CreateInstance(t)).ToArray();
 
 			foreach (var map in maps)
 			{

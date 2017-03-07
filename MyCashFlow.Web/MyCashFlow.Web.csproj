@@ -225,6 +225,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +251,8 @@
     <Compile Include="Services\Manage\ManageService.cs" />
     <Compile Include="Services\Project\IProjectService.cs" />
     <Compile Include="Services\Project\ProjectService.cs" />
+    <Compile Include="Services\Transaction\ITransactionService.cs" />
+    <Compile Include="Services\Transaction\TransactionService.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -280,6 +283,8 @@
     <Compile Include="ViewModels\Project\ProjectIndexViewModel.cs" />
     <Compile Include="ViewModels\Shared\CreatorBaseViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Transaction\TransactionIndexItemViewModel.cs" />
+    <Compile Include="ViewModels\Transaction\TransactionIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -324,6 +329,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">
