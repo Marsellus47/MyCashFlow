@@ -24,6 +24,7 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
+		<div>@Model.Message</div>
         <div class="form-actions no-color">
             <input type="submit" value="@Model.DeleteIncludingTransactionsButtonLabel" name="action:@MVC.Project.ActionNames.DeleteIncludingTransactions" class="btn btn-default" /> |
 			<input type="submit" value="@Model.DeleteProjectOnlyButtonLabel" name="action:@MVC.Project.ActionNames.DeleteProjectOnly" class="btn btn-default" /> |

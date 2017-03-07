@@ -5,9 +5,9 @@ namespace MyCashFlow.Repositories
 {
 	public interface IUnitOfWork
 	{
-		IReadOnlyRepository<Country> CountryReppsitory { get; }
-		IRepository<Project> ProjectReppsitory { get; }
-		IRepository<Transaction> TransactionReppsitory { get; }
+		IReadOnlyRepository<Country> CountryRepository { get; }
+		IRepository<Project> ProjectRepository { get; }
+		IRepository<Transaction> TransactionRepository { get; }
 		void Save();
 	}
 }

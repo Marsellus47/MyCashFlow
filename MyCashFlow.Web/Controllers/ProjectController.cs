@@ -1,10 +1,10 @@
-﻿using MyCashFlow.Web.Infrastructure.Controllers;
+﻿using MyCashFlow.Web.Infrastructure.Attributes;
+using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.Services.Project;
 using MyCashFlow.Web.ViewModels.Project;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
-using MyCashFlow.Web.Infrastructure.Attributes;
 
 namespace MyCashFlow.Web.Controllers
 {
@@ -81,7 +81,8 @@ namespace MyCashFlow.Web.Controllers
 		[MultipleButton(Name = "action", Argument = nameof(DeleteIncludingTransactions))]
 		public virtual ActionResult DeleteIncludingTransactions(int id)
 		{
-			throw new NotImplementedException(nameof(DeleteIncludingTransactions));
+			_projectService.DeleteProject(id, true);
+			return RedirectToAction(MVC.Project.ActionNames.Index);
 		}
 
 		[HttpPost]
@@ -89,7 +90,8 @@ namespace MyCashFlow.Web.Controllers
 		[MultipleButton(Name = "action", Argument = nameof(DeleteProjectOnly))]
 		public virtual ActionResult DeleteProjectOnly(int id)
 		{
-			throw new NotImplementedException(nameof(DeleteProjectOnly));
+			_projectService.DeleteProject(id, false);
+			return RedirectToAction(MVC.Project.ActionNames.Index);
 		}
 	}
 }

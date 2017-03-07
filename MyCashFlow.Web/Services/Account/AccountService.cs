@@ -38,7 +38,7 @@ namespace MyCashFlow.Web.Services.Account
 
 		public IEnumerable<Country> GetCountries()
 		{
-			var countries = _unitOfWork.CountryReppsitory.Get();
+			var countries = _unitOfWork.CountryRepository.Get();
 			return countries;
 		}
 

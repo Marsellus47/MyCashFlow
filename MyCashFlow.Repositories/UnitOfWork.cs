@@ -42,17 +42,17 @@ namespace MyCashFlow.Repositories
 			_transactionRepository = transactionRepository;
 		}
 
-		public IReadOnlyRepository<Country> CountryReppsitory
+		public IReadOnlyRepository<Country> CountryRepository
 		{
 			get { return _countryRepository; }
 		}
 
-		public IRepository<Project> ProjectReppsitory
+		public IRepository<Project> ProjectRepository
 		{
 			get { return _projectRepository; }
 		}
 
-		public IRepository<Transaction> TransactionReppsitory
+		public IRepository<Transaction> TransactionRepository
 		{
 			get { return _transactionRepository; }
 		}

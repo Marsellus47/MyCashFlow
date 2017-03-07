@@ -15,7 +15,7 @@ namespace MyCashFlow.Web.ViewModels.Project
 		public int ProjectID { get; set; }
 
 		[Required]
-		[Display(Name = nameof(Rsx.Project.Delete.Field_Name), ResourceType = typeof(Rsx.Project._Shared))]
+		[Display(Name = nameof(Rsx.Project.Delete.Field_Name), ResourceType = typeof(Rsx.Project.Delete))]
 		public string Name { get; set; }
 
 		public string Message { get; set; }

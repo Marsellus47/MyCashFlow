@@ -23,7 +23,7 @@ namespace MyCashFlow.Web.Services.Project
 
 		public ProjectIndexViewModel BuildProjectIndexViewModel(int userId)
 		{
-			var projects = _unitOfWork.ProjectReppsitory.Get(filter: (project) => project.CreatorID == userId);
+			var projects = _unitOfWork.ProjectRepository.Get(filter: (project) => project.CreatorID == userId);
 			var items = Mapper.Map<IList<ProjectIndexItemViewModel>>(projects);
 			var model = new ProjectIndexViewModel
 			{
@@ -35,13 +35,13 @@ namespace MyCashFlow.Web.Services.Project
 		public void CreateProject(ProjectCreateViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_unitOfWork.ProjectReppsitory.Insert(project);
+			_unitOfWork.ProjectRepository.Insert(project);
 			_unitOfWork.Save();
 		}
 
 		public ProjectEditViewModel BuildProjectEditViewModel(int projectId)
 		{
-			var project = _unitOfWork.ProjectReppsitory.GetByID(projectId);
+			var project = _unitOfWork.ProjectRepository.GetByID(projectId);
 			var model = Mapper.Map<ProjectEditViewModel>(project);
 			return model;
 		}
@@ -49,19 +49,39 @@ namespace MyCashFlow.Web.Services.Project
 		public void EditProject(ProjectEditViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_unitOfWork.ProjectReppsitory.Update(project);
+			_unitOfWork.ProjectRepository.Update(project);
 			_unitOfWork.Save();
 		}
 
 		public ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId)
 		{
-			var project = _unitOfWork.ProjectReppsitory.GetByID(projectId);
+			var project = _unitOfWork.ProjectRepository.GetByID(projectId);
 			var model = Mapper.Map<ProjectDeleteViewModel>(project);
 
 			model.DeleteIncludingTransactionsButtonLabel = Rsx.Project.Delete.Button_DeleteIncludingTransactions;
 			model.DeleteProjectOnlyButtonLabel = Rsx.Project.Delete.Button_DeleteProjectOnly;
+			model.Message = Rsx.Project.Delete.Message;
 
 			return model;
+		}
+
+		public void DeleteProject(int id, bool includingTransactions)
+		{
+			foreach (var transaction in _unitOfWork.TransactionRepository.Get(x => x.ProjectID == id))
+			{
+				if(includingTransactions)
+				{
+					_unitOfWork.TransactionRepository.Delete(transaction.TransactionID);
+				}
+				else
+				{
+					transaction.Project = null;
+					_unitOfWork.TransactionRepository.Update(transaction);
+				}
+			}
+
+			_unitOfWork.ProjectRepository.Delete(id);
+			_unitOfWork.Save();
 		}
 	}
 }
