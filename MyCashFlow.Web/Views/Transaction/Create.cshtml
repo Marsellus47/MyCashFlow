@@ -58,7 +58,7 @@
 					}
 					else
 					{
-						Html.DropDownListFor(model => model.ProjectID, new MultiSelectList(Model.Projects, "ProjectID", "Name"));
+						Html.DropDownListFor(model => model.ProjectID, new SelectList(Model.Projects, "ProjectID", "Name"));
 					}
 					@Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
 				</div>
@@ -68,7 +68,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.TransactionTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.TransactionTypeID, new MultiSelectList(Model.TransactionTypes, "TransactionTypeID", "Name"))
+				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"))
 				@Html.ValidationMessageFor(model => model.TransactionTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.PaymentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.PaymentTypeID, new MultiSelectList(Model.PaymentTypes, "PaymentTypeID", "Name"))
+				@Html.DropDownListFor(model => model.PaymentTypeID, new SelectList(Model.PaymentTypes, "PaymentTypeID", "Name"))
 				@Html.ValidationMessageFor(model => model.PaymentTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -90,5 +90,5 @@
 }
 
 <div>
-	@Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index)
 </div>

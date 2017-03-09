@@ -1,5 +1,4 @@
 ﻿@model MyCashFlow.Web.ViewModels.Transaction.TransactionIndexViewModel
-@using Rsx = MyCashFlow.Resources.Localization.Views.Shared._Shared
 
 @{
     ViewBag.Title = Model.Title;
@@ -8,7 +7,7 @@
 <h2>@Model.Header</h2>
 
 <p>
-    @Html.ActionLink(Rsx.Label_Create, MVC.Transaction.ActionNames.Create)
+    @Html.ActionLink(Model.Create, MVC.Transaction.ActionNames.Create)
 </p>
 <table class="table table-hover">
     <tr>
@@ -42,9 +41,9 @@
 			@Html.DisplayFor(modelItem => item.PaymentType)
 		</td>
         <td>
-            @Html.ActionLink(Rsx.Label_Edit, "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(Rsx.Label_Details, "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(Rsx.Label_Delete, "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink(Model.Edit, "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink(Model.Details, "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink(Model.Delete, "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

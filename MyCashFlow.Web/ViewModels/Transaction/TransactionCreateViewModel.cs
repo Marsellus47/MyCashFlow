@@ -28,8 +28,7 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Income), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public bool Income { get; set; }
-
-		[ReadOnly(true)]
+		
 		[Display(Name = nameof(Rsx.Transaction.Create.Field_Project), ResourceType = typeof(Rsx.Transaction.Create))]
 		public int? ProjectID { get; set; }
 		public IEnumerable<Domains.DataObject.Project> Projects { get; set; }

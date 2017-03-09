@@ -28,7 +28,7 @@
         <div class="form-actions no-color">
             <input type="submit" value="@Model.DeleteIncludingTransactionsButtonLabel" name="action:@MVC.Project.ActionNames.DeleteIncludingTransactions" class="btn btn-default" /> |
 			<input type="submit" value="@Model.DeleteProjectOnlyButtonLabel" name="action:@MVC.Project.ActionNames.DeleteProjectOnly" class="btn btn-default" /> |
-            @Html.ActionLink("Back", MVC.Project.ActionNames.Index)
+            @Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index)
         </div>
     }
 </div>

@@ -61,6 +61,15 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to list.
+        /// </summary>
+        public static string Label_Back {
+            get {
+                return ResourceManager.GetString("Label_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new.
         /// </summary>
         public static string Label_Create {
