@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCashFlow.Resources.Localization.Views.Project {
+namespace MyCashFlow.Resources.Localization.Views.Shared {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project._Shared", typeof(_Shared).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Shared._Shared", typeof(_Shared).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Create new.
         /// </summary>
-        public static string Field_Name {
+        public static string Label_Create {
             get {
-                return ResourceManager.GetString("Field_Name", resourceCulture);
+                return ResourceManager.GetString("Label_Create", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sequence number.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
-        public static string Field_SequenceNumber {
+        public static string Label_Delete {
             get {
-                return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
+                return ResourceManager.GetString("Label_Delete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valid from.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
-        public static string Field_ValidFrom {
+        public static string Label_Details {
             get {
-                return ResourceManager.GetString("Field_ValidFrom", resourceCulture);
+                return ResourceManager.GetString("Label_Details", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valid till.
+        ///   Looks up a localized string similar to Edit.
         /// </summary>
-        public static string Field_ValidTill {
+        public static string Label_Edit {
             get {
-                return ResourceManager.GetString("Field_ValidTill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Projects.
-        /// </summary>
-        public static string MenuItem {
-            get {
-                return ResourceManager.GetString("MenuItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("Label_Edit", resourceCulture);
             }
         }
     }

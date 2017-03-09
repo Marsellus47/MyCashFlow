@@ -79,6 +79,24 @@ namespace MyCashFlow.Resources.Localization.Views.Transaction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Income.
+        /// </summary>
+        public static string Field_Income {
+            get {
+                return ResourceManager.GetString("Field_Income", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string Field_Note {
+            get {
+                return ResourceManager.GetString("Field_Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment type.
         /// </summary>
         public static string Field_PaymentType {
@@ -93,6 +111,15 @@ namespace MyCashFlow.Resources.Localization.Views.Transaction {
         public static string Field_TransactionType {
             get {
                 return ResourceManager.GetString("Field_TransactionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transactions.
+        /// </summary>
+        public static string MenuItem {
+            get {
+                return ResourceManager.GetString("MenuItem", resourceCulture);
             }
         }
         

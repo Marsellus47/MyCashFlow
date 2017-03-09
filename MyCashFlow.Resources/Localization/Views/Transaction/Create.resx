@@ -117,22 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Field_Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="Field_PaymentType" xml:space="preserve">
+    <value>Payment type</value>
   </data>
-  <data name="Field_SequenceNumber" xml:space="preserve">
-    <value>Sequence number</value>
-  </data>
-  <data name="Field_ValidFrom" xml:space="preserve">
-    <value>Valid from</value>
-  </data>
-  <data name="Field_ValidTill" xml:space="preserve">
-    <value>Valid till</value>
-  </data>
-  <data name="MenuItem" xml:space="preserve">
-    <value>Projects</value>
-  </data>
-  <data name="Title" xml:space="preserve">
+  <data name="Field_Project" xml:space="preserve">
     <value>Project</value>
+  </data>
+  <data name="Field_TransactionType" xml:space="preserve">
+    <value>Transaction type</value>
   </data>
 </root>

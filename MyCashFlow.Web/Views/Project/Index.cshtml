@@ -1,4 +1,5 @@
 ﻿@model MyCashFlow.Web.ViewModels.Project.ProjectIndexViewModel
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared._Shared
 
 @{
     ViewBag.Title = Model.Title;
@@ -7,9 +8,9 @@
 <h2>@Model.Header</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(Rsx.Label_Create, MVC.Project.ActionNames.Create)
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Items[0].Name)
@@ -41,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.SequenceNumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id = item.ProjectID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ProjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ProjectID })
+            @Html.ActionLink(Rsx.Label_Edit, MVC.Project.ActionNames.Edit, new {  id = item.ProjectID }) |
+            @*@Html.ActionLink(Rsx.Label_Details, MVC.Project.ActionNames.Details, new { id = item.ProjectID }) |*@
+            @Html.ActionLink(Rsx.Label_Delete, MVC.Project.ActionNames.Delete, new { id = item.ProjectID })
         </td>
     </tr>
 }

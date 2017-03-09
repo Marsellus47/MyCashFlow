@@ -8,6 +8,8 @@ namespace MyCashFlow.Repositories
 		IReadOnlyRepository<Country> CountryRepository { get; }
 		IRepository<Project> ProjectRepository { get; }
 		IRepository<Transaction> TransactionRepository { get; }
+		IRepository<TransactionType> TransactionTypeRepository { get; }
+		IRepository<PaymentType> PaymentTypeRepository { get; }
 		void Save();
 	}
 }

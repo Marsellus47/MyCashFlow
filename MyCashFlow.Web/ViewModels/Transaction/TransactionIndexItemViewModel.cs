@@ -16,6 +16,7 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		[Key]
 		public int TransactionID { get; set; }
 
+		[DataType(DataType.Date)]
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Date), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public DateTime Date { get; set; }
 

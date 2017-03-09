@@ -24,6 +24,8 @@ namespace MyCashFlow.Web
 				RegisterReverseMappings(cfg, types);
 				ReverseCustomMappings(cfg, types);
 			});
+
+			//Mapper.AssertConfigurationIsValid();
 		}
 
 		#region Helpers

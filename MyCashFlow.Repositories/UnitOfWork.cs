@@ -12,12 +12,16 @@ namespace MyCashFlow.Repositories
 		private IReadOnlyRepository<Country> _countryRepository;
 		private IRepository<Project> _projectRepository;
 		private IRepository<Transaction> _transactionRepository;
+		private IRepository<TransactionType> _transactionTypeRepository;
+		private IRepository<PaymentType> _paymentTypeRepository;
 
 		public UnitOfWork(
 			ApplicationDbContext context,
 			IReadOnlyRepository<Country> countryRepository,
 			IRepository<Project> projectRepository,
-			IRepository<Transaction> transactionRepository)
+			IRepository<Transaction> transactionRepository,
+			IRepository<TransactionType> transactionTypeRepository,
+			IRepository<PaymentType> paymentTypeRepository)
 		{
 			if(context == null)
 			{
@@ -35,11 +39,21 @@ namespace MyCashFlow.Repositories
 			{
 				throw new ArgumentNullException(nameof(transactionRepository));
 			}
+			if (transactionTypeRepository == null)
+			{
+				throw new ArgumentNullException(nameof(transactionTypeRepository));
+			}
+			if (paymentTypeRepository == null)
+			{
+				throw new ArgumentNullException(nameof(paymentTypeRepository));
+			}
 
 			_context = context;
 			_countryRepository = countryRepository;
 			_projectRepository = projectRepository;
 			_transactionRepository = transactionRepository;
+			_transactionTypeRepository = transactionTypeRepository;
+			_paymentTypeRepository = paymentTypeRepository;
 		}
 
 		public IReadOnlyRepository<Country> CountryRepository
@@ -55,6 +69,16 @@ namespace MyCashFlow.Repositories
 		public IRepository<Transaction> TransactionRepository
 		{
 			get { return _transactionRepository; }
+		}
+
+		public IRepository<TransactionType> TransactionTypeRepository
+		{
+			get { return _transactionTypeRepository; }
+		}
+
+		public IRepository<PaymentType> PaymentTypeRepository
+		{
+			get { return _paymentTypeRepository; }
 		}
 
 		public void Save()

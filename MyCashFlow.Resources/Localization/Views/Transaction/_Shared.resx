@@ -123,11 +123,20 @@
   <data name="Field_Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Field_Income" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="Field_Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
   <data name="Field_PaymentType" xml:space="preserve">
     <value>Payment type</value>
   </data>
   <data name="Field_TransactionType" xml:space="preserve">
     <value>Transaction type</value>
+  </data>
+  <data name="MenuItem" xml:space="preserve">
+    <value>Transactions</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Transaction</value>
