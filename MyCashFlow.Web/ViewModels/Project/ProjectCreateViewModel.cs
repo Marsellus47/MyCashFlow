@@ -6,7 +6,9 @@ using System;
 
 namespace MyCashFlow.Web.ViewModels.Project
 {
-	public class ProjectCreateViewModel : CreatorBaseViewModel, IMapTo<Domains.DataObject.Project>
+	public class ProjectCreateViewModel :
+		CreatorBaseViewModel,
+		IMapTo<Domains.DataObject.Project>
 	{
 		public ProjectCreateViewModel()
 			: base(title: Rsx.Project._Shared.Title,

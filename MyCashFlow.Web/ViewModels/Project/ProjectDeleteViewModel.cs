@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyCashFlow.Web.ViewModels.Project
 {
-	public class ProjectDeleteViewModel : BaseViewModel, IMapFrom<Domains.DataObject.Project>
+	public class ProjectDeleteViewModel :
+		BaseViewModel,
+		IMapFrom<Domains.DataObject.Project>
 	{
 		public ProjectDeleteViewModel()
 			: base(title: Rsx.Project._Shared.Title,

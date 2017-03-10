@@ -104,5 +104,50 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
                 return ResourceManager.GetString("Label_Edit", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select a country ---.
+        /// </summary>
+        public static string List_Countries_OptionLabel {
+            get {
+                return ResourceManager.GetString("List_Countries_OptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select a gender ---.
+        /// </summary>
+        public static string List_Genders_OptionLabel {
+            get {
+                return ResourceManager.GetString("List_Genders_OptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select a payment type ---.
+        /// </summary>
+        public static string List_PaymentTypes_OptionLabel {
+            get {
+                return ResourceManager.GetString("List_PaymentTypes_OptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select a project ---.
+        /// </summary>
+        public static string List_Projects_OptionLabel {
+            get {
+                return ResourceManager.GetString("List_Projects_OptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select a transaction type ---.
+        /// </summary>
+        public static string List_TransactionTypes_OptionLabel {
+            get {
+                return ResourceManager.GetString("List_TransactionTypes_OptionLabel", resourceCulture);
+            }
+        }
     }
 }

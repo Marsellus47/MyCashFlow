@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyCashFlow.Repositories;
 using MyCashFlow.Web.ViewModels.Project;
+using MyCashFlow.Web.ViewModels.Transaction;
 using Rsx = MyCashFlow.Resources.Localization.Views;
 using System.Collections.Generic;
 using System;
@@ -51,6 +52,18 @@ namespace MyCashFlow.Web.Services.Project
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
 			_unitOfWork.ProjectRepository.Update(project);
 			_unitOfWork.Save();
+		}
+
+		public ProjectDetailsViewModel BuildProjectDetailsViewModel(int projectId)
+		{
+			var transactions = _unitOfWork.TransactionRepository.Get(x => x.ProjectID == projectId);
+			var items = Mapper.Map<IList<TransactionIndexItemViewModel>>(transactions);
+			var model = new ProjectDetailsViewModel
+			{
+				Items = items,
+				ProjectID = projectId
+			};
+			return model;
 		}
 
 		public ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId)

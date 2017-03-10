@@ -17,24 +17,24 @@ namespace MyCashFlow.Web.ViewModels.Shared
 		}
 
 		[ScaffoldColumn(false)]
-		public string Title { get; set; }
+		public string Title { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Header { get; set; }
+		public string Header { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Create { get; set; }
+		public string Create { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Edit { get; set; }
+		public string Edit { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Details { get; set; }
+		public string Details { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Delete { get; set; }
+		public string Delete { get; private set; }
 
 		[ScaffoldColumn(false)]
-		public string Back { get; set; }
+		public string Back { get; private set; }
 	}
 }

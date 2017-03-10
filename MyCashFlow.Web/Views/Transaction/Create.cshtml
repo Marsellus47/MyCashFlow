@@ -1,4 +1,5 @@
 ﻿@model MyCashFlow.Web.ViewModels.Transaction.TransactionCreateViewModel
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared._Shared
 
 @{
 	ViewBag.Title = Model.Title;
@@ -51,24 +52,23 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.ProjectID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				<div class="checkbox">
-					@if (Model.ProjectID.HasValue)
-					{
-						Html.EditorFor(model => model.ProjectID);
-					}
-					else
-					{
-						Html.DropDownListFor(model => model.ProjectID, new SelectList(Model.Projects, "ProjectID", "Name"));
-					}
-					@Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
-				</div>
+				@if (Model.ProjectID.HasValue)
+				{
+					@Html.TextBoxFor(model => model.Projects[0].Name, new { disabled = "disabled", @readonly = "readonly" })
+					@Html.HiddenFor(Model => Model.ProjectID)
+				}
+				else
+				{
+					@Html.DropDownListFor(model => model.ProjectID, new SelectList(Model.Projects, "ProjectID", "Name"), Rsx.List_Projects_OptionLabel)
+				}
+				@Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.TransactionTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"))
+				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"), Rsx.List_TransactionTypes_OptionLabel)
 				@Html.ValidationMessageFor(model => model.TransactionTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.PaymentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.PaymentTypeID, new SelectList(Model.PaymentTypes, "PaymentTypeID", "Name"))
+				@Html.DropDownListFor(model => model.PaymentTypeID, new SelectList(Model.PaymentTypes, "PaymentTypeID", "Name"), Rsx.List_PaymentTypes_OptionLabel)
 				@Html.ValidationMessageFor(model => model.PaymentTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>

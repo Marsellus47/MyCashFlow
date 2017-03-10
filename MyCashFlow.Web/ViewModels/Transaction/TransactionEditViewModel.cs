@@ -7,14 +7,18 @@ using System;
 
 namespace MyCashFlow.Web.ViewModels.Transaction
 {
-	public class TransactionCreateViewModel :
+	public class TransactionEditViewModel :
 		CreatorBaseViewModel,
+		IMapFrom<Domains.DataObject.Transaction>,
 		IMapTo<Domains.DataObject.Transaction>
 	{
-		public TransactionCreateViewModel()
+		public TransactionEditViewModel()
 			: base(title: Rsx.Transaction._Shared.Title,
-				  header: string.Format(Rsx.Shared.Create.Header, Rsx.Transaction._Shared.Title.ToLower()))
+				  header: string.Format(Rsx.Shared.Edit.Header, Rsx.Transaction._Shared.Title.ToLower()))
 		{ }
+
+		[ScaffoldColumn(false)]
+		public int TransactionID { get; set; }
 
 		[DataType(DataType.Date)]
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Date), ResourceType = typeof(Rsx.Transaction._Shared))]
@@ -29,7 +33,7 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Income), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public bool Income { get; set; }
-		
+
 		[Display(Name = nameof(Rsx.Transaction.Create.Field_Project), ResourceType = typeof(Rsx.Transaction.Create))]
 		public int? ProjectID { get; set; }
 		public IList<Domains.DataObject.Project> Projects { get; set; }

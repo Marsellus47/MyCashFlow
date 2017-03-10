@@ -1,4 +1,6 @@
 ﻿@model MyCashFlow.Web.ViewModels.Account.RegisterViewModel
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared._Shared
+
 @{
     ViewBag.Title = "Register";
 }
@@ -55,7 +57,7 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.CountryID, new { @class = "col-md-2 control-label" })
 		<div class="col-md-10">
-			@Html.DropDownListFor(model => model.CountryID, new MultiSelectList(Model.Countries, "ID", "Name"), new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.CountryID, new SelectList(Model.Countries, "ID", "Name"), Rsx.List_Countries_OptionLabel)
 			@Html.ValidationMessageFor(m => m.CountryID, "", new { @class = "text-danger" })
 		</div>
 	</div>
@@ -63,7 +65,7 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
 		<div class="col-md-10">
-			@Html.EnumDropDownListFor(model => model.Gender, "Select gender", new { @class = "form-control" })
+			@Html.EnumDropDownListFor(model => model.Gender, Rsx.List_Genders_OptionLabel)
 			@Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
 		</div>
 	</div>

@@ -132,4 +132,19 @@
   <data name="Label_Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="List_Countries_OptionLabel" xml:space="preserve">
+    <value>--- Select a country ---</value>
+  </data>
+  <data name="List_Genders_OptionLabel" xml:space="preserve">
+    <value>--- Select a gender ---</value>
+  </data>
+  <data name="List_PaymentTypes_OptionLabel" xml:space="preserve">
+    <value>--- Select a payment type ---</value>
+  </data>
+  <data name="List_Projects_OptionLabel" xml:space="preserve">
+    <value>--- Select a project ---</value>
+  </data>
+  <data name="List_TransactionTypes_OptionLabel" xml:space="preserve">
+    <value>--- Select a transaction type ---</value>
+  </data>
 </root>

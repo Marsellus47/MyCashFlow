@@ -70,6 +70,12 @@ namespace MyCashFlow.Web.Controllers
 			return RedirectToAction(MVC.Project.ActionNames.Index);
 		}
 
+		public virtual ActionResult Details(int id)
+		{
+			var model = _projectService.BuildProjectDetailsViewModel(id);
+			return View(model);
+		}
+
 		public virtual ActionResult Delete(int id)
 		{
 			var model = _projectService.BuildProjectDeleteViewModel(id);

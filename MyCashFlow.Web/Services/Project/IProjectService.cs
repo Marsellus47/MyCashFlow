@@ -8,7 +8,7 @@ namespace MyCashFlow.Web.Services.Project
 		/// Build View model needed by Index view in Project controller
 		/// </summary>
 		/// <param name="userId">Internal ID of the user whose Projects are needed</param>
-		/// <returns></returns>
+		/// <returns>Project Index view Model</returns>
 		ProjectIndexViewModel BuildProjectIndexViewModel(int userId);
 
 		/// <summary>
@@ -21,7 +21,7 @@ namespace MyCashFlow.Web.Services.Project
 		/// Build View model needed by Edit view in Project controller
 		/// </summary>
 		/// <param name="projectId">Internal ID of the Project</param>
-		/// <returns></returns>
+		/// <returns>Project Edit view Model</returns>
 		ProjectEditViewModel BuildProjectEditViewModel(int projectId);
 
 		/// <summary>
@@ -31,10 +31,17 @@ namespace MyCashFlow.Web.Services.Project
 		void EditProject(ProjectEditViewModel model);
 
 		/// <summary>
+		/// Build View model needed by Details view in Project controller
+		/// </summary>
+		/// <param name="projectId">Internal ID of the Project</param>
+		/// <returns>Project Details view Model</returns>
+		ProjectDetailsViewModel BuildProjectDetailsViewModel(int projectId);
+
+		/// <summary>
 		/// Build View model needed by Delete view in Project controller
 		/// </summary>
 		/// <param name="projectId">Internal ID of the Project</param>
-		/// <returns></returns>
+		/// <returns>Project Delete view Model</returns>
 		ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId);
 
 		/// <summary>

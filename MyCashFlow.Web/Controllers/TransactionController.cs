@@ -21,17 +21,17 @@ namespace MyCashFlow.Web.Controllers
 			_transactionService = transactionService;
 		}
 
-		public virtual async Task<ActionResult> Index(int? projectId)
+		public virtual async Task<ActionResult> Index(int? id)
 		{
 			int userId = await GetCurrentUserIdAsync();
-			var model = _transactionService.BuildTransactionIndexViewModel(userId, projectId);
+			var model = _transactionService.BuildTransactionIndexViewModel(userId, id);
 			return View(model);
 		}
 
-		public virtual async Task<ActionResult> Create(int? projectId)
+		public virtual async Task<ActionResult> Create(int? id)
 		{
 			int userId = await GetCurrentUserIdAsync();
-			var model = _transactionService.BuildTransactionCreateViewModel(userId, projectId);
+			var model = _transactionService.BuildTransactionCreateViewModel(userId, id);
 			return View(model);
 		}
 
@@ -46,6 +46,28 @@ namespace MyCashFlow.Web.Controllers
 
 			model.CreatorID = await GetCurrentUserIdAsync();
 			_transactionService.CreateTransaction(model);
+
+			return RedirectToAction(MVC.Project.ActionNames.Index);
+		}
+
+		public virtual async Task<ActionResult> Edit(int id)
+		{
+			int userId = await GetCurrentUserIdAsync();
+			var model = _transactionService.BuildTransactionEditViewModel(userId, id);
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual async Task<ActionResult> Edit(TransactionEditViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			model.CreatorID = await GetCurrentUserIdAsync();
+			_transactionService.EditTransaction(model);
 
 			return RedirectToAction(MVC.Project.ActionNames.Index);
 		}

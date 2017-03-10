@@ -6,13 +6,17 @@ using System;
 
 namespace MyCashFlow.Web.ViewModels.Project
 {
-	public class ProjectEditViewModel : CreatorBaseViewModel, IMapFrom<Domains.DataObject.Project>, IMapTo<Domains.DataObject.Project>
+	public class ProjectEditViewModel :
+		CreatorBaseViewModel,
+		IMapFrom<Domains.DataObject.Project>,
+		IMapTo<Domains.DataObject.Project>
 	{
 		public ProjectEditViewModel()
 			: base(title: Rsx.Project._Shared.Title,
 				  header: string.Format(Rsx.Shared.Edit.Header, Rsx.Project._Shared.Title.ToLower()))
 		{ }
 
+		[ScaffoldColumn(false)]
 		public int ProjectID { get; set; }
 
 		[Required]

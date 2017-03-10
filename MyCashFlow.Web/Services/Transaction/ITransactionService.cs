@@ -7,5 +7,7 @@ namespace MyCashFlow.Web.Services.Transaction
 		TransactionIndexViewModel BuildTransactionIndexViewModel(int userId, int? projectId);
 		TransactionCreateViewModel BuildTransactionCreateViewModel(int userId, int? projectId);
 		void CreateTransaction(TransactionCreateViewModel model);
+		TransactionEditViewModel BuildTransactionEditViewModel(int userId, int transactionId);
+		void EditTransaction(TransactionEditViewModel model);
 	}
 }

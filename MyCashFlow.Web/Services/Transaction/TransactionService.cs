@@ -41,10 +41,14 @@ namespace MyCashFlow.Web.Services.Transaction
 
 		public TransactionCreateViewModel BuildTransactionCreateViewModel(int userId, int? projectId)
 		{
-			IEnumerable<Domains.DataObject.Project> projects = null;
+			IList<Domains.DataObject.Project> projects = null;
 			if(!projectId.HasValue)
 			{
-				projects = _unitOfWork.ProjectRepository.Get(x => x.CreatorID == userId);
+				projects = _unitOfWork.ProjectRepository.Get(x => x.CreatorID == userId).ToList();
+			}
+			else
+			{
+				projects = _unitOfWork.ProjectRepository.Get(x => x.ProjectID == projectId.Value).ToList();
 			}
 
 			var transactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
@@ -66,6 +70,31 @@ namespace MyCashFlow.Web.Services.Transaction
 		{
 			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
 			_unitOfWork.TransactionRepository.Insert(transaction);
+			_unitOfWork.Save();
+		}
+
+		public TransactionEditViewModel BuildTransactionEditViewModel(int userId, int transactionId)
+		{
+			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var model = Mapper.Map<TransactionEditViewModel>(transaction);
+			if (!transaction.ProjectID.HasValue)
+			{
+				model.Projects = _unitOfWork.ProjectRepository.Get(x => x.CreatorID == userId).ToList();
+			}
+			else
+			{
+				model.Projects = _unitOfWork.ProjectRepository.Get(x => x.ProjectID == transaction.ProjectID.Value).ToList();
+			}
+			model.TransactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			model.PaymentTypes = _unitOfWork.PaymentTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+
+			return model;
+		}
+
+		public void EditTransaction(TransactionEditViewModel model)
+		{
+			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
+			_unitOfWork.TransactionRepository.Update(transaction);
 			_unitOfWork.Save();
 		}
 	}

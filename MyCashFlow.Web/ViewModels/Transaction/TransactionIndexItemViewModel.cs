@@ -7,7 +7,9 @@ using System;
 
 namespace MyCashFlow.Web.ViewModels.Transaction
 {
-	public class TransactionIndexItemViewModel : BaseViewModel, IHaveCustomMappings
+	public class TransactionIndexItemViewModel :
+		BaseViewModel,
+		IHaveCustomMappings
 	{
 		public TransactionIndexItemViewModel()
 			: base(title: Rsx.Transaction._Shared.Title,

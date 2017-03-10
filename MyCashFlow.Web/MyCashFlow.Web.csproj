@@ -270,6 +270,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDeleteViewModel.cs" />
+    <Compile Include="ViewModels\Project\ProjectDetailsViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\LoginViewModel.cs" />
@@ -287,6 +288,7 @@
     <Compile Include="ViewModels\Shared\CreatorBaseViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionCreateViewModel.cs" />
+    <Compile Include="ViewModels\Transaction\TransactionEditViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionIndexItemViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionIndexViewModel.cs" />
   </ItemGroup>
@@ -325,6 +327,8 @@
     <Content Include="Views\Project\Delete.cshtml" />
     <Content Include="Views\Transaction\Create.cshtml" />
     <Content Include="Views\Transaction\Index.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Transaction\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

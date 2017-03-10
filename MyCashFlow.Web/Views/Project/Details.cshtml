@@ -1,0 +1,56 @@
+﻿@model MyCashFlow.Web.ViewModels.Project.ProjectDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Header</h2>
+
+<p>
+    @Html.ActionLink(Model.Create, MVC.Transaction.ActionNames.Create, MVC.Transaction.Name, new { id = Model.ProjectID }, null)
+</p>
+<table class="table table-hover">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Items[0].Date)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Items[0].Amount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Items[0].TransactionType)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Items[0].PaymentType)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model.Items)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Date)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Amount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TransactionType)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PaymentType)
+			</td>
+			<td>
+				@Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, MVC.Transaction.Name, new { id = item.TransactionID }, null) |
+				@Html.ActionLink(Model.Details, "Details", MVC.Transaction.Name, new { id = item.TransactionID }, null) |
+				@Html.ActionLink(Model.Delete, "Delete", MVC.Transaction.Name, new { id = item.TransactionID }, null)
+			</td>
+		</tr>
+	}
+
+</table>
+
+<div>
+	@Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index)
+</div>
