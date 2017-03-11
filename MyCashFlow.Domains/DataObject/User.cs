@@ -30,19 +30,33 @@ namespace MyCashFlow.Domains.DataObject
 		
 		public string LastName { get; set; }
 
+		#region Address information
+
+		public string AddressLine1 { get; set; }
+		
+		public string AddressLine2 { get; set; }
+
+		public string City { get; set; }
+
+		public string Zip { get; set; }
+
+		public string District { get; set; }
+
+		#endregion
+
+		#region Contact information
+		
+		public string MobileNumber { get; set; }
+
+		#endregion
+
 		#endregion
 
 		#region Foreign keys
-		
+
 		public short CountryID { get; set; }
 
-		public int? AddressID { get; set; }
-
-		public int? ContactID { get; set; }
-
 		public virtual Country Country { get; set; }
-		public virtual Address Address { get; set; }
-		public virtual Contact Contact { get; set; }
 
 		#endregion
 	}

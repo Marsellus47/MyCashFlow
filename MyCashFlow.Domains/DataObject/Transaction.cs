@@ -26,13 +26,13 @@ namespace MyCashFlow.Domains.DataObject
 		public int? ProjectID { get; set; }
 		public int CreatorID { get; set; }
 		public int TransactionTypeID { get; set; }
-		public int? PaymentTypeID { get; set; }
+		public int? PaymentMethodID { get; set; }
 
 
 		public virtual Project Project { get; set; }
 		public virtual User Creator { get; set; }
 		public virtual TransactionType TransactionType { get; set; }
-		public virtual PaymentType PaymentType { get; set; }
+		public virtual PaymentMethod PaymentMethod { get; set; }
 
 		#endregion
 	}

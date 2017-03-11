@@ -30,14 +30,14 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_TransactionType), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public string TransactionType { get; set; }
 
-		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentType), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public string PaymentType { get; set; }
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentMethod), ResourceType = typeof(Rsx.Transaction._Shared))]
+		public string PaymentMethod { get; set; }
 
 		public void CreateMappings(IMapperConfigurationExpression configuration)
 		{
 			configuration.CreateMap<Domains.DataObject.Transaction, TransactionIndexItemViewModel>()
 				.ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.Name))
-				.ForMember(dest => dest.PaymentType, opt => opt.MapFrom(src => src.PaymentType.Name));
+				.ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.Name));
 		}
 	}
 }

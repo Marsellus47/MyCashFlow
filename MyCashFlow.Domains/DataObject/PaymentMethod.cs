@@ -2,12 +2,12 @@
 
 namespace MyCashFlow.Domains.DataObject
 {
-	[Table("PaymentType", Schema = "Configuration")]
-	public class PaymentType
+	[Table("PaymentMethod", Schema = "Configuration")]
+	public class PaymentMethod
 	{
 		#region Primary key
 
-		public int PaymentTypeID { get; set; }
+		public int PaymentMethodID { get; set; }
 
 		#endregion
 

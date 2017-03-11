@@ -29,7 +29,7 @@ namespace MyCashFlow.Domains.DataObject
 		public string ISOCode3 { get; set; }
 
 		[Display(Name = "Telephone country code")]
-		public short TelephoneCountryCode { get; set; }
+		public int? TelephoneCountryCode { get; set; }
 
 		#endregion
 	}

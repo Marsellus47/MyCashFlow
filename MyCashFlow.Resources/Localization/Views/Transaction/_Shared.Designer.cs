@@ -97,11 +97,11 @@ namespace MyCashFlow.Resources.Localization.Views.Transaction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payment type.
+        ///   Looks up a localized string similar to Payment method.
         /// </summary>
-        public static string Field_PaymentType {
+        public static string Field_PaymentMethod {
             get {
-                return ResourceManager.GetString("Field_PaymentType", resourceCulture);
+                return ResourceManager.GetString("Field_PaymentMethod", resourceCulture);
             }
         }
         

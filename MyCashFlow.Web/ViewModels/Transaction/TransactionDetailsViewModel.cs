@@ -38,7 +38,7 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_TransactionType), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public string TransactionTypeName { get; set; }
 
-		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentType), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public string PaymentTypeName { get; set; }
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentMethod), ResourceType = typeof(Rsx.Transaction._Shared))]
+		public string PaymentMethodName { get; set; }
 	}
 }

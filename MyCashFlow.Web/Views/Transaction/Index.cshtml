@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Items[0].TransactionType)
         </th>
 		<th>
-			@Html.DisplayNameFor(model => model.Items[0].PaymentType)
+			@Html.DisplayNameFor(model => model.Items[0].PaymentMethod)
 		</th>
         <th></th>
     </tr>
@@ -38,7 +38,7 @@
 				@Html.DisplayFor(modelItem => item.TransactionType )
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.PaymentType)
+				@Html.DisplayFor(modelItem => item.PaymentMethod)
 			</td>
 	        <td>
 	            @Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, new { id = item.TransactionID }) |

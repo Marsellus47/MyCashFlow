@@ -74,10 +74,10 @@
 		</div>
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.PaymentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.LabelFor(model => model.PaymentMethodID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.PaymentTypeID, new SelectList(Model.PaymentTypes, "PaymentTypeID", "Name"), Rsx.List_PaymentTypes_OptionLabel)
-				@Html.ValidationMessageFor(model => model.PaymentTypeID, "", new { @class = "text-danger" })
+				@Html.DropDownListFor(model => model.PaymentMethodID, new SelectList(Model.PaymentMethods, "PaymentMethodID", "Name"), Rsx.List_PaymentMethods_OptionLabel)
+				@Html.ValidationMessageFor(model => model.PaymentMethodID, "", new { @class = "text-danger" })
 			</div>
 		</div>
 

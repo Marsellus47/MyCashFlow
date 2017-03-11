@@ -38,8 +38,8 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		public int TransactionTypeID { get; set; }
 		public IEnumerable<Domains.DataObject.TransactionType> TransactionTypes { get; set; }
 
-		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentType), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public int? PaymentTypeID { get; set; }
-		public IEnumerable<Domains.DataObject.PaymentType> PaymentTypes { get; set; }
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentMethod), ResourceType = typeof(Rsx.Transaction._Shared))]
+		public int? PaymentMethodID { get; set; }
+		public IEnumerable<Domains.DataObject.PaymentMethod> PaymentMethods { get; set; }
 	}
 }

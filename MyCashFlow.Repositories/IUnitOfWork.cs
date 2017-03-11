@@ -9,7 +9,7 @@ namespace MyCashFlow.Repositories
 		IRepository<Project> ProjectRepository { get; }
 		IRepository<Transaction> TransactionRepository { get; }
 		IRepository<TransactionType> TransactionTypeRepository { get; }
-		IRepository<PaymentType> PaymentTypeRepository { get; }
+		IRepository<PaymentMethod> PaymentMethodRepository { get; }
 		void Save();
 	}
 }

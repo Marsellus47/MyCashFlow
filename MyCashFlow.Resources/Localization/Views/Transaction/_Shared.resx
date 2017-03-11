@@ -129,8 +129,8 @@
   <data name="Field_Note" xml:space="preserve">
     <value>Note</value>
   </data>
-  <data name="Field_PaymentType" xml:space="preserve">
-    <value>Payment type</value>
+  <data name="Field_PaymentMethod" xml:space="preserve">
+    <value>Payment method</value>
   </data>
   <data name="Field_Project" xml:space="preserve">
     <value>Project</value>

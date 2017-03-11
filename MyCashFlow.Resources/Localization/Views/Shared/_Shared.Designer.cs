@@ -124,11 +124,11 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --- Select a payment type ---.
+        ///   Looks up a localized string similar to --- Select a payment method ---.
         /// </summary>
-        public static string List_PaymentTypes_OptionLabel {
+        public static string List_PaymentMethods_OptionLabel {
             get {
-                return ResourceManager.GetString("List_PaymentTypes_OptionLabel", resourceCulture);
+                return ResourceManager.GetString("List_PaymentMethods_OptionLabel", resourceCulture);
             }
         }
         

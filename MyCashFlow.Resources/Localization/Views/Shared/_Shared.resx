@@ -138,8 +138,8 @@
   <data name="List_Genders_OptionLabel" xml:space="preserve">
     <value>--- Select a gender ---</value>
   </data>
-  <data name="List_PaymentTypes_OptionLabel" xml:space="preserve">
-    <value>--- Select a payment type ---</value>
+  <data name="List_PaymentMethods_OptionLabel" xml:space="preserve">
+    <value>--- Select a payment method ---</value>
   </data>
   <data name="List_Projects_OptionLabel" xml:space="preserve">
     <value>--- Select a project ---</value>

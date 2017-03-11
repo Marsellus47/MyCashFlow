@@ -6,7 +6,7 @@ namespace MyCashFlow.Web.Controllers
 	{
 		public virtual ActionResult Index()
 		{
-			return Content("Welcome Home");
+			return RedirectToAction(MVC.Project.ActionNames.Index, MVC.Project.Name);
 		}
 	}
 }

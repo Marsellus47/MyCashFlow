@@ -52,7 +52,7 @@ namespace MyCashFlow.Web.Services.Transaction
 			}
 
 			var transactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
-			var paymentTypes = _unitOfWork.PaymentTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			var paymentMethods = _unitOfWork.PaymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
 
 			var model = new TransactionCreateViewModel
 			{
@@ -60,7 +60,7 @@ namespace MyCashFlow.Web.Services.Transaction
 				ProjectID = projectId,
 				Projects = projects,
 				TransactionTypes = transactionTypes,
-				PaymentTypes = paymentTypes
+				PaymentMethods = paymentMethods
 			};
 
 			return model;
@@ -86,7 +86,7 @@ namespace MyCashFlow.Web.Services.Transaction
 				model.Projects = _unitOfWork.ProjectRepository.Get(x => x.ProjectID == transaction.ProjectID.Value).ToList();
 			}
 			model.TransactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
-			model.PaymentTypes = _unitOfWork.PaymentTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			model.PaymentMethods = _unitOfWork.PaymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
 
 			return model;
 		}
@@ -112,10 +112,10 @@ namespace MyCashFlow.Web.Services.Transaction
 			var transactionType = _unitOfWork.TransactionTypeRepository.GetByID(transaction.TransactionTypeID);
 			model.TransactionTypeName = transactionType.Name;
 
-			if (transaction.PaymentTypeID.HasValue)
+			if (transaction.PaymentMethodID.HasValue)
 			{
-				var paymentType = _unitOfWork.PaymentTypeRepository.GetByID(transaction.PaymentTypeID.Value);
-				model.PaymentTypeName = paymentType.Name;
+				var paymentMethod = _unitOfWork.PaymentMethodRepository.GetByID(transaction.PaymentMethodID.Value);
+				model.PaymentMethodName = paymentMethod.Name;
 			}
 
 			return model;

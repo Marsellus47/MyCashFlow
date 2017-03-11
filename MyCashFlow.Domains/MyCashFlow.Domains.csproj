@@ -58,10 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Artificial\Gender.cs" />
-    <Compile Include="DataObject\Address.cs" />
-    <Compile Include="DataObject\Contact.cs" />
     <Compile Include="DataObject\Country.cs" />
-    <Compile Include="DataObject\PaymentType.cs" />
+    <Compile Include="DataObject\PaymentMethod.cs" />
     <Compile Include="DataObject\Project.cs" />
     <Compile Include="DataObject\Transaction.cs" />
     <Compile Include="DataObject\TransactionType.cs" />
