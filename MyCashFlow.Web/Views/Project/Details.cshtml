@@ -7,7 +7,7 @@
 <h2>@Model.Header</h2>
 
 <p>
-    @Html.ActionLink(Model.Create, MVC.Transaction.ActionNames.Create, MVC.Transaction.Name, new { id = Model.ProjectID }, null)
+    @Html.ActionLink(Model.Create, MVC.Transaction.ActionNames.Create, MVC.Transaction.Name, new { id = Model.ProjectID }, new { @class = "btn btn-primary" })
 </p>
 <table class="table table-hover">
 	<tr>
@@ -42,9 +42,9 @@
 				@Html.DisplayFor(modelItem => item.PaymentMethod)
 			</td>
 			<td>
-				@Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, MVC.Transaction.Name, new { id = item.TransactionID }, null) |
-				@Html.ActionLink(Model.Details, "Details", MVC.Transaction.Name, new { id = item.TransactionID }, null) |
-				@Html.ActionLink(Model.Delete, "Delete", MVC.Transaction.Name, new { id = item.TransactionID }, null)
+				@Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, MVC.Transaction.Name, new { id = item.TransactionID }, new { @class = "btn btn-primary" })
+				@Html.ActionLink(Model.Details, MVC.Transaction.ActionNames.Details, MVC.Transaction.Name, new { id = item.TransactionID }, new { @class = "btn btn-info" })
+				@Html.ActionLink(Model.Delete, MVC.Transaction.ActionNames.Delete, MVC.Transaction.Name, new { id = item.TransactionID }, new { @class = "btn btn-danger" })
 			</td>
 		</tr>
 	}
@@ -52,5 +52,5 @@
 </table>
 
 <div>
-	@Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index)
+	@Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index, null, new { @class = "btn btn-primary" })
 </div>

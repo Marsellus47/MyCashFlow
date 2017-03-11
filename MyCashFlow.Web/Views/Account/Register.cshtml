@@ -14,91 +14,189 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
-	<div class="form-group">
-		@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						Basic information
+					</a>
+				</h4>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+						Additional information
+					</a>
+				</h4>
+			</div>
+			<div id="collapse2" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.EnumDropDownListFor(model => model.Gender, Rsx.List_Genders_OptionLabel, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.MiddleName, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+						Contact information
+					</a>
+				</h4>
+			</div>
+			<div id="collapse3" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+						Address information
+					</a>
+				</h4>
+			</div>
+			<div id="collapse4" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.CountryID, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.DropDownListFor(model => model.CountryID, new SelectList(Model.Countries, "ID", "Name"), Rsx.List_Countries_OptionLabel, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.CountryID, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.AddressLine1, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.AddressLine1, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.AddressLine2, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.AddressLine2, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.Zip, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.Zip, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(m => m.District, new { @class = "col-md-2 control-label" })
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.District, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.District, "", new { @class = "text-danger" })
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
 	<div class="form-group">
-		@Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" class="btn btn-default" value="Register" />
 		</div>
 	</div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.CountryID, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.DropDownListFor(model => model.CountryID, new SelectList(Model.Countries, "ID", "Name"), Rsx.List_Countries_OptionLabel)
-			@Html.ValidationMessageFor(m => m.CountryID, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.EnumDropDownListFor(model => model.Gender, Rsx.List_Genders_OptionLabel)
-			@Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.MiddleName, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
 }
 
 @section Scripts {

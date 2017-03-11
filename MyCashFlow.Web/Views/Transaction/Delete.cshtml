@@ -43,8 +43,8 @@
 		@Html.Hidden("id", Model.TransactionID)
 
         <div class="form-actions no-color">
-            <input type="submit" value="@Model.Delete" class="btn btn-default" /> |
-            @Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index)
+            <input type="submit" value="@Model.Delete" class="btn btn-danger" />
+            @Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index, null, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

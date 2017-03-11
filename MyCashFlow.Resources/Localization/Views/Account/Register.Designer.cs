@@ -61,6 +61,33 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address line 1.
+        /// </summary>
+        public static string Field_AddressLine1 {
+            get {
+                return ResourceManager.GetString("Field_AddressLine1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address line 2.
+        /// </summary>
+        public static string Field_AddressLine2 {
+            get {
+                return ResourceManager.GetString("Field_AddressLine2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string Field_City {
+            get {
+                return ResourceManager.GetString("Field_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm password.
         /// </summary>
         public static string Field_ConfirmPassword {
@@ -84,6 +111,15 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
         public static string Field_Country {
             get {
                 return ResourceManager.GetString("Field_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to District.
+        /// </summary>
+        public static string Field_District {
+            get {
+                return ResourceManager.GetString("Field_District", resourceCulture);
             }
         }
         
@@ -165,6 +201,15 @@ namespace MyCashFlow.Resources.Localization.Views.Account {
         public static string Field_Username {
             get {
                 return ResourceManager.GetString("Field_Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip.
+        /// </summary>
+        public static string Field_Zip {
+            get {
+                return ResourceManager.GetString("Field_Zip", resourceCulture);
             }
         }
     }

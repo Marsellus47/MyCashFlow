@@ -68,6 +68,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, new { id = Model.TransactionID }) |
-    @Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index)
+    @Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, new { id = Model.TransactionID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index, null, new { @class = "btn btn-primary" })
 </p>

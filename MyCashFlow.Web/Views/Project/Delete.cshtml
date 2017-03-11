@@ -26,9 +26,9 @@
 
 		<div>@Model.Message</div>
         <div class="form-actions no-color">
-            <input type="submit" value="@Model.DeleteIncludingTransactionsButtonLabel" name="action:@MVC.Project.ActionNames.DeleteIncludingTransactions" class="btn btn-default" /> |
-			<input type="submit" value="@Model.DeleteProjectOnlyButtonLabel" name="action:@MVC.Project.ActionNames.DeleteProjectOnly" class="btn btn-default" /> |
-            @Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index)
+            <input type="submit" value="@Model.DeleteIncludingTransactionsButtonLabel" name="action:@MVC.Project.ActionNames.DeleteIncludingTransactions" class="btn btn-danger" />
+			<input type="submit" value="@Model.DeleteProjectOnlyButtonLabel" name="action:@MVC.Project.ActionNames.DeleteProjectOnly" class="btn btn-warning" />
+            @Html.ActionLink(Model.Back, MVC.Project.ActionNames.Index, null, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

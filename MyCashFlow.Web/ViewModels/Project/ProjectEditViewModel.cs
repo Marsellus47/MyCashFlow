@@ -23,9 +23,11 @@ namespace MyCashFlow.Web.ViewModels.Project
 		[Display(Name = nameof(Rsx.Project._Shared.Field_Name), ResourceType = typeof(Rsx.Project._Shared))]
 		public string Name { get; set; }
 
+		[DataType(DataType.Date)]
 		[Display(Name = nameof(Rsx.Project._Shared.Field_ValidFrom), ResourceType = typeof(Rsx.Project._Shared))]
 		public DateTime? ValidFrom { get; set; }
 
+		[DataType(DataType.Date)]
 		[Display(Name = nameof(Rsx.Project._Shared.Field_ValidTill), ResourceType = typeof(Rsx.Project._Shared))]
 		public DateTime? ValidTill { get; set; }
 	}

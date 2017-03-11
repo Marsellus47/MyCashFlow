@@ -35,7 +35,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.TextAreaFor(model => model.Note, new { @class = "form-control" })
 				@Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 			@Html.LabelFor(model => model.Income, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
 				<div class="checkbox">
-					@Html.EditorFor(model => model.Income)
+					@Html.CheckBoxFor(model => model.Income)
 					@Html.ValidationMessageFor(model => model.Income, "", new { @class = "text-danger" })
 				</div>
 			</div>
@@ -55,43 +55,43 @@
 			<div class="col-md-10">
 				@if (Model.ProjectID.HasValue)
 				{
-					@Html.TextBoxFor(model => model.Projects[0].Name, new { disabled = "disabled", @readonly = "readonly" })
+					@Html.TextBoxFor(model => model.Projects[0].Name, new { disabled = "disabled", @readonly = "readonly", @class = "form-control" })
 					@Html.HiddenFor(Model => Model.ProjectID)
 				}
 				else
 				{
-					@Html.DropDownListFor(model => model.ProjectID, new SelectList(Model.Projects, "ProjectID", "Name"), Rsx.List_Projects_OptionLabel)
+					@Html.DropDownListFor(model => model.ProjectID, new SelectList(Model.Projects, "ProjectID", "Name"), Rsx.List_Projects_OptionLabel, new { @class = "form-control" })
 				}
 				@Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group form-inline">
 			@Html.LabelFor(model => model.TransactionTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"), Rsx.List_TransactionTypes_OptionLabel)
-				@Html.ActionLink(Model.Create, MVC.TransactionType.ActionNames.Create, MVC.TransactionType.Name, new { previousUrl = actualUrl }, null)
+				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"), Rsx.List_TransactionTypes_OptionLabel, new { @class = "form-control" })
+				@Html.ActionLink(Model.Create, MVC.TransactionType.ActionNames.Create, MVC.TransactionType.Name, new { previousUrl = actualUrl }, new { @class = "btn btn-primary" })
 				@Html.ValidationMessageFor(model => model.TransactionTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group form-inline">
 			@Html.LabelFor(model => model.PaymentMethodID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownListFor(model => model.PaymentMethodID, new SelectList(Model.PaymentMethods, "PaymentMethodID", "Name"), Rsx.List_PaymentMethods_OptionLabel)
-				@Html.ActionLink(Model.Create, MVC.PaymentMethod.ActionNames.Create, MVC.PaymentMethod.Name, new { previousUrl = actualUrl }, null)
+				@Html.DropDownListFor(model => model.PaymentMethodID, new SelectList(Model.PaymentMethods, "PaymentMethodID", "Name"), Rsx.List_PaymentMethods_OptionLabel, new { @class = "form-control" })
+				@Html.ActionLink(Model.Create, MVC.PaymentMethod.ActionNames.Create, MVC.PaymentMethod.Name, new { previousUrl = actualUrl }, new { @class = "btn btn-primary" })
 				@Html.ValidationMessageFor(model => model.PaymentMethodID, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" value="Create" class="btn btn-default" />
+				<input type="submit" value="@Model.Create" class="btn btn-success" />
 			</div>
 		</div>
 	</div>
 }
 
 <div>
-	@Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index)
+	@Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index, null, new { @class = "btn btn-primary" })
 </div>
