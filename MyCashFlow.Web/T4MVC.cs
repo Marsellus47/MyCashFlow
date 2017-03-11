@@ -30,8 +30,10 @@ public static partial class MVC
     public static MyCashFlow.Web.Controllers.AccountController Account = new MyCashFlow.Web.Controllers.T4MVC_AccountController();
     public static MyCashFlow.Web.Controllers.HomeController Home = new MyCashFlow.Web.Controllers.T4MVC_HomeController();
     public static MyCashFlow.Web.Controllers.ManageController Manage = new MyCashFlow.Web.Controllers.T4MVC_ManageController();
+    public static MyCashFlow.Web.Controllers.PaymentMethodController PaymentMethod = new MyCashFlow.Web.Controllers.T4MVC_PaymentMethodController();
     public static MyCashFlow.Web.Controllers.ProjectController Project = new MyCashFlow.Web.Controllers.T4MVC_ProjectController();
     public static MyCashFlow.Web.Controllers.TransactionController Transaction = new MyCashFlow.Web.Controllers.T4MVC_TransactionController();
+    public static MyCashFlow.Web.Controllers.TransactionTypeController TransactionType = new MyCashFlow.Web.Controllers.T4MVC_TransactionTypeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

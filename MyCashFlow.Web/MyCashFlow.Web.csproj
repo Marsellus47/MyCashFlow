@@ -224,8 +224,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentMethodController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\TransactionTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +243,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Manage\ManageMessageId.cs" />
+    <Compile Include="PaymentMethodController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProjectController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -249,8 +254,12 @@
     <Compile Include="Services\Account\IAccountService.cs" />
     <Compile Include="Services\Manage\IManageService.cs" />
     <Compile Include="Services\Manage\ManageService.cs" />
+    <Compile Include="Services\PaymentMethod\IPaymentMethodService.cs" />
+    <Compile Include="Services\PaymentMethod\PaymentMethodService.cs" />
     <Compile Include="Services\Project\IProjectService.cs" />
     <Compile Include="Services\Project\ProjectService.cs" />
+    <Compile Include="Services\TransactionType\ITransactionTypeService.cs" />
+    <Compile Include="Services\TransactionType\TransactionTypeService.cs" />
     <Compile Include="Services\Transaction\ITransactionService.cs" />
     <Compile Include="Services\Transaction\TransactionService.cs" />
     <Compile Include="SharedController.generated.cs">
@@ -265,10 +274,14 @@
     <Compile Include="TransactionController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="TransactionTypeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodCreateViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDeleteViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDetailsViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
@@ -287,6 +300,7 @@
     <Compile Include="ViewModels\Project\ProjectIndexViewModel.cs" />
     <Compile Include="ViewModels\Shared\CreatorBaseViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\TransactionType\TransactionTypeCreateViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionCreateViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionDeleteViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionDetailsViewModel.cs" />
@@ -333,6 +347,8 @@
     <Content Include="Views\Transaction\Edit.cshtml" />
     <Content Include="Views\Transaction\Details.cshtml" />
     <Content Include="Views\Transaction\Delete.cshtml" />
+    <Content Include="Views\TransactionType\Create.cshtml" />
+    <Content Include="Views\PaymentMethod\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

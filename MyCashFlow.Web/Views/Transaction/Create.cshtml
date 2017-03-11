@@ -3,6 +3,7 @@
 
 @{
 	ViewBag.Title = Model.Title;
+	var actualUrl = Request.Url.PathAndQuery;
 }
 
 <h2>@Model.Header</h2>
@@ -69,6 +70,7 @@
 			@Html.LabelFor(model => model.TransactionTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
 				@Html.DropDownListFor(model => model.TransactionTypeID, new SelectList(Model.TransactionTypes, "TransactionTypeID", "Name"), Rsx.List_TransactionTypes_OptionLabel)
+				@Html.ActionLink(Model.Create, MVC.TransactionType.ActionNames.Create, MVC.TransactionType.Name, new { previousUrl = actualUrl }, null)
 				@Html.ValidationMessageFor(model => model.TransactionTypeID, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -77,6 +79,7 @@
 			@Html.LabelFor(model => model.PaymentMethodID, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
 				@Html.DropDownListFor(model => model.PaymentMethodID, new SelectList(Model.PaymentMethods, "PaymentMethodID", "Name"), Rsx.List_PaymentMethods_OptionLabel)
+				@Html.ActionLink(Model.Create, MVC.PaymentMethod.ActionNames.Create, MVC.PaymentMethod.Name, new { previousUrl = actualUrl }, null)
 				@Html.ValidationMessageFor(model => model.PaymentMethodID, "", new { @class = "text-danger" })
 			</div>
 		</div>
