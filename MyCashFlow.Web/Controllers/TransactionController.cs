@@ -71,5 +71,25 @@ namespace MyCashFlow.Web.Controllers
 
 			return RedirectToAction(MVC.Project.ActionNames.Index);
 		}
+
+		public virtual ActionResult Details(int id)
+		{
+			var model = _transactionService.BuildTransactionDetailsViewModel(id);
+			return View(model);
+		}
+
+		public virtual ActionResult Delete(int id)
+		{
+			var model = _transactionService.BuildTransactionDeleteViewModel(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult PostDelete(int id)
+		{
+			_transactionService.DeleteTransaction(id);
+			return RedirectToAction(MVC.Project.ActionNames.Index);
+		}
 	}
 }

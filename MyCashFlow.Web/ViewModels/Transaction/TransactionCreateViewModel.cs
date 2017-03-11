@@ -30,15 +30,15 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Income), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public bool Income { get; set; }
 		
-		[Display(Name = nameof(Rsx.Transaction.Create.Field_Project), ResourceType = typeof(Rsx.Transaction.Create))]
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Project), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public int? ProjectID { get; set; }
 		public IList<Domains.DataObject.Project> Projects { get; set; }
 
-		[Display(Name = nameof(Rsx.Transaction.Create.Field_TransactionType), ResourceType = typeof(Rsx.Transaction.Create))]
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_TransactionType), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public int TransactionTypeID { get; set; }
 		public IEnumerable<Domains.DataObject.TransactionType> TransactionTypes { get; set; }
 
-		[Display(Name = nameof(Rsx.Transaction.Create.Field_PaymentType), ResourceType = typeof(Rsx.Transaction.Create))]
+		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentType), ResourceType = typeof(Rsx.Transaction._Shared))]
 		public int? PaymentTypeID { get; set; }
 		public IEnumerable<Domains.DataObject.PaymentType> PaymentTypes { get; set; }
 	}

@@ -1,0 +1,50 @@
+﻿@model MyCashFlow.Web.ViewModels.Transaction.TransactionDeleteViewModel
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared.Delete
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Header</h2>
+
+<h3>@Rsx.ConfirmQuestion</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Income)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Income)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(MVC.Transaction.ActionNames.PostDelete, MVC.Transaction.Name, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+        @Html.AntiForgeryToken()
+		@Html.Hidden("id", Model.TransactionID)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Model.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Model.Back, MVC.Transaction.ActionNames.Index)
+        </div>
+    }
+</div>

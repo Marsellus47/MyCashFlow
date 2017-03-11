@@ -132,6 +132,9 @@
   <data name="Field_PaymentType" xml:space="preserve">
     <value>Payment type</value>
   </data>
+  <data name="Field_Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
   <data name="Field_TransactionType" xml:space="preserve">
     <value>Transaction type</value>
   </data>

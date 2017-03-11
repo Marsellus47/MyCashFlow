@@ -97,5 +97,41 @@ namespace MyCashFlow.Web.Services.Transaction
 			_unitOfWork.TransactionRepository.Update(transaction);
 			_unitOfWork.Save();
 		}
+
+		public TransactionDetailsViewModel BuildTransactionDetailsViewModel(int transactionId)
+		{
+			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var model = Mapper.Map<TransactionDetailsViewModel>(transaction);
+
+			if (transaction.ProjectID.HasValue)
+			{
+				var project = _unitOfWork.ProjectRepository.GetByID(transaction.ProjectID.Value);
+				model.ProjectName = project.Name;
+			}
+
+			var transactionType = _unitOfWork.TransactionTypeRepository.GetByID(transaction.TransactionTypeID);
+			model.TransactionTypeName = transactionType.Name;
+
+			if (transaction.PaymentTypeID.HasValue)
+			{
+				var paymentType = _unitOfWork.PaymentTypeRepository.GetByID(transaction.PaymentTypeID.Value);
+				model.PaymentTypeName = paymentType.Name;
+			}
+
+			return model;
+		}
+
+		public TransactionDeleteViewModel BuildTransactionDeleteViewModel(int transactionId)
+		{
+			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var model = Mapper.Map<TransactionDeleteViewModel>(transaction);
+			return model;
+		}
+
+		public void DeleteTransaction(int transactionId)
+		{
+			_unitOfWork.TransactionRepository.Delete(transactionId);
+			_unitOfWork.Save();
+		}
 	}
 }

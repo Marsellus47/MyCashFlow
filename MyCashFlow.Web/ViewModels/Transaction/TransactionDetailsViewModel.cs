@@ -1,18 +1,16 @@
 ﻿using MyCashFlow.Web.Infrastructure.Automapper;
 using MyCashFlow.Web.ViewModels.Shared;
 using Rsx = MyCashFlow.Resources.Localization.Views;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System;
 
 namespace MyCashFlow.Web.ViewModels.Transaction
 {
-	public class TransactionEditViewModel :
+	public class TransactionDetailsViewModel :
 		CreatorBaseViewModel,
-		IMapFrom<Domains.DataObject.Transaction>,
-		IMapTo<Domains.DataObject.Transaction>
+		IMapFrom<Domains.DataObject.Transaction>
 	{
-		public TransactionEditViewModel()
+		public TransactionDetailsViewModel()
 			: base(title: Rsx.Transaction._Shared.Title,
 				  header: string.Format(Rsx.Shared.Edit.Header, Rsx.Transaction._Shared.Title.ToLower()))
 		{ }
@@ -35,15 +33,12 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 		public bool Income { get; set; }
 
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_Project), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public int? ProjectID { get; set; }
-		public IList<Domains.DataObject.Project> Projects { get; set; }
+		public string ProjectName { get; set; }
 
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_TransactionType), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public int TransactionTypeID { get; set; }
-		public IEnumerable<Domains.DataObject.TransactionType> TransactionTypes { get; set; }
+		public string TransactionTypeName { get; set; }
 
 		[Display(Name = nameof(Rsx.Transaction._Shared.Field_PaymentType), ResourceType = typeof(Rsx.Transaction._Shared))]
-		public int? PaymentTypeID { get; set; }
-		public IEnumerable<Domains.DataObject.PaymentType> PaymentTypes { get; set; }
+		public string PaymentTypeName { get; set; }
 	}
 }

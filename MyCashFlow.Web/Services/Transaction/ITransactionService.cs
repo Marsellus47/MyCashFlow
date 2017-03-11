@@ -9,5 +9,8 @@ namespace MyCashFlow.Web.Services.Transaction
 		void CreateTransaction(TransactionCreateViewModel model);
 		TransactionEditViewModel BuildTransactionEditViewModel(int userId, int transactionId);
 		void EditTransaction(TransactionEditViewModel model);
+		TransactionDetailsViewModel BuildTransactionDetailsViewModel(int transactionId);
+		TransactionDeleteViewModel BuildTransactionDeleteViewModel(int transactionId);
+		void DeleteTransaction(int transactionId);
 	}
 }

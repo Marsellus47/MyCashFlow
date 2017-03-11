@@ -106,6 +106,15 @@ namespace MyCashFlow.Resources.Localization.Views.Transaction {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string Field_Project {
+            get {
+                return ResourceManager.GetString("Field_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction type.
         /// </summary>
         public static string Field_TransactionType {

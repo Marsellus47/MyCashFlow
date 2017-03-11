@@ -115,11 +115,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Shared.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Views\Transaction\Create.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Create.resx</DependentUpon>
-    </Compile>
     <Compile Include="Localization\Views\Transaction\_Shared.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,10 +182,6 @@
     <EmbeddedResource Include="Localization\Views\Shared\_Shared.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Shared.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\Views\Transaction\Create.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Create.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Views\Transaction\_Shared.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

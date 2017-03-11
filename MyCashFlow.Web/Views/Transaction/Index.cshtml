@@ -42,8 +42,8 @@
 			</td>
 	        <td>
 	            @Html.ActionLink(Model.Edit, MVC.Transaction.ActionNames.Edit, new { id = item.TransactionID }) |
-	            @Html.ActionLink(Model.Details, "Details", new { id = item.TransactionID }) |
-	            @Html.ActionLink(Model.Delete, "Delete", new { id = item.TransactionID })
+	            @Html.ActionLink(Model.Details, MVC.Transaction.ActionNames.Details, new { id = item.TransactionID }) |
+	            @Html.ActionLink(Model.Delete, MVC.Transaction.ActionNames.Delete, new { id = item.TransactionID })
 	        </td>
 	    </tr>
 	}
