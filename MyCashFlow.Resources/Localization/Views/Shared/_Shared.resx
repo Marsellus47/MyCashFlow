@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label_ApplicationName" xml:space="preserve">
+    <value>My Cashflow</value>
+  </data>
   <data name="Label_Back" xml:space="preserve">
     <value>Back to list</value>
   </data>
@@ -131,6 +134,18 @@
   </data>
   <data name="Label_Edit" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="Label_LoggedAs" xml:space="preserve">
+    <value>Logged as {0}</value>
+  </data>
+  <data name="Label_LogIn" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Label_Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Label_Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="List_Countries_OptionLabel" xml:space="preserve">
     <value>--- Select a country ---</value>

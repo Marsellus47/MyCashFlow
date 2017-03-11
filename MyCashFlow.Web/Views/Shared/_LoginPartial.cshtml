@@ -1,13 +1,15 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Rsx = MyCashFlow.Resources.Localization.Views.Shared._Shared
+
 @if (Request.IsAuthenticated)
 {
-	using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+	using (Html.BeginForm(MVC.Account.ActionNames.LogOut, MVC.Account.Name, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 	{
 		@Html.AntiForgeryToken()
 
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				@Html.ActionLink("Logged as " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+				@Html.ActionLink(string.Format(Rsx.Label_LoggedAs, User.Identity.GetUserName()), MVC.Manage.ActionNames.Index, MVC.Manage.Name, routeValues: null, htmlAttributes: new { title = "Manage" })
 			</li>
 			<li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
 		</ul>
@@ -16,8 +18,8 @@
 else
 {
 	<ul class="nav navbar-nav navbar-right">
-		<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-		<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+		<li>@Html.ActionLink(Rsx.Label_Register, MVC.Account.ActionNames.Register, MVC.Account.Name, routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+		<li>@Html.ActionLink(Rsx.Label_LogIn, MVC.Account.ActionNames.Login, MVC.Account.Name, routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 	</ul>
 }
 

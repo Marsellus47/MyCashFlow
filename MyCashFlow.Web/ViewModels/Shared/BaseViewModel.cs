@@ -14,6 +14,7 @@ namespace MyCashFlow.Web.ViewModels.Shared
 			Details = Rsx.Label_Details;
 			Delete = Rsx.Label_Delete;
 			Back = Rsx.Label_Back;
+			Save = Rsx.Label_Save;
 		}
 
 		[ScaffoldColumn(false)]
@@ -36,5 +37,8 @@ namespace MyCashFlow.Web.ViewModels.Shared
 
 		[ScaffoldColumn(false)]
 		public string Back { get; private set; }
+
+		[ScaffoldColumn(false)]
+		public string Save { get; private set; }
 	}
 }

@@ -61,6 +61,15 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Cashflow.
+        /// </summary>
+        public static string Label_ApplicationName {
+            get {
+                return ResourceManager.GetString("Label_ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to list.
         /// </summary>
         public static string Label_Back {
@@ -102,6 +111,42 @@ namespace MyCashFlow.Resources.Localization.Views.Shared {
         public static string Label_Edit {
             get {
                 return ResourceManager.GetString("Label_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logged as {0}.
+        /// </summary>
+        public static string Label_LoggedAs {
+            get {
+                return ResourceManager.GetString("Label_LoggedAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string Label_LogIn {
+            get {
+                return ResourceManager.GetString("Label_LogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Label_Register {
+            get {
+                return ResourceManager.GetString("Label_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Label_Save {
+            get {
+                return ResourceManager.GetString("Label_Save", resourceCulture);
             }
         }
         
