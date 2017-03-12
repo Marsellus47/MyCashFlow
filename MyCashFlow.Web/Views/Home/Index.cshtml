@@ -1,0 +1,69 @@
+﻿@model MyCashFlow.Web.ViewModels.Home.HomeIndexViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Header</h2>
+
+<table class="table table-hover table-striped table-condensed">
+	<tbody>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.Projects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.Projects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.FinishedProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.FinishedProjects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.OpenProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.OpenProjects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.OpenFilledProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.OpenFilledProjects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.FinishedFilledProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.FinishedFilledProjects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.TotalFilledProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.TotalFilledProjects)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.DisplayNameFor(model => model.NonFilledProjects)
+			</td>
+			<td>
+				@Html.DisplayFor(model => model.NonFilledProjects)
+			</td>
+		</tr>
+	</tbody>
+
+</table>

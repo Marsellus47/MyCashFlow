@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VerifyCode.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Views\Home\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Views\Home\_Shared.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +149,10 @@
     <EmbeddedResource Include="Localization\Views\Account\VerifyCode.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>VerifyCode.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Home\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Views\Home\_Shared.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

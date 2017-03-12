@@ -117,10 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MenuItem" xml:space="preserve">
-    <value>Home</value>
+  <data name="Field_FinishedFilledProjects" xml:space="preserve">
+    <value>Number of my finished projects with filled budget</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Statistics</value>
+  <data name="Field_FinishedProjects" xml:space="preserve">
+    <value>Number of my finished projects</value>
+  </data>
+  <data name="Field_NonFilledProjects" xml:space="preserve">
+    <value>Number of my projects with unknown or unfilled budget</value>
+  </data>
+  <data name="Field_OpenFilledProjects" xml:space="preserve">
+    <value>Number of my open projects with filled budget</value>
+  </data>
+  <data name="Field_OpenProjects" xml:space="preserve">
+    <value>Number of my open projects</value>
+  </data>
+  <data name="Field_PaymentMethods" xml:space="preserve">
+    <value>Number of my payment methods</value>
+  </data>
+  <data name="Field_Projects" xml:space="preserve">
+    <value>Total number of my projects</value>
+  </data>
+  <data name="Field_TotalFilledProjects" xml:space="preserve">
+    <value>Total number of my projects with filled budget</value>
+  </data>
+  <data name="Field_TransactionTypes" xml:space="preserve">
+    <value>Number of my transaction types</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>My statistics</value>
   </data>
 </root>

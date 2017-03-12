@@ -70,7 +70,7 @@ namespace MyCashFlow.Resources.Localization.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
+        ///   Looks up a localized string similar to Statistics.
         /// </summary>
         public static string Title {
             get {

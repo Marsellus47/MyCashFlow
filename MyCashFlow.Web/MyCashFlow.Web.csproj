@@ -252,6 +252,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Account\AccountService.cs" />
     <Compile Include="Services\Account\IAccountService.cs" />
+    <Compile Include="Services\Home\HomeService.cs" />
+    <Compile Include="Services\Home\IHomeService.cs" />
     <Compile Include="Services\Manage\IManageService.cs" />
     <Compile Include="Services\Manage\ManageService.cs" />
     <Compile Include="Services\PaymentMethod\IPaymentMethodService.cs" />
@@ -281,6 +283,7 @@
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\Home\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\PaymentMethod\PaymentMethodCreateViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDeleteViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDetailsViewModel.cs" />
@@ -349,6 +352,7 @@
     <Content Include="Views\Transaction\Delete.cshtml" />
     <Content Include="Views\TransactionType\Create.cshtml" />
     <Content Include="Views\PaymentMethod\Create.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -358,7 +362,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyCashFlow.Domains\MyCashFlow.Domains.csproj">

@@ -20,6 +20,8 @@ namespace MyCashFlow.Domains.DataObject
 		public string Name { get; set; }
 		public DateTime? ValidFrom { get; set; }
 		public DateTime? ValidTill { get; set; }
+		public decimal? Budget { get; set; }
+		public decimal ActualValue { get; set; }
 		public int SequenceNumber { get; set; }
 
 		#endregion
