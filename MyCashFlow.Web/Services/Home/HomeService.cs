@@ -2,21 +2,28 @@
 using MyCashFlow.Web.ViewModels.Home;
 using System.Linq;
 using System;
+using MyCashFlow.Web.Services.TransactionType;
 
 namespace MyCashFlow.Web.Services.Home
 {
 	public class HomeService : IHomeService
 	{
 		private readonly IUnitOfWork _unitOfWork;
+		private readonly ITransactionTypeService _transactionTypeService;
 
-		public HomeService(IUnitOfWork unitOfWork)
+		public HomeService(IUnitOfWork unitOfWork, ITransactionTypeService transactionTypeService)
 		{
 			if (unitOfWork == null)
 			{
 				throw new ArgumentNullException(nameof(unitOfWork));
 			}
+			if (transactionTypeService == null)
+			{
+				throw new ArgumentNullException(nameof(transactionTypeService));
+			}
 
 			_unitOfWork = unitOfWork;
+			_transactionTypeService = transactionTypeService;
 		}
 
 		public HomeIndexViewModel BuildHomeIndexViewModel(int userId)
@@ -28,6 +35,7 @@ namespace MyCashFlow.Web.Services.Home
 			var numberOfFinishedFilledProjects = finishedProjects.Where(x => x.ActualValue >= x.Budget).Count();
 			var numberOfTotalFilledProjects = allProjects.Where(x => x.ActualValue >= x.Budget).Count();
 			var numberOfNonFilledProjects = openProjects.Except(openFilledProjects).Count();
+			var transactionTypeIndexViewModel = _transactionTypeService.BuildTransactionTypeIndexViewModel(userId);
 
 			var model = new HomeIndexViewModel
 			{
@@ -37,7 +45,8 @@ namespace MyCashFlow.Web.Services.Home
 				OpenFilledProjects = openFilledProjects.Count(),
 				FinishedFilledProjects = numberOfFinishedFilledProjects,
 				TotalFilledProjects = numberOfTotalFilledProjects,
-				NonFilledProjects = numberOfNonFilledProjects
+				NonFilledProjects = numberOfNonFilledProjects,
+				TransactionTypeIndexViewModel = transactionTypeIndexViewModel
 			};
 			return model;
 		}

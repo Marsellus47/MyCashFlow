@@ -12,7 +12,7 @@ namespace MyCashFlow.Web.ViewModels.Transaction
 	{
 		public TransactionDetailsViewModel()
 			: base(title: Rsx.Transaction._Shared.Title,
-				  header: string.Format(Rsx.Shared.Edit.Header, Rsx.Transaction._Shared.Title.ToLower()))
+				  header: string.Format(Rsx.Shared.Details.Header, Rsx.Transaction._Shared.Title))
 		{ }
 
 		[ScaffoldColumn(false)]

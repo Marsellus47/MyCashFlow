@@ -1,4 +1,5 @@
 ﻿using MyCashFlow.Web.ViewModels.Shared;
+using MyCashFlow.Web.ViewModels.TransactionType;
 using Rsx = MyCashFlow.Resources.Localization.Views;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,5 +32,7 @@ namespace MyCashFlow.Web.ViewModels.Home
 
 		[Display(Name = nameof(Rsx.Home.Index.Field_NonFilledProjects), ResourceType = typeof(Rsx.Home.Index))]
 		public int NonFilledProjects { get; set; }
+
+		public TransactionTypeIndexViewModel TransactionTypeIndexViewModel { get; set; }
 	}
 }

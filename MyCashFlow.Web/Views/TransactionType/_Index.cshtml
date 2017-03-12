@@ -1,0 +1,29 @@
+﻿@model MyCashFlow.Web.ViewModels.TransactionType.TransactionTypeIndexViewModel
+
+<h2>@Model.Header</h2>
+
+<p>
+    @Html.ActionLink(Model.Create, MVC.TransactionType.ActionNames.Create, MVC.TransactionType.Name, null, new { @class = "btn btn-sm btn-primary" })
+</p>
+<table class="table table-hover table-striped table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Items[0].Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+		<td>
+			@Html.ActionLink(Model.Edit, MVC.TransactionType.ActionNames.Edit, MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-primary" + (item.Private ? "" : " disabled") })
+			@Html.ActionLink(Model.Details, MVC.TransactionType.ActionNames.Details, MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-info" })
+			@Html.ActionLink(Model.Delete, "Delete", MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-danger" + (item.Private ? "" : " disabled") })
+		</td>
+    </tr>
+}
+
+</table>

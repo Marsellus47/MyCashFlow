@@ -9,7 +9,8 @@ namespace MyCashFlow.Web.ViewModels.Project
 	{
 		public ProjectDetailsViewModel()
 			: base(title: Rsx.Transaction._Shared.Title,
-				  header: string.Format(Rsx.Shared.Index.Header, Rsx.Transaction._Shared.Title.ToLower() + "s")) { }
+				  header: string.Format(Rsx.Shared.Details.Header, Rsx.Project._Shared.Title))
+		{ }
 
 		public IList<TransactionIndexItemViewModel> Items { get; set; }
 		public int ProjectID { get; set; }

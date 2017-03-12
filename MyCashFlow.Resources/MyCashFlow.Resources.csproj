@@ -110,6 +110,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Delete.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Views\Shared\Details.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Views\Shared\Edit.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +198,10 @@
     <EmbeddedResource Include="Localization\Views\Shared\Delete.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Delete.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Shared\Details.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Details.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Views\Shared\Edit.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

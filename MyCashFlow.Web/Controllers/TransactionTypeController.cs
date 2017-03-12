@@ -21,6 +21,13 @@ namespace MyCashFlow.Web.Controllers
 			_transactionTypeService = transactionTypeService;
 		}
 
+		public virtual async Task<ActionResult> Index()
+		{
+			int userId = await GetCurrentUserIdAsync();
+			var model = _transactionTypeService.BuildTransactionTypeIndexViewModel(userId);
+			return View(MVC.TransactionType.Views._Index, model);
+		}
+
 		public virtual ActionResult Create(string previousUrl)
 		{
 			var model = _transactionTypeService.BuildTransactionTypeCreateViewModel(previousUrl);
@@ -41,9 +48,35 @@ namespace MyCashFlow.Web.Controllers
 
 			if(string.IsNullOrEmpty(model.PreviousUrl))
 			{
-				return View("Index");
+				return RedirectToAction(MVC.TransactionType.ActionNames.Index);
 			}
 			return Redirect(model.PreviousUrl);
+		}
+
+		public virtual ActionResult Edit(int id)
+		{
+			var model = _transactionTypeService.BuildTransactionTypeEditViewModel(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual async Task<ActionResult> Edit(TransactionTypeEditViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			model.CreatorID = await GetCurrentUserIdAsync();
+			_transactionTypeService.EditTransactionType(model);
+			return RedirectToAction(MVC.TransactionType.ActionNames.Index);
+		}
+
+		public virtual ActionResult Details(int id)
+		{
+			var model = _transactionTypeService.BuildTransactionTypeDetailsViewModel(id);
+			return View(model);
 		}
 	}
 }

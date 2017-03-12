@@ -304,6 +304,10 @@
     <Compile Include="ViewModels\Shared\CreatorBaseViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\TransactionType\TransactionTypeCreateViewModel.cs" />
+    <Compile Include="ViewModels\TransactionType\TransactionTypeDetailsViewModel.cs" />
+    <Compile Include="ViewModels\TransactionType\TransactionTypeEditViewModel.cs" />
+    <Compile Include="ViewModels\TransactionType\TransactionTypeIndexItemViewModel.cs" />
+    <Compile Include="ViewModels\TransactionType\TransactionTypeIndexViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionCreateViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionDeleteViewModel.cs" />
     <Compile Include="ViewModels\Transaction\TransactionDetailsViewModel.cs" />
@@ -353,6 +357,9 @@
     <Content Include="Views\TransactionType\Create.cshtml" />
     <Content Include="Views\PaymentMethod\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TransactionType\_Index.cshtml" />
+    <Content Include="Views\TransactionType\Edit.cshtml" />
+    <Content Include="Views\TransactionType\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
