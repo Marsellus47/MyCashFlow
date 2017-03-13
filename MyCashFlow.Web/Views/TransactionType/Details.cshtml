@@ -21,5 +21,5 @@
 </div>
 <p>
     @Html.ActionLink(Model.Edit, MVC.TransactionType.ActionNames.Edit, MVC.TransactionType.Name, new { id = Model.TransactionTypeID }, new { @class = "btn btn-primary" + (Model.Private ? "" : " disabled") })
-    @Html.ActionLink(Model.Back, MVC.Home.ActionNames.Index, MVC.Home.Name, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Model.Back, MVC.Home.ActionNames.Index, MVC.Home.Name, null, new { @class = "btn btn-primary" })
 </p>

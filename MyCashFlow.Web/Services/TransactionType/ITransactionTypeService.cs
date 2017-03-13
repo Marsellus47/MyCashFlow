@@ -10,5 +10,7 @@ namespace MyCashFlow.Web.Services.TransactionType
 		TransactionTypeEditViewModel BuildTransactionTypeEditViewModel(int transactionTypeId);
 		void EditTransactionType(TransactionTypeEditViewModel model);
 		TransactionTypeDetailsViewModel BuildTransactionTypeDetailsViewModel(int transactionTypeId);
+		TransactionTypeDeleteViewModel BuildTransactionTypeDeleteViewModel(int transactionTypeId);
+		void DeleteTransactionType(int transactionTypeId);
 	}
 }

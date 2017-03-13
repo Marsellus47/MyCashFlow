@@ -74,6 +74,18 @@ namespace MyCashFlow.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Delete()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult PostDelete()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostDelete);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public TransactionTypeController Actions { get { return MVC.TransactionType; } }
@@ -94,6 +106,8 @@ namespace MyCashFlow.Web.Controllers
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Details = "Details";
+            public readonly string Delete = "Delete";
+            public readonly string PostDelete = "PostDelete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -103,6 +117,8 @@ namespace MyCashFlow.Web.Controllers
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Details = "Details";
+            public const string Delete = "Delete";
+            public const string PostDelete = "PostDelete";
         }
 
 
@@ -132,6 +148,22 @@ namespace MyCashFlow.Web.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_PostDelete s_params_PostDelete = new ActionParamsClass_PostDelete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_PostDelete PostDeleteParams { get { return s_params_PostDelete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_PostDelete
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -144,11 +176,13 @@ namespace MyCashFlow.Web.Controllers
             {
                 public readonly string _Index = "_Index";
                 public readonly string Create = "Create";
+                public readonly string Delete = "Delete";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
             }
             public readonly string _Index = "~/Views/TransactionType/_Index.cshtml";
             public readonly string Create = "~/Views/TransactionType/Create.cshtml";
+            public readonly string Delete = "~/Views/TransactionType/Delete.cshtml";
             public readonly string Details = "~/Views/TransactionType/Details.cshtml";
             public readonly string Edit = "~/Views/TransactionType/Edit.cshtml";
         }
@@ -227,6 +261,30 @@ namespace MyCashFlow.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DetailsOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Delete(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void PostDeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult PostDelete(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PostDelete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            PostDeleteOverride(callInfo, id);
             return callInfo;
         }
 

@@ -67,5 +67,18 @@ namespace MyCashFlow.Web.Services.TransactionType
 			var model = Mapper.Map<TransactionTypeDetailsViewModel>(transactionType);
 			return model;
 		}
+
+		public TransactionTypeDeleteViewModel BuildTransactionTypeDeleteViewModel(int transactionTypeId)
+		{
+			var transactionType = _unitOfWork.TransactionTypeRepository.GetByID(transactionTypeId);
+			var model = Mapper.Map<TransactionTypeDeleteViewModel>(transactionType);
+			return model;
+		}
+
+		public void DeleteTransactionType(int transactionTypeId)
+		{
+			_unitOfWork.TransactionTypeRepository.Delete(transactionTypeId);
+			_unitOfWork.Save();
+		}
 	}
 }

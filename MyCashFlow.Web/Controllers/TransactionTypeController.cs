@@ -48,7 +48,7 @@ namespace MyCashFlow.Web.Controllers
 
 			if(string.IsNullOrEmpty(model.PreviousUrl))
 			{
-				return RedirectToAction(MVC.TransactionType.ActionNames.Index);
+				return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
 			}
 			return Redirect(model.PreviousUrl);
 		}
@@ -70,13 +70,27 @@ namespace MyCashFlow.Web.Controllers
 
 			model.CreatorID = await GetCurrentUserIdAsync();
 			_transactionTypeService.EditTransactionType(model);
-			return RedirectToAction(MVC.TransactionType.ActionNames.Index);
+			return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
 		}
 
 		public virtual ActionResult Details(int id)
 		{
 			var model = _transactionTypeService.BuildTransactionTypeDetailsViewModel(id);
 			return View(model);
+		}
+
+		public virtual ActionResult Delete(int id)
+		{
+			var model = _transactionTypeService.BuildTransactionTypeDeleteViewModel(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult PostDelete(int id)
+		{
+			_transactionTypeService.DeleteTransactionType(id);
+			return RedirectToAction(MVC.Home.ActionNames.Index, MVC.Home.Name);
 		}
 	}
 }

@@ -21,7 +21,7 @@
 		<td>
 			@Html.ActionLink(Model.Edit, MVC.TransactionType.ActionNames.Edit, MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-primary" + (item.Private ? "" : " disabled") })
 			@Html.ActionLink(Model.Details, MVC.TransactionType.ActionNames.Details, MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-info" })
-			@Html.ActionLink(Model.Delete, "Delete", MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-danger" + (item.Private ? "" : " disabled") })
+			@Html.ActionLink(Model.Delete, MVC.TransactionType.ActionNames.Delete, MVC.TransactionType.Name, new { id = item.TransactionTypeID }, new { @class = "btn btn-sm btn-danger" + (item.Private ? "" : " disabled") })
 		</td>
     </tr>
 }
