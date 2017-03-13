@@ -22,7 +22,7 @@ namespace MyCashFlow.Web.Services.TransactionType
 
 		public TransactionTypeIndexViewModel BuildTransactionTypeIndexViewModel(int userId)
 		{
-			var transactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			var transactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || !x.CreatorID.HasValue);
 			var items = Mapper.Map<IList<TransactionTypeIndexItemViewModel>>(transactionTypes);
 			var model = new TransactionTypeIndexViewModel
 			{

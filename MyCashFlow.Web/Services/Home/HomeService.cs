@@ -3,6 +3,7 @@ using MyCashFlow.Web.ViewModels.Home;
 using System.Linq;
 using System;
 using MyCashFlow.Web.Services.TransactionType;
+using MyCashFlow.Web.Services.PaymentMethod;
 
 namespace MyCashFlow.Web.Services.Home
 {
@@ -10,8 +11,12 @@ namespace MyCashFlow.Web.Services.Home
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly ITransactionTypeService _transactionTypeService;
+		private readonly IPaymentMethodService _paymentMethodService;
 
-		public HomeService(IUnitOfWork unitOfWork, ITransactionTypeService transactionTypeService)
+		public HomeService(
+			IUnitOfWork unitOfWork,
+			ITransactionTypeService transactionTypeService,
+			IPaymentMethodService paymentMethodService)
 		{
 			if (unitOfWork == null)
 			{
@@ -21,9 +26,14 @@ namespace MyCashFlow.Web.Services.Home
 			{
 				throw new ArgumentNullException(nameof(transactionTypeService));
 			}
+			if (paymentMethodService == null)
+			{
+				throw new ArgumentNullException(nameof(paymentMethodService));
+			}
 
 			_unitOfWork = unitOfWork;
 			_transactionTypeService = transactionTypeService;
+			_paymentMethodService = paymentMethodService;
 		}
 
 		public HomeIndexViewModel BuildHomeIndexViewModel(int userId)
@@ -36,6 +46,7 @@ namespace MyCashFlow.Web.Services.Home
 			var numberOfTotalFilledProjects = allProjects.Where(x => x.ActualValue >= x.Budget).Count();
 			var numberOfNonFilledProjects = openProjects.Except(openFilledProjects).Count();
 			var transactionTypeIndexViewModel = _transactionTypeService.BuildTransactionTypeIndexViewModel(userId);
+			var paymentMethodIndexViewModel = _paymentMethodService.BuildPaymentMethodIndexViewModel(userId);
 
 			var model = new HomeIndexViewModel
 			{
@@ -46,7 +57,8 @@ namespace MyCashFlow.Web.Services.Home
 				FinishedFilledProjects = numberOfFinishedFilledProjects,
 				TotalFilledProjects = numberOfTotalFilledProjects,
 				NonFilledProjects = numberOfNonFilledProjects,
-				TransactionTypeIndexViewModel = transactionTypeIndexViewModel
+				TransactionTypeIndexViewModel = transactionTypeIndexViewModel,
+				PaymentMethodIndexViewModel = paymentMethodIndexViewModel
 			};
 			return model;
 		}

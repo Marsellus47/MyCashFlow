@@ -1,0 +1,25 @@
+﻿@model MyCashFlow.Web.ViewModels.PaymentMethod.PaymentMethodDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+	@Html.ActionLink(Model.Edit, MVC.PaymentMethod.ActionNames.Edit, MVC.PaymentMethod.Name, new { id = Model.PaymentMethodID }, new { @class = "btn btn-primary" + (Model.Private ? "" : " disabled") })
+	@Html.ActionLink(Model.Back, MVC.Home.ActionNames.Index, MVC.Home.Name, null, new { @class = "btn btn-primary" })
+</p>

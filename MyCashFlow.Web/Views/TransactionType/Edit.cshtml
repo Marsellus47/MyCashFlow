@@ -6,7 +6,7 @@
 
 <h2>@Model.Header</h2>
 
-@using (Html.BeginForm("Edit", MVC.TransactionType.Name, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm(MVC.TransactionType.ActionNames.Edit, MVC.TransactionType.Name, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 	@Html.HiddenFor(model => model.TransactionTypeID)

@@ -285,6 +285,11 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\PaymentMethod\PaymentMethodCreateViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodDeleteViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodEditViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodIndexItemViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethod\PaymentMethodIndexViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDeleteViewModel.cs" />
     <Compile Include="ViewModels\Project\ProjectDetailsViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseViewModel.cs" />
@@ -362,6 +367,10 @@
     <Content Include="Views\TransactionType\Edit.cshtml" />
     <Content Include="Views\TransactionType\Details.cshtml" />
     <Content Include="Views\TransactionType\Delete.cshtml" />
+    <Content Include="Views\PaymentMethod\_Index.cshtml" />
+    <Content Include="Views\PaymentMethod\Edit.cshtml" />
+    <Content Include="Views\PaymentMethod\Details.cshtml" />
+    <Content Include="Views\PaymentMethod\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

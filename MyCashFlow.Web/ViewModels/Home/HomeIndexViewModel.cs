@@ -2,6 +2,7 @@
 using MyCashFlow.Web.ViewModels.TransactionType;
 using Rsx = MyCashFlow.Resources.Localization.Views;
 using System.ComponentModel.DataAnnotations;
+using MyCashFlow.Web.ViewModels.PaymentMethod;
 
 namespace MyCashFlow.Web.ViewModels.Home
 {
@@ -34,5 +35,6 @@ namespace MyCashFlow.Web.ViewModels.Home
 		public int NonFilledProjects { get; set; }
 
 		public TransactionTypeIndexViewModel TransactionTypeIndexViewModel { get; set; }
+		public PaymentMethodIndexViewModel PaymentMethodIndexViewModel { get; set; }
 	}
 }
