@@ -342,6 +342,7 @@ namespace MyCashFlow.Identity.Initializer
 					ValidFrom = DateTime.Now.AddMonths(-1).Date,
 					ValidTill = DateTime.Now.AddMonths(1).Date,
 					Budget = 3500,
+					TargetValue = null,
 					ActualValue = 0,
 					SequenceNumber = 1,
 					CreatorID = creatorID
@@ -351,7 +352,8 @@ namespace MyCashFlow.Identity.Initializer
 					Name = "Test project with valid from",
 					ValidFrom = DateTime.Now.AddMonths(-2).Date,
 					ValidTill = null,
-					Budget = 1000,
+					Budget = null,
+					TargetValue = 1000,
 					ActualValue = 0,
 					SequenceNumber = 2,
 					CreatorID = creatorID
@@ -362,6 +364,7 @@ namespace MyCashFlow.Identity.Initializer
 					ValidFrom = null,
 					ValidTill = DateTime.Now.AddMonths(2).Date,
 					Budget = 500,
+					TargetValue = null,
 					ActualValue = 750,
 					SequenceNumber = 3,
 					CreatorID = creatorID
@@ -371,6 +374,9 @@ namespace MyCashFlow.Identity.Initializer
 					Name = "Test project without validity",
 					ValidFrom = null,
 					ValidTill = null,
+					Budget = null,
+					TargetValue = null,
+					ActualValue = null,
 					SequenceNumber = 4,
 					CreatorID = creatorID
 				}

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using MyCashFlow.Repositories;
+using MyCashFlow.Web.Infrastructure.ProjectsFilter;
 using MyCashFlow.Web.ViewModels.Project;
 using MyCashFlow.Web.ViewModels.Transaction;
 using Rsx = MyCashFlow.Resources.Localization.Views;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace MyCashFlow.Web.Services.Project
 {
@@ -22,9 +24,15 @@ namespace MyCashFlow.Web.Services.Project
 			_unitOfWork = unitOfWork;
 		}
 
-		public ProjectIndexViewModel BuildProjectIndexViewModel(int userId)
+		public ProjectIndexViewModel BuildProjectIndexViewModel(int userId, ProjectsFilterType? projectsFilter)
 		{
 			var projects = _unitOfWork.ProjectRepository.Get(filter: (project) => project.CreatorID == userId);
+
+			if(projectsFilter.HasValue)
+			{
+				projects = projects.Where(ProjectsFilterTypeResolver.ResolveFilter(projectsFilter.Value));
+			}
+
 			var items = Mapper.Map<IList<ProjectIndexItemViewModel>>(projects);
 			var model = new ProjectIndexViewModel
 			{

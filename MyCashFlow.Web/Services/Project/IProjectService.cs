@@ -1,4 +1,5 @@
-﻿using MyCashFlow.Web.ViewModels.Project;
+﻿using MyCashFlow.Web.Infrastructure.ProjectsFilter;
+using MyCashFlow.Web.ViewModels.Project;
 
 namespace MyCashFlow.Web.Services.Project
 {
@@ -8,8 +9,9 @@ namespace MyCashFlow.Web.Services.Project
 		/// Build View model needed by Index view in Project controller
 		/// </summary>
 		/// <param name="userId">Internal ID of the user whose Projects are needed</param>
+		/// <param name="projectsFilter">Define what projects to show</param>
 		/// <returns>Project Index view Model</returns>
-		ProjectIndexViewModel BuildProjectIndexViewModel(int userId);
+		ProjectIndexViewModel BuildProjectIndexViewModel(int userId, ProjectsFilterType? projectsFilter);
 
 		/// <summary>
 		/// Insert the Project

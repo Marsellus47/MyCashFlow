@@ -1,5 +1,6 @@
 ﻿using MyCashFlow.Web.Infrastructure.Attributes;
 using MyCashFlow.Web.Infrastructure.Controllers;
+using MyCashFlow.Web.Infrastructure.ProjectsFilter;
 using MyCashFlow.Web.Services.Project;
 using MyCashFlow.Web.ViewModels.Project;
 using System.Threading.Tasks;
@@ -22,10 +23,10 @@ namespace MyCashFlow.Web.Controllers
 			_projectService = projectService;
 		}
 
-		public virtual async Task<ActionResult> Index()
+		public virtual async Task<ActionResult> Index(ProjectsFilterType? projectsFilter)
 		{
 			var userId = await GetCurrentUserIdAsync();
-			var model = _projectService.BuildProjectIndexViewModel(userId);
+			var model = _projectService.BuildProjectIndexViewModel(userId, projectsFilter);
 			return View(model);
 		}
 

@@ -61,92 +61,101 @@ namespace MyCashFlow.Resources.Localization.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of my finished projects with filled budget.
-        /// </summary>
-        public static string Field_FinishedFilledProjects {
-            get {
-                return ResourceManager.GetString("Field_FinishedFilledProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my finished projects.
-        /// </summary>
-        public static string Field_FinishedProjects {
-            get {
-                return ResourceManager.GetString("Field_FinishedProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my projects with unknown or unfilled budget.
-        /// </summary>
-        public static string Field_NonFilledProjects {
-            get {
-                return ResourceManager.GetString("Field_NonFilledProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my open projects with filled budget.
-        /// </summary>
-        public static string Field_OpenFilledProjects {
-            get {
-                return ResourceManager.GetString("Field_OpenFilledProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my open projects.
-        /// </summary>
-        public static string Field_OpenProjects {
-            get {
-                return ResourceManager.GetString("Field_OpenProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my payment methods.
-        /// </summary>
-        public static string Field_PaymentMethods {
-            get {
-                return ResourceManager.GetString("Field_PaymentMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total number of my projects.
-        /// </summary>
-        public static string Field_Projects {
-            get {
-                return ResourceManager.GetString("Field_Projects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total number of my projects with filled budget.
-        /// </summary>
-        public static string Field_TotalFilledProjects {
-            get {
-                return ResourceManager.GetString("Field_TotalFilledProjects", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of my transaction types.
-        /// </summary>
-        public static string Field_TransactionTypes {
-            get {
-                return ResourceManager.GetString("Field_TransactionTypes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My statistics.
         /// </summary>
         public static string Header {
             get {
                 return ResourceManager.GetString("Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Budget.
+        /// </summary>
+        public static string Label_Budget {
+            get {
+                return ResourceManager.GetString("Label_Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finished.
+        /// </summary>
+        public static string Label_Finished {
+            get {
+                return ResourceManager.GetString("Label_Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missed.
+        /// </summary>
+        public static string Label_Missed {
+            get {
+                return ResourceManager.GetString("Label_Missed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string Label_Open {
+            get {
+                return ResourceManager.GetString("Label_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string Label_Projects {
+            get {
+                return ResourceManager.GetString("Label_Projects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reached.
+        /// </summary>
+        public static string Label_Reached {
+            get {
+                return ResourceManager.GetString("Label_Reached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spent.
+        /// </summary>
+        public static string Label_Spent {
+            get {
+                return ResourceManager.GetString("Label_Spent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target value.
+        /// </summary>
+        public static string Label_TargetValue {
+            get {
+                return ResourceManager.GetString("Label_TargetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string Label_Unknown {
+            get {
+                return ResourceManager.GetString("Label_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unspent.
+        /// </summary>
+        public static string Label_Unspent {
+            get {
+                return ResourceManager.GetString("Label_Unspent", resourceCulture);
             }
         }
     }

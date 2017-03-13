@@ -239,6 +239,8 @@
     <Compile Include="Infrastructure\Automapper\IMapFrom.cs" />
     <Compile Include="Infrastructure\Automapper\IMapTo.cs" />
     <Compile Include="Infrastructure\Controllers\UserManagerBasedController.cs" />
+    <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterType.cs" />
+    <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterTypeResolver.cs" />
     <Compile Include="ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

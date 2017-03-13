@@ -117,34 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Field_FinishedFilledProjects" xml:space="preserve">
-    <value>Number of my finished projects with filled budget</value>
-  </data>
-  <data name="Field_FinishedProjects" xml:space="preserve">
-    <value>Number of my finished projects</value>
-  </data>
-  <data name="Field_NonFilledProjects" xml:space="preserve">
-    <value>Number of my projects with unknown or unfilled budget</value>
-  </data>
-  <data name="Field_OpenFilledProjects" xml:space="preserve">
-    <value>Number of my open projects with filled budget</value>
-  </data>
-  <data name="Field_OpenProjects" xml:space="preserve">
-    <value>Number of my open projects</value>
-  </data>
-  <data name="Field_PaymentMethods" xml:space="preserve">
-    <value>Number of my payment methods</value>
-  </data>
-  <data name="Field_Projects" xml:space="preserve">
-    <value>Total number of my projects</value>
-  </data>
-  <data name="Field_TotalFilledProjects" xml:space="preserve">
-    <value>Total number of my projects with filled budget</value>
-  </data>
-  <data name="Field_TransactionTypes" xml:space="preserve">
-    <value>Number of my transaction types</value>
-  </data>
   <data name="Header" xml:space="preserve">
     <value>My statistics</value>
+  </data>
+  <data name="Label_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Label_Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="Label_Missed" xml:space="preserve">
+    <value>Missed</value>
+  </data>
+  <data name="Label_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Label_Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Label_Reached" xml:space="preserve">
+    <value>Reached</value>
+  </data>
+  <data name="Label_Spent" xml:space="preserve">
+    <value>Spent</value>
+  </data>
+  <data name="Label_TargetValue" xml:space="preserve">
+    <value>Target value</value>
+  </data>
+  <data name="Label_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Label_Unspent" xml:space="preserve">
+    <value>Unspent</value>
   </data>
 </root>
