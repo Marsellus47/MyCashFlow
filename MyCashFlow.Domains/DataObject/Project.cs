@@ -22,7 +22,7 @@ namespace MyCashFlow.Domains.DataObject
 		public DateTime? ValidTill { get; set; }
 		public decimal? Budget { get; set; }
 		public decimal? TargetValue { get; set; }
-		public decimal? ActualValue { get; set; }
+		public decimal ActualValue { get; set; }
 		public int SequenceNumber { get; set; }
 
 		#endregion

@@ -34,6 +34,7 @@ namespace MyCashFlow.Web.Services.Project
 			}
 
 			var items = Mapper.Map<IList<ProjectIndexItemViewModel>>(projects);
+
 			var model = new ProjectIndexViewModel
 			{
 				Items = items

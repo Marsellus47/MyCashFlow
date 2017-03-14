@@ -61,6 +61,15 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Budget.
+        /// </summary>
+        public static string Field_Budget {
+            get {
+                return ResourceManager.GetString("Field_Budget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Field_Name {
@@ -70,11 +79,29 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Progress.
+        /// </summary>
+        public static string Field_Progress {
+            get {
+                return ResourceManager.GetString("Field_Progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sequence number.
         /// </summary>
         public static string Field_SequenceNumber {
             get {
                 return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target value.
+        /// </summary>
+        public static string Field_TargetValue {
+            get {
+                return ResourceManager.GetString("Field_TargetValue", resourceCulture);
             }
         }
         

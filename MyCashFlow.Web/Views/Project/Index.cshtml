@@ -35,6 +35,9 @@
 			<tr>
 				<td>
 					@Html.DisplayFor(modelItem => item.Name)
+					<div class="progress">
+						<div class="@item.ProgressCssClass" role="progressbar" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100" style="width:@item.Progress%">@Html.DisplayNameFor(model => item.Progress) @item.Progress%</div>
+					</div>
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.ValidFrom)
