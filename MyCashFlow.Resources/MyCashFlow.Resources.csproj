@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Delete.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Views\Project\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Views\Project\_Shared.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +191,10 @@
     <EmbeddedResource Include="Localization\Views\Project\Delete.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Delete.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Views\Project\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Views\Project\_Shared.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

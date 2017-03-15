@@ -1,9 +1,9 @@
-﻿using MyCashFlow.Web.Infrastructure.Automapper;
-using Rsx = MyCashFlow.Resources.Localization.Views.Project._Shared;
+﻿using AutoMapper;
+using MyCashFlow.Web.Infrastructure.Automapper;
+using Rsx = MyCashFlow.Resources.Localization.Views.Project;
 using System.ComponentModel.DataAnnotations;
-using System;
-using AutoMapper;
 using System.Text;
+using System;
 
 namespace MyCashFlow.Web.ViewModels.Project
 {
@@ -12,23 +12,26 @@ namespace MyCashFlow.Web.ViewModels.Project
 		[Key]
 		public int ProjectID { get; set; }
 
-		[Display(Name = nameof(Rsx.Field_Name), ResourceType = typeof(Rsx))]
+		[Display(Name = nameof(Rsx._Shared.Field_Name), ResourceType = typeof(Rsx._Shared))]
 		public string Name { get; set; }
 
 		[DataType(DataType.Date)]
-		[Display(Name = nameof(Rsx.Field_ValidFrom), ResourceType = typeof(Rsx))]
+		[Display(Name = nameof(Rsx._Shared.Field_ValidFrom), ResourceType = typeof(Rsx._Shared))]
 		public DateTime? ValidFrom { get; set; }
 
 		[DataType(DataType.Date)]
-		[Display(Name = nameof(Rsx.Field_ValidTill), ResourceType = typeof(Rsx))]
+		[Display(Name = nameof(Rsx._Shared.Field_ValidTill), ResourceType = typeof(Rsx._Shared))]
 		public DateTime? ValidTill { get; set; }
 
-		[Display(Name = nameof(Rsx.Field_SequenceNumber), ResourceType = typeof(Rsx))]
+		[Display(Name = nameof(Rsx._Shared.Field_SequenceNumber), ResourceType = typeof(Rsx._Shared))]
 		public int SequenceNumber { get; set; }
 
 		[ScaffoldColumn(false)]
-		[Display(Name = nameof(Rsx.Field_Progress), ResourceType = typeof(Rsx))]
+		[Display(Name = nameof(Rsx.Index.Field_Progress), ResourceType = typeof(Rsx.Index))]
 		public decimal Progress { get; set; }
+
+		[ScaffoldColumn(false)]
+		public string ProgressHint { get; set; }
 
 		public string ProgressCssClass
 		{
@@ -58,10 +61,26 @@ namespace MyCashFlow.Web.ViewModels.Project
 		public void CreateMappings(IMapperConfigurationExpression configuration)
 		{
 			configuration.CreateMap<Domains.DataObject.Project, ProjectIndexItemViewModel>()
-				.ForMember(dest => dest.Progress, opt => opt.MapFrom(src =>
-					(src.Budget ?? src.TargetValue ?? 0) == 0
-					? 0
-					: 100 * src.ActualValue / (src.Budget ?? src.TargetValue)));
+				.ForMember(dest => dest.Progress, opt => opt.MapFrom(src => GetProgress(src)))
+				.ForMember(dest => dest.ProgressHint, opt => opt.MapFrom(src =>
+					src.Budget.HasValue
+					? string.Format(Rsx.Index.Field_ProgressHint_Budget, GetProgress(src))
+					: src.TargetValue.HasValue
+						? string.Format(Rsx.Index.Field_ProgressHind_TargetValue, GetProgress(src))
+						: string.Empty));
+		}
+
+		private decimal GetProgress(Domains.DataObject.Project project)
+		{
+			if(project.Budget.HasValue)
+			{
+				return 100 * project.ActualValue / project.Budget.Value;
+			}
+			else if(project.TargetValue.HasValue)
+			{
+				return 100 * project.ActualValue / project.TargetValue.Value;
+			}
+			return 0;
 		}
 	}
 }

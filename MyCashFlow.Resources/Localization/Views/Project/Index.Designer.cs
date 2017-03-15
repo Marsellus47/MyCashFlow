@@ -22,14 +22,14 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class _Shared {
+    public class Index {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Shared() {
+        internal Index() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project._Shared", typeof(_Shared).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyCashFlow.Resources.Localization.Views.Project.Index", typeof(Index).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,29 @@ namespace MyCashFlow.Resources.Localization.Views.Project {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Budget.
+        ///   Looks up a localized string similar to Progress.
         /// </summary>
-        public static string Field_Budget {
+        public static string Field_Progress {
             get {
-                return ResourceManager.GetString("Field_Budget", resourceCulture);
+                return ResourceManager.GetString("Field_Progress", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to {0}% of target value reached.
         /// </summary>
-        public static string Field_Name {
+        public static string Field_ProgressHind_TargetValue {
             get {
-                return ResourceManager.GetString("Field_Name", resourceCulture);
+                return ResourceManager.GetString("Field_ProgressHind_TargetValue", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sequence number.
+        ///   Looks up a localized string similar to {0}% of budget left.
         /// </summary>
-        public static string Field_SequenceNumber {
+        public static string Field_ProgressHint_Budget {
             get {
-                return ResourceManager.GetString("Field_SequenceNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Target value.
-        /// </summary>
-        public static string Field_TargetValue {
-            get {
-                return ResourceManager.GetString("Field_TargetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid from.
-        /// </summary>
-        public static string Field_ValidFrom {
-            get {
-                return ResourceManager.GetString("Field_ValidFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid till.
-        /// </summary>
-        public static string Field_ValidTill {
-            get {
-                return ResourceManager.GetString("Field_ValidTill", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Projects.
-        /// </summary>
-        public static string MenuItem {
-            get {
-                return ResourceManager.GetString("MenuItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("Field_ProgressHint_Budget", resourceCulture);
             }
         }
     }

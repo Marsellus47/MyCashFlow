@@ -5,6 +5,19 @@
     ViewBag.Title = Model.Title;
 }
 
+<style>
+	.progress {
+    position: relative;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }
+</style>
+
 <h2>@Model.Header</h2>
 
 <p>
@@ -30,13 +43,22 @@
 	</thead>
 	
 	<tbody>
-		@foreach (var item in Model.Items)
+		@foreach (var item in Model.Items.OrderBy(x => x.SequenceNumber))
 		{
 			<tr>
 				<td>
-					@Html.DisplayFor(modelItem => item.Name)
 					<div class="progress">
-						<div class="@item.ProgressCssClass" role="progressbar" aria-valuenow="@item.Progress" aria-valuemin="0" aria-valuemax="100" style="width:@item.Progress%">@Html.DisplayNameFor(model => item.Progress) @item.Progress%</div>
+						<div class="@item.ProgressCssClass"
+							 role="progressbar"
+							 aria-valuenow="@item.Progress"
+							 aria-valuemin="0"
+							 aria-valuemax="100"
+							 style="width:@item.Progress%"
+							 data-toggle="tooltip"
+							 data-placement="bottom"
+							 title="@item.ProgressHint">
+							<span>@Html.DisplayFor(modelItem => item.Name)</span>
+						</div>
 					</div>
 				</td>
 				<td>
@@ -57,3 +79,9 @@
 		}
 	</tbody>
 </table>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

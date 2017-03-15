@@ -3,7 +3,7 @@ using MyCashFlow.Repositories;
 using MyCashFlow.Web.Infrastructure.ProjectsFilter;
 using MyCashFlow.Web.ViewModels.Project;
 using MyCashFlow.Web.ViewModels.Transaction;
-using Rsx = MyCashFlow.Resources.Localization.Views;
+using Rsx = MyCashFlow.Resources.Localization.Views.Project.Delete;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -80,9 +80,9 @@ namespace MyCashFlow.Web.Services.Project
 			var project = _unitOfWork.ProjectRepository.GetByID(projectId);
 			var model = Mapper.Map<ProjectDeleteViewModel>(project);
 
-			model.DeleteIncludingTransactionsButtonLabel = Rsx.Project.Delete.Button_DeleteIncludingTransactions;
-			model.DeleteProjectOnlyButtonLabel = Rsx.Project.Delete.Button_DeleteProjectOnly;
-			model.Message = Rsx.Project.Delete.Message;
+			model.DeleteIncludingTransactionsButtonLabel = Rsx.Button_DeleteIncludingTransactions;
+			model.DeleteProjectOnlyButtonLabel = Rsx.Button_DeleteProjectOnly;
+			model.Message = Rsx.Message;
 
 			return model;
 		}

@@ -338,46 +338,57 @@ namespace MyCashFlow.Identity.Initializer
 			{
 				new Project
 				{
-					Name = "Test project with valid from and till",
+					Name = "Test project 1",
 					ValidFrom = DateTime.Now.AddMonths(-1).Date,
 					ValidTill = DateTime.Now.AddMonths(1).Date,
 					Budget = 3500,
 					TargetValue = null,
-					ActualValue = 0,
-					SequenceNumber = 1,
-					CreatorID = creatorID
-				},
-				new Project
-				{
-					Name = "Test project with valid from",
-					ValidFrom = DateTime.Now.AddMonths(-2).Date,
-					ValidTill = null,
-					Budget = null,
-					TargetValue = 1000,
-					ActualValue = 0,
-					SequenceNumber = 2,
-					CreatorID = creatorID
-				},
-				new Project
-				{
-					Name = "Test project with valid till",
-					ValidFrom = null,
-					ValidTill = DateTime.Now.AddMonths(2).Date,
-					Budget = null,
-					TargetValue = 1000,
-					ActualValue = 750,
+					ActualValue = 3500,
 					SequenceNumber = 3,
 					CreatorID = creatorID
 				},
 				new Project
 				{
-					Name = "Test project without validity",
+					Name = "Test project 2",
+					ValidFrom = DateTime.Now.AddMonths(-2).Date,
+					ValidTill = null,
+					Budget = null,
+					TargetValue = 1000,
+					ActualValue = 100,
+					SequenceNumber = 1,
+					CreatorID = creatorID
+				},
+				new Project
+				{
+					Name = "Test project 3",
+					ValidFrom = null,
+					ValidTill = DateTime.Now.AddMonths(2).Date,
+					Budget = null,
+					TargetValue = 1000,
+					ActualValue = 750,
+					SequenceNumber = 4,
+					CreatorID = creatorID
+				},
+				new Project
+				{
+					Name = "Test project 4",
+					ValidFrom = null,
+					ValidTill = DateTime.Now.AddDays(-10).Date,
+					Budget = 10000,
+					TargetValue = null,
+					ActualValue = 5000,
+					SequenceNumber = 5,
+					CreatorID = creatorID
+				},
+				new Project
+				{
+					Name = "Test project 5",
 					ValidFrom = null,
 					ValidTill = null,
 					Budget = null,
 					TargetValue = null,
 					ActualValue = 0,
-					SequenceNumber = 4,
+					SequenceNumber = 2,
 					CreatorID = creatorID
 				}
 			};
@@ -389,7 +400,7 @@ namespace MyCashFlow.Identity.Initializer
 		private static void AddTransactions(ApplicationDbContext context)
 		{
 			var creatorID = context.Users.First(x => x.UserName == "username").Id;
-			var projectID = context.Projects.First(x => x.Name == "Test project with valid from and till").ProjectID;
+			var projectID = context.Projects.First(x => x.Name == "Test project 1").ProjectID;
 
 			var transactions = new List<Transaction>
 			{
@@ -397,7 +408,7 @@ namespace MyCashFlow.Identity.Initializer
 				{
 					Date = DateTime.Now.AddDays(-7).Date,
 					Amount = 15.49M,
-					Note = "Test transaction 1 for Project: Test project with valid from and till",
+					Note = "Test transaction 1 for project 1",
 					Income = false,
 					ProjectID = projectID,
 					CreatorID = creatorID,
@@ -408,7 +419,7 @@ namespace MyCashFlow.Identity.Initializer
 				{
 					Date = DateTime.Now.AddDays(-6).Date,
 					Amount = 5000M,
-					Note = "Test transaction 2 for Project: Test project with valid from and till",
+					Note = "Test transaction 2 for project 1",
 					Income = true,
 					ProjectID = projectID,
 					CreatorID = creatorID,
