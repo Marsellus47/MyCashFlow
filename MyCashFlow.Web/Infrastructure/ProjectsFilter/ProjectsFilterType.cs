@@ -6,16 +6,12 @@
 		OpenProjects,
 		OpenProjectsWithSpentBudget,
 		OpenProjectsWithUnspentBudget,
-		OpenProjectsWithUnknownBudget,
 		OpenProjectsWithReachedTargetValue,
 		OpenProjectsWithMissedTargetValue,
-		OpenProjectsWithUnknownTargetValue,
 		FinishedProjects,
 		FinishedProjectsWithSpentBudget,
 		FinishedProjectsWithUnspentBudget,
-		FinishedProjectsWithUnknownBudget,
 		FinishedProjectsWithReachedTargetValue,
-		FinishedProjectsWithMissedTargetValue,
-		FinishedProjectsWithUnknownTargetValue
+		FinishedProjectsWithMissedTargetValue
 	}
 }

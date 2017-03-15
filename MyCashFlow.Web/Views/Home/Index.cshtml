@@ -17,7 +17,7 @@
 	<tbody>
 		<tr>
 			<td></td>
-			<td class="text-center" colspan="6">
+			<td class="text-center" colspan="4">
 				@Html.DisplayNameFor(model => model.Projects)
 				@Html.ActionLink(Model.Projects.ToString(),
 					  MVC.Project.ActionNames.Index,
@@ -29,7 +29,7 @@
 
 		<tr>
 			<td></td>
-			<td class="text-center" colspan="3">
+			<td class="text-center" colspan="2">
 				@Html.DisplayNameFor(model => model.OpenProjects)
 				@Html.ActionLink(Model.OpenProjects.ToString(),
 					  MVC.Project.ActionNames.Index,
@@ -38,7 +38,7 @@
 					  new { @class = "label label-info label-as-badge" })
 			</td>
 
-			<td class="text-center" colspan="3">
+			<td class="text-center" colspan="2">
 				@Html.DisplayNameFor(model => model.FinishedProjects)
 				@Html.ActionLink(Model.FinishedProjects.ToString(),
 					  MVC.Project.ActionNames.Index,
@@ -68,14 +68,6 @@
 					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithMissedTargetValue },
 					  new { @class = "label label-info label-as-badge" })
 			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithUnknownTargetValue)
-				@Html.ActionLink(Model.OpenProjectsWithUnknownTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithUnknownTargetValue },
-					  new { @class = "label label-default label-as-badge" })
-			</td>
 
 			<td class="text-center">
 				@Html.DisplayNameFor(model => model.FinishedProjectsWithReachedTargetValue)
@@ -92,14 +84,6 @@
 					  MVC.Project.Name,
 					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithMissedTargetValue },
 					  new { @class = "label label-danger label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithUnknownTargetValue)
-				@Html.ActionLink(Model.FinishedProjectsWithUnknownTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithUnknownTargetValue },
-					  new { @class = "label label-default label-as-badge" })
 			</td>
 		</tr>
 
@@ -123,14 +107,6 @@
 					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithUnspentBudget },
 					  new { @class = "label label-info label-as-badge" })
 			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithUnknownBudget)
-				@Html.ActionLink(Model.OpenProjectsWithUnknownBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithUnknownBudget },
-					  new { @class = "label label-default label-as-badge" })
-			</td>
 
 			<td class="text-center">
 				@Html.DisplayNameFor(model => model.FinishedProjectsWithSpentBudget)
@@ -147,14 +123,6 @@
 					  MVC.Project.Name,
 					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithUnspentBudget },
 					  new { @class = "label label-danger label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithUnknownBudget)
-				@Html.ActionLink(Model.FinishedProjectsWithUnknownBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithUnknownBudget },
-					  new { @class = "label label-default label-as-badge" })
 			</td>
 		</tr>
 	</tbody>

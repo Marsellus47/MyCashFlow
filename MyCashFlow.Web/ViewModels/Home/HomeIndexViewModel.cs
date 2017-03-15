@@ -28,17 +28,11 @@ namespace MyCashFlow.Web.ViewModels.Home
 		[Display(Name = nameof(Rsx.Home.Index.Label_Unspent), ResourceType = typeof(Rsx.Home.Index))]
 		public int OpenProjectsWithUnspentBudget { get; set; }
 
-		[Display(Name = nameof(Rsx.Home.Index.Label_Unknown), ResourceType = typeof(Rsx.Home.Index))]
-		public int OpenProjectsWithUnknownBudget { get; set; }
-
 		[Display(Name = nameof(Rsx.Home.Index.Label_Reached), ResourceType = typeof(Rsx.Home.Index))]
 		public int OpenProjectsWithReachedTargetValue { get; set; }
 
 		[Display(Name = nameof(Rsx.Home.Index.Label_Missed), ResourceType = typeof(Rsx.Home.Index))]
 		public int OpenProjectsWithMissedTargetValue { get; set; }
-
-		[Display(Name = nameof(Rsx.Home.Index.Label_Unknown), ResourceType = typeof(Rsx.Home.Index))]
-		public int OpenProjectsWithUnknownTargetValue { get; set; }
 
 		[Display(Name = nameof(Rsx.Home.Index.Label_Finished), ResourceType = typeof(Rsx.Home.Index))]
 		public int FinishedProjects { get; set; }
@@ -49,17 +43,11 @@ namespace MyCashFlow.Web.ViewModels.Home
 		[Display(Name = nameof(Rsx.Home.Index.Label_Unspent), ResourceType = typeof(Rsx.Home.Index))]
 		public int FinishedProjectsWithUnspentBudget { get; set; }
 
-		[Display(Name = nameof(Rsx.Home.Index.Label_Unknown), ResourceType = typeof(Rsx.Home.Index))]
-		public int FinishedProjectsWithUnknownBudget { get; set; }
-
 		[Display(Name = nameof(Rsx.Home.Index.Label_Reached), ResourceType = typeof(Rsx.Home.Index))]
 		public int FinishedProjectsWithReachedTargetValue { get; set; }
 
 		[Display(Name = nameof(Rsx.Home.Index.Label_Missed), ResourceType = typeof(Rsx.Home.Index))]
 		public int FinishedProjectsWithMissedTargetValue { get; set; }
-
-		[Display(Name = nameof(Rsx.Home.Index.Label_Unknown), ResourceType = typeof(Rsx.Home.Index))]
-		public int FinishedProjectsWithUnknownTargetValue { get; set; }
 
 		public string TargetValue { get; private set; }
 		public string Budget { get; private set; }

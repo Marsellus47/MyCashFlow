@@ -57,20 +57,12 @@ namespace MyCashFlow.Web.Services.Home
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.OpenProjectsWithUnspentBudget))
 				.Count();
 
-			var numberOfOpenProjectsWithUnknownBudget = myProjects
-				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.OpenProjectsWithUnknownBudget))
-				.Count();
-
 			var numberOfOpenProjectsWithReachedTargetValue = myProjects
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.OpenProjectsWithReachedTargetValue))
 				.Count();
 
 			var numberOfOpenProjectsWithMissedTargetValue = myProjects
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.OpenProjectsWithMissedTargetValue))
-				.Count();
-
-			var numberOfOpenProjectsWithUnknownTargetValue = myProjects
-				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.OpenProjectsWithUnknownTargetValue))
 				.Count();
 
 			var finishedProjects = myProjects
@@ -85,20 +77,12 @@ namespace MyCashFlow.Web.Services.Home
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.FinishedProjectsWithUnspentBudget))
 				.Count();
 
-			var numberofFinishedProjectsWithUnknownBudget = myProjects
-				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.FinishedProjectsWithUnknownBudget))
-				.Count();
-
 			var numberofFinishedProjectsWithReachedTargetValue = myProjects
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.FinishedProjectsWithReachedTargetValue))
 				.Count();
 
 			var numberofFinishedProjectsWithMissedTargetValue = myProjects
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.FinishedProjectsWithMissedTargetValue))
-				.Count();
-
-			var numberofFinishedProjectsWithUnknownTargetValue = myProjects
-				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.FinishedProjectsWithUnknownTargetValue))
 				.Count();
 
 			var transactionTypeIndexViewModel = _transactionTypeService.BuildTransactionTypeIndexViewModel(userId);
@@ -111,18 +95,14 @@ namespace MyCashFlow.Web.Services.Home
 				OpenProjects = numberOfOpenProjects,
 				OpenProjectsWithSpentBudget = numberOfOpenProjectsWithSpentBudget,
 				OpenProjectsWithUnspentBudget = numberOfOpenProjectsWithUnspentBudget,
-				OpenProjectsWithUnknownBudget = numberOfOpenProjectsWithUnknownBudget,
 				OpenProjectsWithReachedTargetValue = numberOfOpenProjectsWithReachedTargetValue,
 				OpenProjectsWithMissedTargetValue = numberOfOpenProjectsWithMissedTargetValue,
-				OpenProjectsWithUnknownTargetValue = numberOfOpenProjectsWithUnknownTargetValue,
 
 				FinishedProjects = finishedProjects,
 				FinishedProjectsWithSpentBudget = numberofFinishedProjectsWithSpentBudget,
 				FinishedProjectsWithUnspentBudget = numberofFinishedProjectsWithUnspentBudget,
-				FinishedProjectsWithUnknownBudget = numberofFinishedProjectsWithUnknownBudget,
 				FinishedProjectsWithReachedTargetValue = numberofFinishedProjectsWithReachedTargetValue,
 				FinishedProjectsWithMissedTargetValue = numberofFinishedProjectsWithMissedTargetValue,
-				FinishedProjectsWithUnknownTargetValue = numberofFinishedProjectsWithUnknownTargetValue,
 
 				TransactionTypeIndexViewModel = transactionTypeIndexViewModel,
 				PaymentMethodIndexViewModel = paymentMethodIndexViewModel
