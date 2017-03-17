@@ -59,6 +59,7 @@ namespace MyCashFlow.Repositories.Repository
 				}
 				return original;
 			};
+			return (TEntity)getOriginal(Context.Entry(updatedEntity).GetDatabaseValues(), typeof(TEntity));
 		}
 	}
 }
