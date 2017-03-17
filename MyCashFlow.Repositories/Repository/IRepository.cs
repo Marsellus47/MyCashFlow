@@ -6,5 +6,6 @@
 		void Update(TEntity record);
 		void Delete(object id);
 		void Delete(TEntity record);
+		TEntity GetOriginal(TEntity updatedEntity);
 	}
 }

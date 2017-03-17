@@ -1,10 +1,10 @@
 ﻿using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Context;
 using MyCashFlow.Identity.Stores;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System;
 
 namespace MyCashFlow.Identity.Initializer
 {

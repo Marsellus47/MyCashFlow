@@ -92,6 +92,12 @@ namespace MyCashFlow.Web.Services.Transaction
 		{
 			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
 			_transactionRepository.Insert(transaction);
+
+			if(transaction.ProjectID.HasValue)
+			{
+				var project = _projectRepository.GetByID(transaction);
+				project.ActualValue = project.ActualValue + (transaction.Income ? 1 : -1 * transaction.Amount);
+			}
 		}
 
 		public TransactionEditViewModel BuildTransactionEditViewModel(int userId, int transactionId)
@@ -116,8 +122,28 @@ namespace MyCashFlow.Web.Services.Transaction
 		{
 			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
 			_transactionRepository.Update(transaction);
-			var original = _transactionRepository.GetOriginal(transaction);
-			;
+
+			var originalTransaction = _transactionRepository.GetOriginal(transaction);
+
+			// When Transaction Amount has changed
+			if(((originalTransaction.Income ? 1 : -1) * originalTransaction.Amount) != ((transaction.Income ? 1 : -1) * transaction.Amount))
+			{
+				// Set original Project's Actual value
+				if(originalTransaction.ProjectID.HasValue)
+				{
+					var originalProject = _projectRepository.GetByID(originalTransaction.ProjectID.Value);
+					originalProject.ActualValue = originalProject.ActualValue + ((originalTransaction.Income ? -1 : 1) * originalTransaction.Amount);
+					_projectRepository.Update(originalProject);
+				}
+
+				// and also set the actual Project's Actual value
+				if(transaction.ProjectID.HasValue)
+				{
+					var project = _projectRepository.GetByID(transaction.ProjectID.Value);
+					project.ActualValue = project.ActualValue + ((transaction.Income ? 1 : -1) * transaction.Amount);
+					_projectRepository.Update(project);
+				}
+			}
 		}
 
 		public TransactionDetailsViewModel BuildTransactionDetailsViewModel(int transactionId)

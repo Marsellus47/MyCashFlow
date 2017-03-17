@@ -1,5 +1,7 @@
 ﻿using MyCashFlow.Identity.Context;
+using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MyCashFlow.Repositories.Repository
 {
@@ -34,6 +36,29 @@ namespace MyCashFlow.Repositories.Repository
 				DbSet.Attach(record);
 			}
 			DbSet.Remove(record);
+		}
+
+		public TEntity GetOriginal(TEntity updatedEntity)
+		{
+			Func<DbPropertyValues, Type, object> getOriginal = null;
+			getOriginal = (originalValues, type) =>
+			{
+				object original = Activator.CreateInstance(type, true);
+				foreach (var ptyName in originalValues.PropertyNames)
+				{
+					var property = type.GetProperty(ptyName);
+					object value = originalValues[ptyName];
+					if (value is DbPropertyValues) //nested complex object
+					{
+						property.SetValue(original, getOriginal(value as DbPropertyValues, property.PropertyType));
+					}
+					else
+					{
+						property.SetValue(original, value);
+					}
+				}
+				return original;
+			};
 		}
 	}
 }
