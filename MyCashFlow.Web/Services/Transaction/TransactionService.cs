@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories;
+using MyCashFlow.Repositories.Repository;
 using MyCashFlow.Web.ViewModels.Transaction;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +9,43 @@ namespace MyCashFlow.Web.Services.Transaction
 {
 	public class TransactionService : ITransactionService
 	{
-		private readonly IUnitOfWork _unitOfWork;
+		private readonly IRepository<Domains.DataObject.Transaction> _transactionRepository;
+		private readonly IRepository<Domains.DataObject.TransactionType> _transactionTypeRepository;
+		private readonly IRepository<Domains.DataObject.Project> _projectRepository;
+		private readonly IRepository<Domains.DataObject.PaymentMethod> _paymentMethodRepository;
 
-		public TransactionService(IUnitOfWork unitOfWork)
+		public TransactionService(
+			IRepository<Domains.DataObject.Transaction> transactionRepository,
+			IRepository<Domains.DataObject.TransactionType> transactionTypeRepository,
+			IRepository<Domains.DataObject.Project> projectRepository,
+			IRepository<Domains.DataObject.PaymentMethod> paymentMethodRepository)
 		{
-			if(unitOfWork == null)
+			if(transactionRepository == null)
 			{
-				throw new ArgumentNullException(nameof(unitOfWork));
+				throw new ArgumentNullException(nameof(transactionRepository));
+			}
+			if (transactionTypeRepository == null)
+			{
+				throw new ArgumentNullException(nameof(transactionTypeRepository));
+			}
+			if (projectRepository == null)
+			{
+				throw new ArgumentNullException(nameof(projectRepository));
+			}
+			if (paymentMethodRepository == null)
+			{
+				throw new ArgumentNullException(nameof(paymentMethodRepository));
 			}
 
-			_unitOfWork = unitOfWork;
+			_transactionRepository = transactionRepository;
+			_transactionTypeRepository = transactionTypeRepository;
+			_projectRepository = projectRepository;
+			_paymentMethodRepository = paymentMethodRepository;
 		}
 
 		public TransactionIndexViewModel BuildTransactionIndexViewModel(int userId, int? projectId)
 		{
-			var transactions = _unitOfWork.TransactionRepository.Get(x => x.CreatorID == userId);
+			var transactions = _transactionRepository.Get(x => x.CreatorID == userId);
 
 			if(projectId.HasValue)
 			{
@@ -44,15 +66,15 @@ namespace MyCashFlow.Web.Services.Transaction
 			IList<Domains.DataObject.Project> projects = null;
 			if(!projectId.HasValue)
 			{
-				projects = _unitOfWork.ProjectRepository.Get(x => x.CreatorID == userId).ToList();
+				projects = _projectRepository.Get(x => x.CreatorID == userId).ToList();
 			}
 			else
 			{
-				projects = _unitOfWork.ProjectRepository.Get(x => x.ProjectID == projectId.Value).ToList();
+				projects = _projectRepository.Get(x => x.ProjectID == projectId.Value).ToList();
 			}
 
-			var transactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
-			var paymentMethods = _unitOfWork.PaymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			var transactionTypes = _transactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			var paymentMethods = _paymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
 
 			var model = new TransactionCreateViewModel
 			{
@@ -69,24 +91,23 @@ namespace MyCashFlow.Web.Services.Transaction
 		public void CreateTransaction(TransactionCreateViewModel model)
 		{
 			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
-			_unitOfWork.TransactionRepository.Insert(transaction);
-			_unitOfWork.Save();
+			_transactionRepository.Insert(transaction);
 		}
 
 		public TransactionEditViewModel BuildTransactionEditViewModel(int userId, int transactionId)
 		{
-			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var transaction = _transactionRepository.GetByID(transactionId);
 			var model = Mapper.Map<TransactionEditViewModel>(transaction);
 			if (!transaction.ProjectID.HasValue)
 			{
-				model.Projects = _unitOfWork.ProjectRepository.Get(x => x.CreatorID == userId).ToList();
+				model.Projects = _projectRepository.Get(x => x.CreatorID == userId).ToList();
 			}
 			else
 			{
-				model.Projects = _unitOfWork.ProjectRepository.Get(x => x.ProjectID == transaction.ProjectID.Value).ToList();
+				model.Projects = _projectRepository.Get(x => x.ProjectID == transaction.ProjectID.Value).ToList();
 			}
-			model.TransactionTypes = _unitOfWork.TransactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
-			model.PaymentMethods = _unitOfWork.PaymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			model.TransactionTypes = _transactionTypeRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
+			model.PaymentMethods = _paymentMethodRepository.Get(x => x.CreatorID == userId || x.CreatorID == null);
 
 			return model;
 		}
@@ -94,27 +115,28 @@ namespace MyCashFlow.Web.Services.Transaction
 		public void EditTransaction(TransactionEditViewModel model)
 		{
 			var transaction = Mapper.Map<Domains.DataObject.Transaction>(model);
-			_unitOfWork.TransactionRepository.Update(transaction);
-			_unitOfWork.Save();
+			_transactionRepository.Update(transaction);
+			var original = _transactionRepository.GetOriginal(transaction);
+			;
 		}
 
 		public TransactionDetailsViewModel BuildTransactionDetailsViewModel(int transactionId)
 		{
-			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var transaction = _transactionRepository.GetByID(transactionId);
 			var model = Mapper.Map<TransactionDetailsViewModel>(transaction);
 
 			if (transaction.ProjectID.HasValue)
 			{
-				var project = _unitOfWork.ProjectRepository.GetByID(transaction.ProjectID.Value);
+				var project = _projectRepository.GetByID(transaction.ProjectID.Value);
 				model.ProjectName = project.Name;
 			}
 
-			var transactionType = _unitOfWork.TransactionTypeRepository.GetByID(transaction.TransactionTypeID);
+			var transactionType = _transactionTypeRepository.GetByID(transaction.TransactionTypeID);
 			model.TransactionTypeName = transactionType.Name;
 
 			if (transaction.PaymentMethodID.HasValue)
 			{
-				var paymentMethod = _unitOfWork.PaymentMethodRepository.GetByID(transaction.PaymentMethodID.Value);
+				var paymentMethod = _paymentMethodRepository.GetByID(transaction.PaymentMethodID.Value);
 				model.PaymentMethodName = paymentMethod.Name;
 			}
 
@@ -123,15 +145,14 @@ namespace MyCashFlow.Web.Services.Transaction
 
 		public TransactionDeleteViewModel BuildTransactionDeleteViewModel(int transactionId)
 		{
-			var transaction = _unitOfWork.TransactionRepository.GetByID(transactionId);
+			var transaction = _transactionRepository.GetByID(transactionId);
 			var model = Mapper.Map<TransactionDeleteViewModel>(transaction);
 			return model;
 		}
 
 		public void DeleteTransaction(int transactionId)
 		{
-			_unitOfWork.TransactionRepository.Delete(transactionId);
-			_unitOfWork.Save();
+			_transactionRepository.Delete(transactionId);
 		}
 	}
 }

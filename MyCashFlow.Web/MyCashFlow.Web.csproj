@@ -238,6 +238,7 @@
     <Compile Include="Infrastructure\Automapper\ICustomMappings.cs" />
     <Compile Include="Infrastructure\Automapper\IMapFrom.cs" />
     <Compile Include="Infrastructure\Automapper\IMapTo.cs" />
+    <Compile Include="Infrastructure\Controllers\BaseController.cs" />
     <Compile Include="Infrastructure\Controllers\UserManagerBasedController.cs" />
     <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterType.cs" />
     <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterTypeResolver.cs" />

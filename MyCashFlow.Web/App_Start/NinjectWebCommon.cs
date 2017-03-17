@@ -68,15 +68,23 @@ namespace MyCashFlow.Web
 			kernel.Bind(x => x.FromAssembliesMatching("MyCashFlow.*")
 				.SelectAllClasses()
 				.BindDefaultInterface());
+			
+			/*kernel.Bind<ApplicationDbContext>()
+				.ToSelf()
+				.InRequestScope()
+				.WithConstructorArgument("nameOrConnectionString", "MyCashFlow");*/
 
-			kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope().WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
+			kernel.Bind<IUnitOfWork>()
+				.To<ApplicationDbContext>()
+				.InRequestScope()
+				.WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
 		}
 
 		public static ApplicationDbContext ApplicationDbContext
 		{
 			get
 			{
-				return bootstrapper.Kernel.Get<ApplicationDbContext>();
+				return (ApplicationDbContext)bootstrapper.Kernel.Get<IUnitOfWork>();
 			}
 		}
     }

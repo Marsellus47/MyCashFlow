@@ -6,6 +6,5 @@
 		void Update(TEntity record);
 		void Delete(object id);
 		void Delete(TEntity record);
-		void Save();
 	}
 }

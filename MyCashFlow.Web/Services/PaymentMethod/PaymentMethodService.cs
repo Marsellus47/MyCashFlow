@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories;
+using MyCashFlow.Repositories.Repository;
 using MyCashFlow.Web.ViewModels.PaymentMethod;
 using System.Collections.Generic;
 using System;
@@ -8,21 +8,21 @@ namespace MyCashFlow.Web.Services.PaymentMethod
 {
 	public class PaymentMethodService : IPaymentMethodService
 	{
-		private readonly IUnitOfWork _unitOfWork;
+		private readonly IRepository<Domains.DataObject.PaymentMethod> _paymentMethodRepository;
 
-		public PaymentMethodService(IUnitOfWork unitOfWork)
+		public PaymentMethodService(IRepository<Domains.DataObject.PaymentMethod> paymentMethodRepository)
 		{
-			if(unitOfWork == null)
+			if(paymentMethodRepository == null)
 			{
-				throw new ArgumentNullException(nameof(unitOfWork));
+				throw new ArgumentNullException(nameof(paymentMethodRepository));
 			}
 
-			_unitOfWork = unitOfWork;
+			_paymentMethodRepository = paymentMethodRepository;
 		}
 
 		public PaymentMethodIndexViewModel BuildPaymentMethodIndexViewModel(int userId)
 		{
-			var paymentMethods = _unitOfWork.PaymentMethodRepository.Get(x => x.CreatorID == userId || !x.CreatorID.HasValue);
+			var paymentMethods = _paymentMethodRepository.Get(x => x.CreatorID == userId || !x.CreatorID.HasValue);
 			var items = Mapper.Map<IList<PaymentMethodIndexItemViewModel>>(paymentMethods);
 			var model = new PaymentMethodIndexViewModel
 			{
@@ -43,13 +43,12 @@ namespace MyCashFlow.Web.Services.PaymentMethod
 		public void CreatePaymentMethod(PaymentMethodCreateViewModel model)
 		{
 			var paymentMethod = Mapper.Map<Domains.DataObject.PaymentMethod>(model);
-			_unitOfWork.PaymentMethodRepository.Insert(paymentMethod);
-			_unitOfWork.Save();
+			_paymentMethodRepository.Insert(paymentMethod);
 		}
 
 		public PaymentMethodEditViewModel BuildPaymentMethodEditViewModel(int paymentMethodId)
 		{
-			var paymentMethod = _unitOfWork.PaymentMethodRepository.GetByID(paymentMethodId);
+			var paymentMethod = _paymentMethodRepository.GetByID(paymentMethodId);
 			var model = Mapper.Map<PaymentMethodEditViewModel>(paymentMethod);
 			return model;
 		}
@@ -57,28 +56,26 @@ namespace MyCashFlow.Web.Services.PaymentMethod
 		public void EditPaymentMethod(PaymentMethodEditViewModel model)
 		{
 			var paymentMethod = Mapper.Map<Domains.DataObject.PaymentMethod>(model);
-			_unitOfWork.PaymentMethodRepository.Update(paymentMethod);
-			_unitOfWork.Save();
+			_paymentMethodRepository.Update(paymentMethod);
 		}
 
 		public PaymentMethodDetailsViewModel BuildPaymentMethodDetailsViewModel(int paymentMethodId)
 		{
-			var paymentMethod = _unitOfWork.PaymentMethodRepository.GetByID(paymentMethodId);
+			var paymentMethod = _paymentMethodRepository.GetByID(paymentMethodId);
 			var model = Mapper.Map<PaymentMethodDetailsViewModel>(paymentMethod);
 			return model;
 		}
 
 		public PaymentMethodDeleteViewModel BuildPaymentMethodDeleteViewModel(int paymentMethodId)
 		{
-			var paymentMethod = _unitOfWork.PaymentMethodRepository.GetByID(paymentMethodId);
+			var paymentMethod = _paymentMethodRepository.GetByID(paymentMethodId);
 			var model = Mapper.Map<PaymentMethodDeleteViewModel>(paymentMethod);
 			return model;
 		}
 
 		public void DeletePaymentMethod(int paymentMethodId)
 		{
-			_unitOfWork.PaymentMethodRepository.Delete(paymentMethodId);
-			_unitOfWork.Save();
+			_paymentMethodRepository.Delete(paymentMethodId);
 		}
 	}
 }

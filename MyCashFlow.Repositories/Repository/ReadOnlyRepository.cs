@@ -11,14 +11,28 @@ namespace MyCashFlow.Repositories.Repository
 		where TEntity : class
 	{
 		private bool disposed = false;
+		
+		protected DbSet<TEntity> DbSet;
 
-		protected ApplicationDbContext context;
-		protected DbSet<TEntity> dbSet;
+		protected IUnitOfWork UnitOfWork;
 
-		public ReadOnlyRepository(ApplicationDbContext context)
+		protected ApplicationDbContext Context
 		{
-			this.context = context;
-			dbSet = context.Set<TEntity>();
+			get
+			{
+				return (ApplicationDbContext)UnitOfWork;
+			}
+		}
+
+		public ReadOnlyRepository(IUnitOfWork unitOfWork)
+		{
+			if(unitOfWork == null)
+			{
+				throw new ArgumentNullException(nameof(unitOfWork));
+			}
+
+			UnitOfWork = unitOfWork;
+			DbSet = Context.Set<TEntity>();
 		}
 
 		public IEnumerable<TEntity> Get(
@@ -26,7 +40,7 @@ namespace MyCashFlow.Repositories.Repository
 			Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
 			string includeProperties = "")
 		{
-			IQueryable<TEntity> query = dbSet;
+			IQueryable<TEntity> query = DbSet;
 
 			if(filter != null)
 			{
@@ -50,7 +64,7 @@ namespace MyCashFlow.Repositories.Repository
 
 		public TEntity GetByID(object id)
 		{
-			return dbSet.Find(id);
+			return DbSet.Find(id);
 		}
 
 		protected virtual void Dispose(bool disposing)
@@ -59,7 +73,7 @@ namespace MyCashFlow.Repositories.Repository
 			{
 				if (disposing)
 				{
-					context.Dispose();
+					Context.Dispose();
 				}
 			}
 			disposed = true;

@@ -12,7 +12,8 @@ namespace MyCashFlow.Identity.Context
 		int,
 		CustomUserLogin,
 		CustomUserRole,
-		CustomUserClaim>
+		CustomUserClaim>,
+		IUnitOfWork
 	{
 		public ApplicationDbContext(string nameOrConnectionString)
 			: base(nameOrConnectionString)
@@ -32,9 +33,14 @@ namespace MyCashFlow.Identity.Context
 			modelBuilder.Entity<User>()
 				.ToTable("User", "Configuration");
 
-			modelBuilder.Entity<IdentityUserRole>().HasKey(userRole => new { userRole.RoleId, userRole.UserId });
+			/*modelBuilder.Entity<IdentityUserRole>().HasKey(userRole => new { userRole.RoleId, userRole.UserId });
 			modelBuilder.Entity<IdentityUserLogin>().HasKey(login => login.UserId);
-			modelBuilder.Entity<IdentityRole>().HasKey(role => role.Id);
+			modelBuilder.Entity<IdentityRole>().HasKey(role => role.Id);*/
+		}
+
+		void IUnitOfWork.Commit()
+		{
+			base.SaveChanges();
 		}
 	}
 }
