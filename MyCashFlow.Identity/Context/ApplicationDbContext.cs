@@ -24,6 +24,7 @@ namespace MyCashFlow.Identity.Context
 		public DbSet<TransactionType> TransactionTypes { get; set; }
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<PaymentMethod> PaymentMethods { get; set; }
+		public DbSet<Currency> Currencies { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
