@@ -43,12 +43,12 @@
 		</footer>
 	</div>
 
-	@*<script src="~/Scripts/jquery-3.1.1.min.js"></script>
-	<script src="~/Scripts/bootstrap.min.js"></script>*@
 	@RenderSection("scripts", required: false)
+	@RenderSection("styles", required: false)
 	@Scripts.Render(Bundles.Scripts.Jquery)
 	@Scripts.Render(Bundles.Scripts.Bootstrap)
 	@Scripts.Render(Bundles.Scripts.Modernizr)
+	@Scripts.Render(Bundles.Scripts.Knockout)
 	@Styles.Render(Bundles.Styles.Css)
 </body>
 </html>

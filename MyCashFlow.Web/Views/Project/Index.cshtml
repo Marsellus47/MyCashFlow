@@ -18,67 +18,70 @@
  }
 </style>
 
-<h2>@Model.Header</h2>
+<div class="section panel panel-primary">
+	<div class="panel-heading">@Model.Header</div>
+	<div class="panel-body">
+		<p>
+			@Html.ActionLink(Rsx.Label_Create, MVC.Project.ActionNames.Create, null, new { @class = "btn btn-primary" })
+		</p>
+		<table class="table table-hover table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.Items[0].Name)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Items[0].ValidTill)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Items[0].SequenceNumber)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
 
-<p>
-    @Html.ActionLink(Rsx.Label_Create, MVC.Project.ActionNames.Create, null, new { @class = "btn btn-primary" })
-</p>
-<table class="table table-hover table-striped table-condensed">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Items[0].Name)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Items[0].ValidFrom)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Items[0].ValidTill)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Items[0].SequenceNumber)
-			</th>
-			<th></th>
-		</tr>
-	</thead>
-	
-	<tbody>
-		@foreach (var item in Model.Items.OrderBy(x => x.SequenceNumber))
-		{
-			<tr>
-				<td>
-					<div class="progress">
-						<div class="@item.ProgressCssClass"
-							 role="progressbar"
-							 aria-valuenow="@item.Progress"
-							 aria-valuemin="0"
-							 aria-valuemax="100"
-							 style="width:@item.Progress%"
-							 data-toggle="tooltip"
-							 data-placement="bottom"
-							 title="@item.ProgressHint">
-							<span>@Html.DisplayFor(modelItem => item.Name)</span>
-						</div>
-					</div>
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ValidFrom)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ValidTill)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.SequenceNumber)
-				</td>
-				<td>
-					@Html.ActionLink(Rsx.Label_Edit, MVC.Project.ActionNames.Edit, new { id = item.ProjectID }, new { @class = "btn btn-primary" })
-					@Html.ActionLink(Rsx.Label_Details, MVC.Project.ActionNames.Details, new { id = item.ProjectID }, new { @class = "btn btn-info" })
-					@Html.ActionLink(Rsx.Label_Delete, MVC.Project.ActionNames.Delete, new { id = item.ProjectID }, new { @class = "btn btn-danger" })
-				</td>
-			</tr>
-		}
-	</tbody>
-</table>
+			<tbody>
+				@foreach (var item in Model.Items.OrderBy(x => x.SequenceNumber))
+				{
+					<tr>
+						<td>
+							<div class="progress">
+								<div class="@item.ProgressCssClass"
+									 role="progressbar"
+									 aria-valuenow="@item.Progress"
+									 aria-valuemin="0"
+									 aria-valuemax="100"
+									 style="width:@item.Progress%"
+									 data-toggle="tooltip"
+									 data-placement="bottom"
+									 title="@item.ProgressHint">
+									<span>@Html.DisplayFor(modelItem => item.Name)</span>
+								</div>
+							</div>
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.ValidFrom)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.ValidTill)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.SequenceNumber)
+						</td>
+						<td>
+							@Html.ActionLink(Rsx.Label_Edit, MVC.Project.ActionNames.Edit, new { id = item.ProjectID }, new { @class = "btn btn-primary" })
+							@Html.ActionLink(Rsx.Label_Details, MVC.Project.ActionNames.Details, new { id = item.ProjectID }, new { @class = "btn btn-info" })
+							@Html.ActionLink(Rsx.Label_Delete, MVC.Project.ActionNames.Delete, new { id = item.ProjectID }, new { @class = "btn btn-danger" })
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
 
 <script>
 $(document).ready(function(){

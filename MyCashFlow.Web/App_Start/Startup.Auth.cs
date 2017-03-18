@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin;
 using MyCashFlow.Domains.DataObject;
+using MyCashFlow.Identity.Context;
 using MyCashFlow.Identity.Extensions;
 using MyCashFlow.Identity.Managers;
 using Owin;
@@ -16,7 +17,8 @@ namespace MyCashFlow.Web
 		public void ConfigureAuth(IAppBuilder app)
 		{
 			// Configure the db context, user manager and signin manager to use a single instance per request
-			app.CreatePerOwinContext(() => NinjectWebCommon.ApplicationDbContext);
+			//app.CreatePerOwinContext(() => NinjectWebCommon.ApplicationDbContext);
+			app.CreatePerOwinContext(() => (ApplicationDbContext)Ninject.Mvc.NinjectContainer.Resolve<IUnitOfWork>());
 			app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 			app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

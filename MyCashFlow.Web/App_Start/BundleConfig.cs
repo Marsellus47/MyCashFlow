@@ -20,6 +20,9 @@ namespace MyCashFlow.Web
 				.Include("~/Scripts/bootstrap.min.js",
 						 "~/Scripts/respond.js"));
 
+			bundles.Add(new ScriptBundle(Bundles.Scripts.Knockout)
+				.Include("~/Scripts/knockout-{version}.js"));
+
 			// Style bundles
 			bundles.Add(new StyleBundle(Bundles.Styles.Css).Include(
 					"~/Content/bootstrap.css",
@@ -35,6 +38,7 @@ namespace MyCashFlow.Web
 			public const string Jqueryval = "~/bundles/jqueryval";
 			public const string Modernizr = "~/bundles/modernizr";
 			public const string Bootstrap = "~/bundles/bootstrap";
+			public const string Knockout = "~/bundles/knockout";
 		}
 
 		public static class Styles

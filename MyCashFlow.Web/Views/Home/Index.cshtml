@@ -5,129 +5,134 @@
     ViewBag.Title = Model.Title;
 }
 
-<style>
-	.label-as-badge {
-    border-radius: 1em;
+@section Styles {
+	<style>
+		.label-as-badge {
+			border-radius: 1em;
+		}
+	</style>
 }
-</style>
 
-<h2>@Model.Header</h2>
+<div class="section panel panel-primary">
+	<div class="panel-heading">@Model.Header</div>
+	<div class="panel-body">
+		<table class="table table-hover table-striped table-condensed">
+			<tbody>
+				<tr>
+					<td></td>
+					<td class="text-center" colspan="4">
+						@Html.DisplayNameFor(model => model.Projects)
+						@Html.ActionLink(Model.Projects.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.AllProjects },
+						  new { @class = "label label-warning label-as-badge" })
+					</td>
+				</tr>
 
-<table class="table table-hover table-striped table-condensed">
-	<tbody>
-		<tr>
-			<td></td>
-			<td class="text-center" colspan="4">
-				@Html.DisplayNameFor(model => model.Projects)
-				@Html.ActionLink(Model.Projects.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.AllProjects },
-					  new { @class = "label label-warning label-as-badge" })
-			</td>
-		</tr>
+				<tr>
+					<td></td>
+					<td class="text-center" colspan="2">
+						@Html.DisplayNameFor(model => model.OpenProjects)
+						@Html.ActionLink(Model.OpenProjects.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.OpenProjects },
+						  new { @class = "label label-info label-as-badge" })
+					</td>
 
-		<tr>
-			<td></td>
-			<td class="text-center" colspan="2">
-				@Html.DisplayNameFor(model => model.OpenProjects)
-				@Html.ActionLink(Model.OpenProjects.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjects },
-					  new { @class = "label label-info label-as-badge" })
-			</td>
+					<td class="text-center" colspan="2">
+						@Html.DisplayNameFor(model => model.FinishedProjects)
+						@Html.ActionLink(Model.FinishedProjects.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.FinishedProjects },
+						  new { @class = "label label-success label-as-badge" })
+					</td>
+				</tr>
 
-			<td class="text-center" colspan="2">
-				@Html.DisplayNameFor(model => model.FinishedProjects)
-				@Html.ActionLink(Model.FinishedProjects.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjects },
-					  new { @class = "label label-success label-as-badge" })
-			</td>
-		</tr>
+				<tr>
+					<td class="text-center">
+						@Model.TargetValue
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.OpenProjectsWithReachedTargetValue)
+						@Html.ActionLink(Model.OpenProjectsWithReachedTargetValue.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.OpenProjectsWithReachedTargetValue },
+						  new { @class = "label label-success label-as-badge" })
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.OpenProjectsWithMissedTargetValue)
+						@Html.ActionLink(Model.OpenProjectsWithMissedTargetValue.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.OpenProjectsWithMissedTargetValue },
+						  new { @class = "label label-info label-as-badge" })
+					</td>
 
-		<tr>
-			<td class="text-center">
-				@Model.TargetValue
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithReachedTargetValue)
-				@Html.ActionLink(Model.OpenProjectsWithReachedTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithReachedTargetValue },
-					  new { @class = "label label-success label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithMissedTargetValue)
-				@Html.ActionLink(Model.OpenProjectsWithMissedTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithMissedTargetValue },
-					  new { @class = "label label-info label-as-badge" })
-			</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.FinishedProjectsWithReachedTargetValue)
+						@Html.ActionLink(Model.FinishedProjectsWithReachedTargetValue.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithReachedTargetValue },
+						  new { @class = "label label-success label-as-badge" })
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.FinishedProjectsWithMissedTargetValue)
+						@Html.ActionLink(Model.FinishedProjectsWithMissedTargetValue.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithMissedTargetValue },
+						  new { @class = "label label-danger label-as-badge" })
+					</td>
+				</tr>
 
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithReachedTargetValue)
-				@Html.ActionLink(Model.FinishedProjectsWithReachedTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithReachedTargetValue },
-					  new { @class = "label label-success label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithMissedTargetValue)
-				@Html.ActionLink(Model.FinishedProjectsWithMissedTargetValue.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithMissedTargetValue },
-					  new { @class = "label label-danger label-as-badge" })
-			</td>
-		</tr>
+				<tr>
+					<td class="text-center">
+						@Model.Budget
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.OpenProjectsWithSpentBudget)
+						@Html.ActionLink(Model.OpenProjectsWithSpentBudget.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.OpenProjectsWithSpentBudget },
+						  new { @class = "label label-success label-as-badge" })
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.OpenProjectsWithUnspentBudget)
+						@Html.ActionLink(Model.OpenProjectsWithUnspentBudget.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.OpenProjectsWithUnspentBudget },
+						  new { @class = "label label-info label-as-badge" })
+					</td>
 
-		<tr>
-			<td class="text-center">
-				@Model.Budget
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithSpentBudget)
-				@Html.ActionLink(Model.OpenProjectsWithSpentBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithSpentBudget },
-					  new { @class = "label label-success label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.OpenProjectsWithUnspentBudget)
-				@Html.ActionLink(Model.OpenProjectsWithUnspentBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.OpenProjectsWithUnspentBudget },
-					  new { @class = "label label-info label-as-badge" })
-			</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.FinishedProjectsWithSpentBudget)
+						@Html.ActionLink(Model.FinishedProjectsWithSpentBudget.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithSpentBudget },
+						  new { @class = "label label-success label-as-badge" })
+					</td>
+					<td class="text-center">
+						@Html.DisplayNameFor(model => model.FinishedProjectsWithUnspentBudget)
+						@Html.ActionLink(Model.FinishedProjectsWithUnspentBudget.ToString(),
+						  MVC.Project.ActionNames.Index,
+						  MVC.Project.Name,
+						  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithUnspentBudget },
+						  new { @class = "label label-danger label-as-badge" })
+					</td>
+				</tr>
+			</tbody>
 
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithSpentBudget)
-				@Html.ActionLink(Model.FinishedProjectsWithSpentBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithSpentBudget },
-					  new { @class = "label label-success label-as-badge" })
-			</td>
-			<td class="text-center">
-				@Html.DisplayNameFor(model => model.FinishedProjectsWithUnspentBudget)
-				@Html.ActionLink(Model.FinishedProjectsWithUnspentBudget.ToString(),
-					  MVC.Project.ActionNames.Index,
-					  MVC.Project.Name,
-					  new { projectsFilter = ProjectsFilterType.FinishedProjectsWithUnspentBudget },
-					  new { @class = "label label-danger label-as-badge" })
-			</td>
-		</tr>
-	</tbody>
-
-</table>
+		</table>
+	</div>
+</div>
 
 <div style="display: inline-block; margin-right: 10px">
 	@Html.Partial(MVC.TransactionType.Views._Index, Model.TransactionTypeIndexViewModel)

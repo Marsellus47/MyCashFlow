@@ -1,29 +1,33 @@
 ﻿@model MyCashFlow.Web.ViewModels.PaymentMethod.PaymentMethodIndexViewModel
 
-<h2>@Model.Header</h2>
+<div class="section panel panel-primary">
+	<div class="panel-heading">@Model.Header</div>
+	<div class="panel-body">
+		<p>
+			@Html.ActionLink(Model.Create, MVC.PaymentMethod.ActionNames.Create, MVC.PaymentMethod.Name, null, new { @class = "btn btn-sm btn-primary" })
+		</p>
+		<table class="table table-hover table-striped table-condensed">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Items[0].Name)
+				</th>
+				<th></th>
+			</tr>
 
-<p>
-    @Html.ActionLink(Model.Create, MVC.PaymentMethod.ActionNames.Create, MVC.PaymentMethod.Name, null, new { @class = "btn btn-sm btn-primary" })
-</p>
-<table class="table table-hover table-striped table-condensed">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Items[0].Name)
-        </th>
-        <th></th>
-    </tr>
+			@foreach (var item in Model.Items)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.ActionLink(Model.Edit, MVC.PaymentMethod.ActionNames.Edit, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-primary" + (item.Private ? "" : " disabled") })
+						@Html.ActionLink(Model.Details, MVC.PaymentMethod.ActionNames.Details, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-info" })
+						@Html.ActionLink(Model.Delete, MVC.PaymentMethod.ActionNames.Delete, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-danger" + (item.Private ? "" : " disabled") })
+					</td>
+				</tr>
+			}
 
-@foreach (var item in Model.Items) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink(Model.Edit, MVC.PaymentMethod.ActionNames.Edit, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-primary" + (item.Private ? "" : " disabled") })
-			@Html.ActionLink(Model.Details, MVC.PaymentMethod.ActionNames.Details, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-info" })
-			@Html.ActionLink(Model.Delete, MVC.PaymentMethod.ActionNames.Delete, MVC.PaymentMethod.Name, new { id = item.PaymentMethodID }, new { @class = "btn btn-sm btn-danger" + (item.Private ? "" : " disabled") })
-        </td>
-    </tr>
-}
-
-</table>
+		</table>
+	</div>
+</div>

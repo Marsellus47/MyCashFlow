@@ -1,5 +1,6 @@
 ﻿using MyCashFlow.Identity.Initializer;
 using System.Data.Entity;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -10,11 +11,13 @@ namespace MyCashFlow.Web
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			Database.SetInitializer(new DatabaseInitializer());
-        }
+			NinjectConfig.RegisterNinject();
+		}
     }
 }
