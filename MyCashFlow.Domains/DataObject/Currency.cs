@@ -26,6 +26,7 @@ namespace MyCashFlow.Domains.DataObject
 
 		public string FractionalUnit { get; set; }
 
+		public short? FractionalUnitAmount { get; set; }
 
 		#endregion
 
