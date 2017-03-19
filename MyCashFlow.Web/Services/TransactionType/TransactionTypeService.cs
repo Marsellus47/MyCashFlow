@@ -1,28 +1,29 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Identity.Context;
 using MyCashFlow.Web.ViewModels.TransactionType;
 using System.Collections.Generic;
+using System.Linq;
 using System;
 
 namespace MyCashFlow.Web.Services.TransactionType
 {
 	public class TransactionTypeService : ITransactionTypeService
 	{
-		private readonly IRepository<Domains.DataObject.TransactionType> _transactionTypeRepository;
+		private readonly ApplicationDbContext _dbContext;
 
-		public TransactionTypeService(IRepository<Domains.DataObject.TransactionType> transactionTypeRepository)
+		public TransactionTypeService(ApplicationDbContext dbContext)
 		{
-			if(transactionTypeRepository == null)
+			if(dbContext == null)
 			{
-				throw new ArgumentNullException(nameof(transactionTypeRepository));
+				throw new ArgumentNullException(nameof(dbContext));
 			}
 
-			_transactionTypeRepository = transactionTypeRepository;
+			_dbContext = dbContext;
 		}
 
 		public TransactionTypeIndexViewModel BuildTransactionTypeIndexViewModel(int userId)
 		{
-			var transactionTypes = _transactionTypeRepository.Get(x => x.CreatorID == userId || !x.CreatorID.HasValue);
+			var transactionTypes = _dbContext.TransactionTypes.Where(x => x.CreatorID == userId || !x.CreatorID.HasValue);
 			var items = Mapper.Map<IList<TransactionTypeIndexItemViewModel>>(transactionTypes);
 			var model = new TransactionTypeIndexViewModel
 			{
@@ -43,12 +44,13 @@ namespace MyCashFlow.Web.Services.TransactionType
 		public void CreateTransactionType(TransactionTypeCreateViewModel model)
 		{
 			var transactionType = Mapper.Map<Domains.DataObject.TransactionType>(model);
-			_transactionTypeRepository.Insert(transactionType);
+			_dbContext.TransactionTypes.Add(transactionType);
+			_dbContext.SaveChanges();
 		}
 
 		public TransactionTypeEditViewModel BuildTransactionTypeEditViewModel(int transactionTypeId)
 		{
-			var transaction = _transactionTypeRepository.GetByID(transactionTypeId);
+			var transaction = _dbContext.TransactionTypes.Find(transactionTypeId);
 			var model = Mapper.Map<TransactionTypeEditViewModel>(transaction);
 			return model;
 		}
@@ -56,26 +58,29 @@ namespace MyCashFlow.Web.Services.TransactionType
 		public void EditTransactionType(TransactionTypeEditViewModel model)
 		{
 			var transactionType = Mapper.Map<Domains.DataObject.TransactionType>(model);
-			_transactionTypeRepository.Update(transactionType);
+			_dbContext.Entry(transactionType).State = System.Data.Entity.EntityState.Modified;
+			_dbContext.SaveChanges();
 		}
 
 		public TransactionTypeDetailsViewModel BuildTransactionTypeDetailsViewModel(int transactionTypeId)
 		{
-			var transactionType = _transactionTypeRepository.GetByID(transactionTypeId);
+			var transactionType = _dbContext.TransactionTypes.Find(transactionTypeId);
 			var model = Mapper.Map<TransactionTypeDetailsViewModel>(transactionType);
 			return model;
 		}
 
 		public TransactionTypeDeleteViewModel BuildTransactionTypeDeleteViewModel(int transactionTypeId)
 		{
-			var transactionType = _transactionTypeRepository.GetByID(transactionTypeId);
+			var transactionType = _dbContext.TransactionTypes.Find(transactionTypeId);
 			var model = Mapper.Map<TransactionTypeDeleteViewModel>(transactionType);
 			return model;
 		}
 
 		public void DeleteTransactionType(int transactionTypeId)
 		{
-			_transactionTypeRepository.Delete(transactionTypeId);
+			var transactionType = _dbContext.TransactionTypes.Find(transactionTypeId);
+			_dbContext.TransactionTypes.Remove(transactionType);
+			_dbContext.SaveChanges();
 		}
 	}
 }

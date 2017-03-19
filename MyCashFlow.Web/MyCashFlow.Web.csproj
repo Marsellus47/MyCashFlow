@@ -259,7 +259,6 @@
     <Compile Include="Infrastructure\Automapper\ICustomMappings.cs" />
     <Compile Include="Infrastructure\Automapper\IMapFrom.cs" />
     <Compile Include="Infrastructure\Automapper\IMapTo.cs" />
-    <Compile Include="Infrastructure\Controllers\BaseController.cs" />
     <Compile Include="Infrastructure\Controllers\UserManagerBasedController.cs" />
     <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterType.cs" />
     <Compile Include="Infrastructure\ProjectsFilter\ProjectsFilterTypeResolver.cs" />
@@ -415,10 +414,6 @@
     <ProjectReference Include="..\MyCashFlow.Identity\MyCashFlow.Identity.csproj">
       <Project>{c11d70e7-7757-4cc9-b208-bcadf3dd169b}</Project>
       <Name>MyCashFlow.Identity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyCashFlow.Repositories\MyCashFlow.Repositories.csproj">
-      <Project>{86cf0da5-7000-42ff-9cec-f62d1b5d3c8e}</Project>
-      <Name>MyCashFlow.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyCashFlow.Resources\MyCashFlow.Resources.csproj">
       <Project>{0ac1f2cc-30c9-4080-bedc-e9c699833199}</Project>

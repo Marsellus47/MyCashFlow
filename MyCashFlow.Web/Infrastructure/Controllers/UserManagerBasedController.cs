@@ -4,11 +4,12 @@ using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Identity.Managers;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using System.Web;
 
 namespace MyCashFlow.Web.Infrastructure.Controllers
 {
-	public abstract class UserManagerBasedController : BaseController
+	public abstract class UserManagerBasedController : Controller
 	{
 		private ApplicationUserManager _userManager;
 

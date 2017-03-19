@@ -1,7 +1,7 @@
 ﻿using MyCashFlow.Identity.Context;
-using System;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
+using System;
 
 namespace MyCashFlow.Repositories.Repository
 {
@@ -9,8 +9,8 @@ namespace MyCashFlow.Repositories.Repository
 		where TEntity : class
 	{
 
-		public Repository(IUnitOfWork unitOfWork)
-			: base(unitOfWork) { }
+		public Repository(ApplicationDbContext context)
+			: base(context) { }
 
 		public void Insert(TEntity record)
 		{

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using MyCashFlow.Domains.DataObject;
 using MyCashFlow.Domains.Identity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity;
+using System;
 
 namespace MyCashFlow.Identity.Context
 {
@@ -12,8 +14,7 @@ namespace MyCashFlow.Identity.Context
 		int,
 		CustomUserLogin,
 		CustomUserRole,
-		CustomUserClaim>,
-		IUnitOfWork
+		CustomUserClaim>
 	{
 		public ApplicationDbContext(string nameOrConnectionString)
 			: base(nameOrConnectionString)
@@ -39,9 +40,29 @@ namespace MyCashFlow.Identity.Context
 			modelBuilder.Entity<IdentityRole>().HasKey(role => role.Id);*/
 		}
 
-		void IUnitOfWork.Commit()
+		public TEntity GetOriginal<TEntity>(TEntity updatedEntity)
+			where TEntity : class
 		{
-			base.SaveChanges();
+			Func<DbPropertyValues, Type, object> getOriginal = null;
+			getOriginal = (originalValues, type) =>
+			{
+				object original = Activator.CreateInstance(type, true);
+				foreach (var ptyName in originalValues.PropertyNames)
+				{
+					var property = type.GetProperty(ptyName);
+					object value = originalValues[ptyName];
+					if (value is DbPropertyValues) //nested complex object
+					{
+						property.SetValue(original, getOriginal(value as DbPropertyValues, property.PropertyType));
+					}
+					else
+					{
+						property.SetValue(original, value);
+					}
+				}
+				return original;
+			};
+			return (TEntity)getOriginal(Entry(updatedEntity).GetDatabaseValues(), typeof(TEntity));
 		}
 	}
 }

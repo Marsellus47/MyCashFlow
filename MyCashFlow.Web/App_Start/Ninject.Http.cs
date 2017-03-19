@@ -86,8 +86,8 @@ namespace Ninject.Http
 					.SelectAllClasses()
 					.BindDefaultInterface());
 
-				Bind<IUnitOfWork>()
-					.To<ApplicationDbContext>()
+				Bind<ApplicationDbContext>()
+					.ToSelf()
 					.InRequestScope()
 					.WithConstructorArgument("nameOrConnectionString", "MyCashFlow");
 			}

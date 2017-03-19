@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Identity.Context;
 using MyCashFlow.Web.Infrastructure.ProjectsFilter;
 using MyCashFlow.Web.ViewModels.Project;
 using MyCashFlow.Web.ViewModels.Transaction;
@@ -12,33 +12,25 @@ namespace MyCashFlow.Web.Services.Project
 {
 	public class ProjectService : IProjectService
 	{
-		private readonly IRepository<Domains.DataObject.Project> _projectRepository;
-		private readonly IRepository<Domains.DataObject.Transaction> _transactionRepository;
+		private readonly ApplicationDbContext _dbContext;
 
-		public ProjectService(
-			IRepository<Domains.DataObject.Project> projectRepository,
-			IRepository<Domains.DataObject.Transaction> transactionRepository)
+		public ProjectService(ApplicationDbContext dbContext)
 		{
-			if(projectRepository == null)
+			if(dbContext == null)
 			{
-				throw new ArgumentNullException(nameof(projectRepository));
-			}
-			if (transactionRepository == null)
-			{
-				throw new ArgumentNullException(nameof(transactionRepository));
+				throw new ArgumentNullException(nameof(dbContext));
 			}
 
-			_projectRepository = projectRepository;
-			_transactionRepository = transactionRepository;
+			_dbContext = dbContext;
 		}
 
 		public ProjectIndexViewModel BuildProjectIndexViewModel(int userId, ProjectsFilterType? projectsFilter)
 		{
-			var projects = _projectRepository.Get(filter: (project) => project.CreatorID == userId);
+			var projects = _dbContext.Projects.Where(project => project.CreatorID == userId);
 
 			if(projectsFilter.HasValue)
 			{
-				projects = projects.Where(ProjectsFilterTypeResolver.ResolveFilter(projectsFilter.Value));
+				projects = projects.Where(ProjectsFilterTypeResolver.ResolveFilter(projectsFilter.Value)).AsQueryable();
 			}
 
 			var items = Mapper.Map<IList<ProjectIndexItemViewModel>>(projects);
@@ -53,12 +45,13 @@ namespace MyCashFlow.Web.Services.Project
 		public void CreateProject(ProjectCreateViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_projectRepository.Insert(project);
+			_dbContext.Projects.Add(project);
+			_dbContext.SaveChanges();
 		}
 
 		public ProjectEditViewModel BuildProjectEditViewModel(int projectId)
 		{
-			var project = _projectRepository.GetByID(projectId);
+			var project = _dbContext.Projects.Find(projectId);
 			var model = Mapper.Map<ProjectEditViewModel>(project);
 			return model;
 		}
@@ -66,12 +59,13 @@ namespace MyCashFlow.Web.Services.Project
 		public void EditProject(ProjectEditViewModel model)
 		{
 			var project = Mapper.Map<Domains.DataObject.Project>(model);
-			_projectRepository.Update(project);
+			_dbContext.Entry(project).State = System.Data.Entity.EntityState.Modified;
+			_dbContext.SaveChanges();
 		}
 
 		public ProjectDetailsViewModel BuildProjectDetailsViewModel(int projectId)
 		{
-			var transactions = _transactionRepository.Get(x => x.ProjectID == projectId);
+			var transactions = _dbContext.Transactions.Where(x => x.ProjectID == projectId);
 			var items = Mapper.Map<IList<TransactionIndexItemViewModel>>(transactions);
 			var model = new ProjectDetailsViewModel
 			{
@@ -83,7 +77,7 @@ namespace MyCashFlow.Web.Services.Project
 
 		public ProjectDeleteViewModel BuildProjectDeleteViewModel(int projectId)
 		{
-			var project = _projectRepository.GetByID(projectId);
+			var project = _dbContext.Projects.Find(projectId);
 			var model = Mapper.Map<ProjectDeleteViewModel>(project);
 
 			model.DeleteIncludingTransactionsButtonLabel = Rsx.Button_DeleteIncludingTransactions;
@@ -95,20 +89,22 @@ namespace MyCashFlow.Web.Services.Project
 
 		public void DeleteProject(int id, bool includingTransactions)
 		{
-			foreach (var transaction in _transactionRepository.Get(x => x.ProjectID == id))
+			foreach (var transaction in _dbContext.Transactions.Where(x => x.ProjectID == id))
 			{
 				if(includingTransactions)
 				{
-					_transactionRepository.Delete(transaction.TransactionID);
+					_dbContext.Transactions.Remove(transaction);
 				}
 				else
 				{
 					transaction.Project = null;
-					_transactionRepository.Update(transaction);
+					_dbContext.Entry(transaction).State = System.Data.Entity.EntityState.Modified;
 				}
 			}
 
-			_projectRepository.Delete(id);
+			var project = _dbContext.Projects.Find(id);
+			_dbContext.Projects.Remove(project);
+			_dbContext.SaveChanges();
 		}
 	}
 }

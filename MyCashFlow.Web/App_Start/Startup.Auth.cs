@@ -18,7 +18,7 @@ namespace MyCashFlow.Web
 		{
 			// Configure the db context, user manager and signin manager to use a single instance per request
 			//app.CreatePerOwinContext(() => NinjectWebCommon.ApplicationDbContext);
-			app.CreatePerOwinContext(() => (ApplicationDbContext)Ninject.Mvc.NinjectContainer.Resolve<IUnitOfWork>());
+			app.CreatePerOwinContext(() => Ninject.Mvc.NinjectContainer.Resolve<ApplicationDbContext>());
 			app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 			app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

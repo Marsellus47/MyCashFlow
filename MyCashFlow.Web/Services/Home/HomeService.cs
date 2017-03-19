@@ -1,4 +1,4 @@
-﻿using MyCashFlow.Repositories.Repository;
+﻿using MyCashFlow.Identity.Context;
 using MyCashFlow.Web.Infrastructure.ProjectsFilter;
 using MyCashFlow.Web.Services.PaymentMethod;
 using MyCashFlow.Web.Services.TransactionType;
@@ -10,18 +10,18 @@ namespace MyCashFlow.Web.Services.Home
 {
 	public class HomeService : IHomeService
 	{
-		private readonly IRepository<Domains.DataObject.Project> _projectRepository;
+		private readonly ApplicationDbContext _dbContext;
 		private readonly ITransactionTypeService _transactionTypeService;
 		private readonly IPaymentMethodService _paymentMethodService;
 
 		public HomeService(
-			IRepository<Domains.DataObject.Project> projectRepository,
+			ApplicationDbContext dbContext,
 			ITransactionTypeService transactionTypeService,
 			IPaymentMethodService paymentMethodService)
 		{
-			if (projectRepository == null)
+			if (dbContext == null)
 			{
-				throw new ArgumentNullException(nameof(projectRepository));
+				throw new ArgumentNullException(nameof(dbContext));
 			}
 			if (transactionTypeService == null)
 			{
@@ -32,14 +32,14 @@ namespace MyCashFlow.Web.Services.Home
 				throw new ArgumentNullException(nameof(paymentMethodService));
 			}
 
-			_projectRepository = projectRepository;
+			_dbContext = dbContext;
 			_transactionTypeService = transactionTypeService;
 			_paymentMethodService = paymentMethodService;
 		}
 
 		public HomeIndexViewModel BuildHomeIndexViewModel(int userId)
 		{
-			var myProjects = _projectRepository.Get(x => x.CreatorID == userId);
+			var myProjects = _dbContext.Projects.Where(x => x.CreatorID == userId);
 
 			var numberOfAllProjects = myProjects
 				.Where(ProjectsFilterTypeResolver.ResolveFilter(ProjectsFilterType.AllProjects))

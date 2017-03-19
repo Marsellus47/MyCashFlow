@@ -14,24 +14,16 @@ namespace MyCashFlow.Repositories.Repository
 		
 		protected DbSet<TEntity> DbSet;
 
-		protected IUnitOfWork UnitOfWork;
+		protected ApplicationDbContext Context { get; private set; }
 
-		protected ApplicationDbContext Context
+		public ReadOnlyRepository(ApplicationDbContext context)
 		{
-			get
+			if(context == null)
 			{
-				return (ApplicationDbContext)UnitOfWork;
-			}
-		}
-
-		public ReadOnlyRepository(IUnitOfWork unitOfWork)
-		{
-			if(unitOfWork == null)
-			{
-				throw new ArgumentNullException(nameof(unitOfWork));
+				throw new ArgumentNullException(nameof(context));
 			}
 
-			UnitOfWork = unitOfWork;
+			Context = context;
 			DbSet = Context.Set<TEntity>();
 		}
 

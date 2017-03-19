@@ -6,14 +6,14 @@ namespace MyCashFlow.Web.Infrastructure.Filters
 {
 	public class UnitOfWorkActionFilter : ActionFilterAttribute
 	{
-		public IUnitOfWork UnitOfWork { get; set; }
+		public ApplicationDbContext Context { get; set; }
 
 		public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
 		{
-			UnitOfWork = actionExecutedContext.Request.GetDependencyScope().GetService(typeof(IUnitOfWork)) as IUnitOfWork;
+			Context = actionExecutedContext.Request.GetDependencyScope().GetService(typeof(ApplicationDbContext)) as ApplicationDbContext;
 			if(actionExecutedContext.Exception == null)
 			{
-				UnitOfWork.Commit();
+				Context.SaveChanges();
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Identity.Context;
 using MyCashFlow.Web.ViewModels.Transaction;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +9,21 @@ namespace MyCashFlow.Web.Services.Transaction
 {
 	public class ApiTransactionService : IApiTransactionService
 	{
-		private readonly IRepository<Domains.DataObject.Transaction> _transactionRepository;
+		private readonly ApplicationDbContext _dbContext;
 
-		public ApiTransactionService(IRepository<Domains.DataObject.Transaction> transactionRepository)
+		public ApiTransactionService(ApplicationDbContext dbContext)
 		{
-			if(transactionRepository == null)
+			if(dbContext == null)
 			{
-				throw new ArgumentNullException(nameof(transactionRepository));
+				throw new ArgumentNullException(nameof(dbContext));
 			}
 
-			_transactionRepository = transactionRepository;
+			_dbContext = dbContext;
 		}
 
 		public IEnumerable<TransactionIndexItemViewModel> GetAll(int userId, int? projectId)
 		{
-			var transactions = _transactionRepository.Get(x => x.CreatorID == userId);
+			var transactions = _dbContext.Transactions.Where(x => x.CreatorID == userId);
 			if (projectId.HasValue)
 			{
 				transactions = transactions.Where(x => x.ProjectID == projectId.Value);
@@ -34,7 +34,9 @@ namespace MyCashFlow.Web.Services.Transaction
 
 		public void Delete(int id)
 		{
-			_transactionRepository.Delete(id);
+			var transaction = _dbContext.Transactions.Find(id);
+			_dbContext.Transactions.Remove(transaction);
+			_dbContext.SaveChanges();
 		}
 	}
 }
