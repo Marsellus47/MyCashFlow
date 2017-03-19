@@ -1,5 +1,14 @@
-﻿let model = {
-	transactions: ko.observableArray(),
+﻿interface Transaction {
+	TransactionID: number,
+	Date: Date,
+	Amount: number,
+	Income: boolean,
+	TransactionType: string,
+	PaymentMethod: string
+}
+
+let model = {
+	transactions: ko.observableArray<Transaction>(),
 	view: ko.observable("index"),
 	insert: {
 		Date: ko.observable<Date>(),
@@ -12,6 +21,9 @@
 		TransactionTypes: ko.observableArray(),
 		PaymentMethodID: ko.observable<number>(),
 		PaymentMethods: ko.observableArray()
+	},
+	showView: function (viewName) {
+		return viewName == model.view();
 	}
 };
 
@@ -32,10 +44,29 @@ function getAllItems() {
 	});
 }
 
-function removeItem(item) {
+function removeItem(item: Transaction) {
 	sendAjaxRequest("DELETE", function () {
-		getAllItems();
-	}, item.TransactionId);
+		for (let transaction of model.transactions()) {
+			if (transaction.TransactionID == item.TransactionID) {
+				model.transactions.remove(transaction);
+				break;
+			}
+		}
+	}, item.TransactionID.toString());
+}
+
+function handleEditorClick() {
+	sendAjaxRequest("POST", function (newItem) {
+		model.transactions.push(newItem);
+	}, null, {
+			Date: model.insert.Date,
+			Amount: model.insert.Amount,
+			Note: model.insert.Note,
+			Income: model.insert.Income,
+			ProjectID: model.insert.ProjectID,
+			TransactionTypeID: model.insert.TransactionTypeID,
+			PaymentMethodID: model.insert.PaymentMethodID
+	});
 }
 
 $(document).ready(function () {

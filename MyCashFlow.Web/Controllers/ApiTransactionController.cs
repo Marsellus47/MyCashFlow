@@ -2,6 +2,7 @@
 using MyCashFlow.Web.Services.Transaction;
 using MyCashFlow.Web.ViewModels.Transaction;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System;
 
@@ -21,16 +22,34 @@ namespace MyCashFlow.Web.Controllers
 			_apiTransactionService = apiTransactionService;
 		}
 		
-		public IEnumerable<TransactionIndexItemViewModel> GetAll(int? id = null)
+		public async Task<IEnumerable<TransactionIndexItemViewModel>> GetAllTransactions(int? id = null)
 		{
 			var userId = User.Identity.GetUserId<int>();
-			var transactions = _apiTransactionService.GetAll(userId, id);
+			var transactions = await _apiTransactionService.GetAllAsync(userId, id);
 			return transactions;
 		}
 
-		public void DeleteTransaction(int id)
+		public async Task<TransactionDetailsViewModel> GetTransaction(int id)
 		{
-			_apiTransactionService.Delete(id);
+			var result = await _apiTransactionService.GetAsync(id);
+			return result;
+		}
+
+		public async Task<TransactionIndexItemViewModel> PostTransaction(TransactionCreateViewModel model)
+		{
+			model.CreatorID = User.Identity.GetUserId<int>();
+			var result = await _apiTransactionService.Create(model);
+			return result;
+		}
+
+		public async Task PutTransaction(TransactionEditViewModel model)
+		{
+			await _apiTransactionService.Edit(model);
+		}
+
+		public async Task DeleteTransaction(int id)
+		{
+			await _apiTransactionService.DeleteAsync(id);
 		}
     }
 }

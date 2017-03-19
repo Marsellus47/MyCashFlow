@@ -12,6 +12,9 @@ var model = {
         TransactionTypes: ko.observableArray(),
         PaymentMethodID: ko.observable(),
         PaymentMethods: ko.observableArray()
+    },
+    showView: function (viewName) {
+        return viewName == model.view();
     }
 };
 function sendAjaxRequest(httpMethod, callback, url, reqData) {
@@ -34,8 +37,27 @@ function getAllItems() {
 }
 function removeItem(item) {
     sendAjaxRequest("DELETE", function () {
-        getAllItems();
-    }, item.TransactionId);
+        for (var _i = 0, _a = model.transactions(); _i < _a.length; _i++) {
+            var transaction = _a[_i];
+            if (transaction.TransactionID == item.TransactionID) {
+                model.transactions.remove(transaction);
+                break;
+            }
+        }
+    }, item.TransactionID.toString());
+}
+function handleEditorClick() {
+    sendAjaxRequest("POST", function (newItem) {
+        model.transactions.push(newItem);
+    }, null, {
+        Date: model.insert.Date,
+        Amount: model.insert.Amount,
+        Note: model.insert.Note,
+        Income: model.insert.Income,
+        ProjectID: model.insert.ProjectID,
+        TransactionTypeID: model.insert.TransactionTypeID,
+        PaymentMethodID: model.insert.PaymentMethodID
+    });
 }
 $(document).ready(function () {
     getAllItems();
