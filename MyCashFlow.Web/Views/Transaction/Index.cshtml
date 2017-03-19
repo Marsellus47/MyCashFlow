@@ -4,39 +4,7 @@
     ViewBag.Title = Model.Title;
 }
 
-@section Scripts {
-	<script>
-		var model = {
-			transactions: ko.observableArray()
-		};
-
-		function sendAjaxRequest(httpMethod, callback, url) {
-			$.ajax("/api" + (url ? "/" + url : ""), {
-				type: httpMethod, success: callback
-			});
-		}
-
-		function getAllItems() {
-			sendAjaxRequest("GET", function (data) {
-				model.transactions.removeAll();
-				for (var i = 0; i < data.length; i++) {
-					model.reservations.push(data[i]);
-				}
-			});
-		}
-
-		function removeItem(item) {
-			sendAjaxRequest("DELETE", function () {
-				getAllItems();
-			}, item.transactionId);
-		}
-
-		$(document).ready(function () {
-			getAllItems();
-			ko.applyBindings(model);
-		});
-	</script>
-}
+@Scripts.Render(Bundles.Scripts.MyCashFlow.Transaction)
 
 <div class="section panel panel-primary">
 	<div class="panel-heading">@Model.Header</div>
@@ -63,7 +31,7 @@
 				</tr>
 			</thead>
 
-			@*<tbody>
+			<tbody>
 				@foreach (var item in Model.Items)
 				{
 					<tr class="@(@item.Income ? "success" : "danger")">
@@ -86,9 +54,9 @@
 						</td>
 					</tr>
 				}
-			</tbody>*@
+			</tbody>
 
-			<tbody data-bind="foreach: model.transactions">
+			@*<tbody data-bind="foreach: model.transactions">
 				<tr>
 					<td data-bind="text: Date"></td>
 					<td data-bind="text: Amount"></td>
@@ -98,7 +66,7 @@
 						<button class="btn btn-primary" data-bind="click: removeItem">@Model.Delete</button>
 					</td>
 				</tr>
-			</tbody>
+			</tbody>*@
 		</table>
 	</div>
 </div>

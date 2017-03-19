@@ -92,6 +92,8 @@ namespace Links
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
         public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        public static readonly string knockout_3_4_2_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/knockout-3.4.2.debug.min.js") ? Url("knockout-3.4.2.debug.min.js") : Url("knockout-3.4.2.debug.js");
+        public static readonly string knockout_3_4_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/knockout-3.4.2.min.js") ? Url("knockout-3.4.2.min.js") : Url("knockout-3.4.2.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
     }
 
@@ -130,6 +132,8 @@ namespace Links
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
                 public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js"; 
+                public const string knockout_3_4_2_debug_js = "~/Scripts/knockout-3.4.2.debug.js"; 
+                public const string knockout_3_4_2_js = "~/Scripts/knockout-3.4.2.js"; 
                 public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js"; 
             }
         }

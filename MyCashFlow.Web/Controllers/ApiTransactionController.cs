@@ -1,5 +1,6 @@
-﻿using MyCashFlow.Domains.DataObject;
+﻿using Microsoft.AspNet.Identity;
 using MyCashFlow.Web.Services.Transaction;
+using MyCashFlow.Web.ViewModels.Transaction;
 using System.Collections.Generic;
 using System.Web.Http;
 using System;
@@ -19,18 +20,17 @@ namespace MyCashFlow.Web.Controllers
 
 			_apiTransactionService = apiTransactionService;
 		}
-
-		[HttpGet]
-		public IEnumerable<Transaction> GetAll(int? userId, int? projectId)
+		
+		public IEnumerable<TransactionIndexItemViewModel> GetAll(int? id = null)
 		{
-			var transactions = _apiTransactionService.GetAll(userId, projectId);
+			var userId = User.Identity.GetUserId<int>();
+			var transactions = _apiTransactionService.GetAll(userId, id);
 			return transactions;
 		}
 
-		public IEnumerable<Transaction> GetAll()
+		public void DeleteTransaction(int id)
 		{
-			var transactions = _apiTransactionService.GetAll(1, null);
-			return transactions;
+			_apiTransactionService.Delete(id);
 		}
     }
 }

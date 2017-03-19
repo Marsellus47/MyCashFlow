@@ -1,5 +1,8 @@
-﻿using MyCashFlow.Repositories.Repository;
+﻿using AutoMapper;
+using MyCashFlow.Repositories.Repository;
+using MyCashFlow.Web.ViewModels.Transaction;
 using System.Collections.Generic;
+using System.Linq;
 using System;
 
 namespace MyCashFlow.Web.Services.Transaction
@@ -18,27 +21,20 @@ namespace MyCashFlow.Web.Services.Transaction
 			_transactionRepository = transactionRepository;
 		}
 
-		public IEnumerable<Domains.DataObject.Transaction> GetAll(int? userId, int? projectId)
+		public IEnumerable<TransactionIndexItemViewModel> GetAll(int userId, int? projectId)
 		{
-			if(!userId.HasValue && !projectId.HasValue)
+			var transactions = _transactionRepository.Get(x => x.CreatorID == userId);
+			if (projectId.HasValue)
 			{
-				throw new InvalidOperationException($"One of {nameof(userId)} or {nameof(projectId)} can't be empty");
+				transactions = transactions.Where(x => x.ProjectID == projectId.Value);
 			}
-			if (userId.HasValue && projectId.HasValue)
-			{
-				throw new InvalidOperationException($"Only one of {nameof(userId)} or {nameof(projectId)} has to be filled");
-			}
-			
-			if(userId.HasValue)
-			{
-				var transactions = _transactionRepository.Get(x => x.CreatorID == userId.Value);
-				return transactions;
-			}
-			else
-			{
-				var transactions = _transactionRepository.Get(x => x.ProjectID == projectId.Value);
-				return transactions;
-			}
+			var result = Mapper.Map<IEnumerable<TransactionIndexItemViewModel>>(transactions);
+			return result;
+		}
+
+		public void Delete(int id)
+		{
+			_transactionRepository.Delete(id);
 		}
 	}
 }

@@ -8,10 +8,10 @@ namespace MyCashFlow.Web
 		{
 			// Script bundles
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Jquery)
-				.Include("~/Scripts/jquery-{version}.js"));
-
-			bundles.Add(new ScriptBundle(Bundles.Scripts.Jqueryval)
-				.Include("~/Scripts/jquery.validate*"));
+				.Include("~/Scripts/jquery-{version}.js",
+						 "~/Scripts/jquery.validate.js",
+						 "~/Scripts/jquery.validate.unobtrusive.js",
+						 "~/Scripts/jquery.unobtrusive-ajax.js"));
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Modernizr)
 				.Include("~/Scripts/modernizr-*"));
@@ -22,6 +22,9 @@ namespace MyCashFlow.Web
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Knockout)
 				.Include("~/Scripts/knockout-{version}.js"));
+
+			bundles.Add(new ScriptBundle(Bundles.Scripts.MyCashFlow.Transaction)
+				.Include("~/Scripts/MyCashFlow/Transaction/*.js"));
 
 			// Style bundles
 			bundles.Add(new StyleBundle(Bundles.Styles.Css).Include(
@@ -35,10 +38,14 @@ namespace MyCashFlow.Web
 		public static class Scripts
 		{
 			public const string Jquery = "~/bundles/jquery";
-			public const string Jqueryval = "~/bundles/jqueryval";
 			public const string Modernizr = "~/bundles/modernizr";
 			public const string Bootstrap = "~/bundles/bootstrap";
 			public const string Knockout = "~/bundles/knockout";
+
+			public static class MyCashFlow
+			{
+				public const string Transaction = "~/bundles/MyCashFlow/Transaction";
+			}
 		}
 
 		public static class Styles

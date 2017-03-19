@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using MyCashFlow.Web.Infrastructure.Filters;
+using System.Web.Http;
 
 namespace MyCashFlow.Web
 {
@@ -14,6 +15,8 @@ namespace MyCashFlow.Web
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
+
+			config.Filters.Add(new UnitOfWorkActionFilter());
 
 			config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 			config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All;

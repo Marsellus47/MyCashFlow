@@ -137,7 +137,7 @@ namespace MyCashFlow.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index
         {
-            public readonly string projectFilter = "projectFilter";
+            public readonly string projectsFilter = "projectsFilter";
         }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -218,14 +218,14 @@ namespace MyCashFlow.Web.Controllers
         public T4MVC_ProjectController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Infrastructure.ProjectsFilter.ProjectsFilterType? projectFilter);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, MyCashFlow.Web.Infrastructure.ProjectsFilter.ProjectsFilterType? projectsFilter);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(MyCashFlow.Web.Infrastructure.ProjectsFilter.ProjectsFilterType? projectFilter)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Index(MyCashFlow.Web.Infrastructure.ProjectsFilter.ProjectsFilterType? projectsFilter)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "projectFilter", projectFilter);
-            IndexOverride(callInfo, projectFilter);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "projectsFilter", projectsFilter);
+            IndexOverride(callInfo, projectsFilter);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 

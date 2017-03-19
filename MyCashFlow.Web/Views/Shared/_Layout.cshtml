@@ -9,6 +9,14 @@
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+
+	@Scripts.Render(Bundles.Scripts.Jquery)
+	@Scripts.Render(Bundles.Scripts.Bootstrap)
+	@Scripts.Render(Bundles.Scripts.Modernizr)
+	@Scripts.Render(Bundles.Scripts.Knockout)
+	@Styles.Render(Bundles.Styles.Css)
+	@RenderSection("scripts", required: false)
+	@RenderSection("styles", required: false)
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -42,13 +50,5 @@
 			<p>&copy; @DateTime.Now.Year - @Rsx.Shared._Shared.Label_ApplicationName</p>
 		</footer>
 	</div>
-
-	@RenderSection("scripts", required: false)
-	@RenderSection("styles", required: false)
-	@Scripts.Render(Bundles.Scripts.Jquery)
-	@Scripts.Render(Bundles.Scripts.Bootstrap)
-	@Scripts.Render(Bundles.Scripts.Modernizr)
-	@Scripts.Render(Bundles.Scripts.Knockout)
-	@Styles.Render(Bundles.Styles.Css)
 </body>
 </html>
