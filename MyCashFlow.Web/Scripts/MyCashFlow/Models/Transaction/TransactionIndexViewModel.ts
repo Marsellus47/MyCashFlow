@@ -21,18 +21,37 @@
 	}
 
 	deleteTransaction = (transaction) => {
-		$.ajax({
-			url: "/api/apiTransaction/" + transaction.transactionID(),
-			type: "delete",
-			contentType: "application/json",
-			success: () => {
-				this.transactions.remove(transaction);
-				this.showDialog(false);
+		let dialogElement = $("#delete-dialog-confirm");
+		let dialogOptions = {
+			autoopen: false,
+			resizable: false,
+			height: 140,
+			modal: true,
+			buttons: [{
+				text: this.btnYesLabel,
+				click: () => {
+					$.ajax({
+						url: "/api/apiTransaction/" + transaction.transactionID(),
+						type: "delete",
+						contentType: "application/json",
+						success: () => {
+							this.transactions.remove(transaction);
+							this.showDialog(false);
+						}
+					});
+					dialogElement.dialog("close");
+				}
 			},
-			error: () => {
-				alert("Error during delete");
-			}
-		});
+			{
+				text: this.btnNoLabel,
+				click: () => {
+					dialogElement.dialog("close");
+				}
+			}]
+		};
+		dialogElement.dialog(dialogOptions);
+		//dialogElement.dialog("option", "title", this.deleteConfirmationMessage);
+		dialogElement.dialog("open");
 	}
 }
 

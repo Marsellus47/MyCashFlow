@@ -6,7 +6,12 @@ namespace MyCashFlow.Web
 	{
 		public static void RegisterBundles(BundleCollection bundles)
 		{
-			// Script bundles
+			RegisterScriptBundles(bundles);
+			RegisterStyleBundles(bundles);
+		}
+
+		private static void RegisterScriptBundles(BundleCollection bundles)
+		{
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Jquery)
 				.Include("~/Scripts/jquery-{version}.js"));
 
@@ -14,6 +19,9 @@ namespace MyCashFlow.Web
 				.Include("~/Scripts/jquery.validate.js",
 						 "~/Scripts/jquery.validate.unobtrusive.js",
 						 "~/Scripts/jquery.unobtrusive-ajax.js"));
+
+			bundles.Add(new ScriptBundle(Bundles.Scripts.JqueryUi)
+				.Include("~/Scripts/jquery-ui-{version}.js"));
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Modernizr)
 				.Include("~/Scripts/modernizr-*"));
@@ -24,21 +32,23 @@ namespace MyCashFlow.Web
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Knockout)
 				.Include("~/Scripts/knockout-{version}.js",
-				         "~/Scripts/moment-with-locales.min.js"));
+						 "~/Scripts/moment-with-locales.min.js"));
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.MyCashFlow.Models.Shared)
 				.Include("~/Scripts/MyCashFlow/Models/Shared/*.js"));
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.MyCashFlow.Models.Transaction)
 				.Include("~/Scripts/MyCashFlow/Models/Transaction/*.js"));
+		}
 
-			bundles.Add(new ScriptBundle(Bundles.Scripts.MyCashFlow.Handlers)
-				.Include("~/Scripts/MyCashFlow/Handlers/*.js"));
-
-			// Style bundles
+		private static void RegisterStyleBundles(BundleCollection bundles)
+		{
 			bundles.Add(new StyleBundle(Bundles.Styles.Css).Include(
 					"~/Content/bootstrap.css",
 					"~/Content/Site.css"));
+
+			bundles.Add(new StyleBundle(Bundles.Styles.JqueryUi).Include(
+					"~/Content/themes/base/jquery-ui.min.css"));
 		}
 	}
 
@@ -48,6 +58,7 @@ namespace MyCashFlow.Web
 		{
 			public const string Jquery = "~/bundles/jquery";
 			public const string Jqueryval = "~/bundles/jqueryval";
+			public const string JqueryUi = "~/bundles/jqueryui";
 			public const string Modernizr = "~/bundles/modernizr";
 			public const string Bootstrap = "~/bundles/bootstrap";
 			public const string Knockout = "~/bundles/knockout";
@@ -59,14 +70,13 @@ namespace MyCashFlow.Web
 					public const string Shared = "~/bundles/MyCashFlow/Models/Shared";
 					public const string Transaction = "~/bundles/MyCashFlow/Models/Transaction";
 				}
-
-				public const string Handlers = "~/bundles/MyCashFlow/Handlers";
 			}
 		}
 
 		public static class Styles
 		{
 			public const string Css = "~/Content/css";
+			public const string JqueryUi = "~/Content/jqueryui";
 		}
 	}
 }

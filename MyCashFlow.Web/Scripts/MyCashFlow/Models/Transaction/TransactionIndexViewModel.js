@@ -22,18 +22,37 @@ var TransactionIndexViewModel = (function (_super) {
             });
         };
         _this.deleteTransaction = function (transaction) {
-            $.ajax({
-                url: "/api/apiTransaction/" + transaction.transactionID(),
-                type: "delete",
-                contentType: "application/json",
-                success: function () {
-                    _this.transactions.remove(transaction);
-                    _this.showDialog(false);
-                },
-                error: function () {
-                    alert("Error during delete");
-                }
-            });
+            var dialogElement = $("#delete-dialog-confirm");
+            var dialogOptions = {
+                autoopen: false,
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: [{
+                        text: _this.btnYesLabel,
+                        click: function () {
+                            $.ajax({
+                                url: "/api/apiTransaction/" + transaction.transactionID(),
+                                type: "delete",
+                                contentType: "application/json",
+                                success: function () {
+                                    _this.transactions.remove(transaction);
+                                    _this.showDialog(false);
+                                }
+                            });
+                            dialogElement.dialog("close");
+                        }
+                    },
+                    {
+                        text: _this.btnNoLabel,
+                        click: function () {
+                            dialogElement.dialog("close");
+                        }
+                    }]
+            };
+            dialogElement.dialog(dialogOptions);
+            //dialogElement.dialog("option", "title", this.deleteConfirmationMessage);
+            dialogElement.dialog("open");
         };
         _this.getTransaction();
         return _this;
