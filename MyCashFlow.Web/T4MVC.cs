@@ -87,6 +87,8 @@ namespace Links
         public static readonly string jquery_3_1_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.slim.min.js") ? Url("jquery-3.1.1.slim.min.js") : Url("jquery-3.1.1.slim.js");
         public static readonly string jquery_3_1_1_slim_min_js = Url("jquery-3.1.1.slim.min.js");
         public static readonly string jquery_3_1_1_slim_min_map = Url("jquery-3.1.1.slim.min.map");
+        public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
+        public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
@@ -95,6 +97,82 @@ namespace Links
         public static readonly string knockout_3_4_2_debug_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/knockout-3.4.2.debug.min.js") ? Url("knockout-3.4.2.debug.min.js") : Url("knockout-3.4.2.debug.js");
         public static readonly string knockout_3_4_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/knockout-3.4.2.min.js") ? Url("knockout-3.4.2.min.js") : Url("knockout-3.4.2.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
+        public static readonly string moment_with_locales_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment-with-locales.min.js") ? Url("moment-with-locales.min.js") : Url("moment-with-locales.js");
+        public static readonly string moment_with_locales_min_js = Url("moment-with-locales.min.js");
+        public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
+        public static readonly string moment_min_js = Url("moment.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class MyCashFlow {
+            public const string UrlPath = "~/Scripts/MyCashFlow";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class Models {
+                public const string UrlPath = "~/Scripts/MyCashFlow/Models";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class Shared {
+                    public const string UrlPath = "~/Scripts/MyCashFlow/Models/Shared";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string BaseIndexViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseIndexViewModel.min.js") ? Url("BaseIndexViewModel.min.js") : Url("BaseIndexViewModel.js");
+                    public static readonly string BaseModifyActionViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseModifyActionViewModel.min.js") ? Url("BaseModifyActionViewModel.min.js") : Url("BaseModifyActionViewModel.js");
+                    public static readonly string BaseViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseViewModel.min.js") ? Url("BaseViewModel.min.js") : Url("BaseViewModel.js");
+                }
+            
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class Transaction {
+                    public const string UrlPath = "~/Scripts/MyCashFlow/Models/Transaction";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string TransactionIndexViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TransactionIndexViewModel.min.js") ? Url("TransactionIndexViewModel.min.js") : Url("TransactionIndexViewModel.js");
+                    public static readonly string TransactionViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TransactionViewModel.min.js") ? Url("TransactionViewModel.min.js") : Url("TransactionViewModel.js");
+                }
+            
+            }
+        
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class typings {
+            public const string UrlPath = "~/Scripts/typings";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jquery {
+                public const string UrlPath = "~/Scripts/typings/jquery";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string jquery_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.d.min.js") ? Url("jquery.d.min.js") : Url("jquery.d.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class knockout {
+                public const string UrlPath = "~/Scripts/typings/knockout";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string knockout_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/knockout.d.min.js") ? Url("knockout.d.min.js") : Url("knockout.d.js");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class tests {
+                    public const string UrlPath = "~/Scripts/typings/knockout/tests";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string jasmine_extensions_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jasmine.extensions.d.min.js") ? Url("jasmine.extensions.d.min.js") : Url("jasmine.extensions.d.js");
+                }
+            
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class moment {
+                public const string UrlPath = "~/Scripts/typings/moment";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string moment_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment.d.min.js") ? Url("moment.d.min.js") : Url("moment.d.js");
+            }
+        
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -119,6 +197,60 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class MyCashFlow 
+            {
+                public static partial class Models 
+                {
+                    public static partial class Shared 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static partial class Transaction 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
+            public static partial class typings 
+            {
+                public static partial class jquery 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class knockout 
+                {
+                    public static partial class tests 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class moment 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
             public static class Assets
             {
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
@@ -128,6 +260,8 @@ namespace Links
                 public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 
                 public const string jquery_3_1_1_slim_js = "~/Scripts/jquery-3.1.1.slim.js"; 
                 public const string jquery_3_1_1_slim_min_js = "~/Scripts/jquery-3.1.1.slim.min.js"; 
+                public const string jquery_unobtrusive_ajax_js = "~/Scripts/jquery.unobtrusive-ajax.js"; 
+                public const string jquery_unobtrusive_ajax_min_js = "~/Scripts/jquery.unobtrusive-ajax.min.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
@@ -135,6 +269,10 @@ namespace Links
                 public const string knockout_3_4_2_debug_js = "~/Scripts/knockout-3.4.2.debug.js"; 
                 public const string knockout_3_4_2_js = "~/Scripts/knockout-3.4.2.js"; 
                 public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js"; 
+                public const string moment_with_locales_js = "~/Scripts/moment-with-locales.js"; 
+                public const string moment_with_locales_min_js = "~/Scripts/moment-with-locales.min.js"; 
+                public const string moment_js = "~/Scripts/moment.js"; 
+                public const string moment_min_js = "~/Scripts/moment.min.js"; 
             }
         }
         public static partial class Content 

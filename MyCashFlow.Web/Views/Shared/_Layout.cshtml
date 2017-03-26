@@ -6,11 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @Rsx.Shared._Shared.Label_ApplicationName</title>
-    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
 
 	@Scripts.Render(Bundles.Scripts.Jquery)
+	@Scripts.Render(Bundles.Scripts.Jqueryval)
 	@Scripts.Render(Bundles.Scripts.Bootstrap)
 	@Scripts.Render(Bundles.Scripts.Modernizr)
 	@Scripts.Render(Bundles.Scripts.Knockout)
@@ -27,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@Html.ActionLink("My Cashflow", MVC.Home.ActionNames.Index, MVC.Home.Name, new { area = "" }, new { @class = "navbar-brand" })
+				@Html.ActionLink(Rsx.Shared._Shared.Label_ApplicationName, MVC.Home.ActionNames.Index, MVC.Home.Name, new { area = "" }, new { @class = "navbar-brand" })
 			</div>
 			<div class="navbar-collapse collapse">
 				@if (Request.IsAuthenticated)
@@ -38,7 +36,7 @@
 						<li>@Html.ActionLink(Rsx.Transaction._Shared.MenuItem, MVC.Transaction.ActionNames.Index, MVC.Transaction.Name)</li>
 					</ul>
 				}
-				@Html.Partial("_LoginPartial")
+				@Html.Partial(MVC.Shared.Views._LoginPartial)
 			</div>
 		</div>
 	</div>

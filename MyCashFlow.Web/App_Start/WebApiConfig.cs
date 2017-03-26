@@ -1,4 +1,6 @@
 ﻿using MyCashFlow.Web.Infrastructure.Filters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using System.Web.Http;
 
 namespace MyCashFlow.Web
@@ -18,8 +20,13 @@ namespace MyCashFlow.Web
 
 			config.Filters.Add(new UnitOfWorkActionFilter());
 
-			config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-			config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All;
+			var jsonSerializerSettings = new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				PreserveReferencesHandling = PreserveReferencesHandling.All,
+				ContractResolver = new CamelCasePropertyNamesContractResolver()
+			};
+			config.Formatters.JsonFormatter.SerializerSettings = jsonSerializerSettings;
 		}
 	}
 }

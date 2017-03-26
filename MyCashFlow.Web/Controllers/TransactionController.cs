@@ -23,9 +23,9 @@ namespace MyCashFlow.Web.Controllers
 
 		public virtual async Task<ActionResult> Index(int? id)
 		{
-			int userId = await GetCurrentUserIdAsync();
-			var model = _transactionService.BuildTransactionIndexViewModel(userId, id);
-			return View(model);
+			/*int userId = await GetCurrentUserIdAsync();
+			var model = _transactionService.BuildTransactionIndexViewModel(userId, id);*/
+			return View(MVC.Transaction.Views.Transaction);
 		}
 
 		public virtual async Task<ActionResult> Create(int? id)
