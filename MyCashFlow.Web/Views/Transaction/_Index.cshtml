@@ -1,8 +1,8 @@
-﻿<div class="section panel panel-primary" data-bind="with: transactionIndexViewModel">
+﻿<div class="section panel panel-primary">
 	<div class="panel-heading"><span data-bind="text: header"></span></div>
 	<div class="panel-body">
 		<p>
-			<button class="btn btn-primary btn-sm" data-bind="text: btnCreateLabel"></button>
+			<button class="btn btn-primary btn-sm" data-bind="text: btnCreateLabel, click: createTransaction"></button>
 		</p>
 		<table class="table table-hover table-striped table-condensed">
 			<thead>
@@ -30,10 +30,10 @@
 			</tbody>
 		</table>
 
-		<div id="delete-dialog-confirm" title="Delete this item?" style="visibility: hidden">
+		<div id="delete-dialog-confirm" style="display: none">
 			<p>
 				<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-				This item will be permanently deleted and cannot be recovered. Are you sure?
+				<span data-bind="text: deleteConfirmationMessage"></span>
 			</p>
 		</div>
 	</div>

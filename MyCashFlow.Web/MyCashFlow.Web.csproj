@@ -828,12 +828,10 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Delete.cshtml" />
-    <Content Include="Views\Transaction\_Create.cshtml" />
+    <Content Include="Views\Transaction\_Modify.cshtml" />
     <Content Include="Views\Transaction\_Index.cshtml" />
     <Content Include="Views\Project\Details.cshtml" />
-    <Content Include="Views\Transaction\Edit.cshtml" />
     <Content Include="Views\Transaction\Details.cshtml" />
-    <Content Include="Views\Transaction\Delete.cshtml" />
     <Content Include="Views\TransactionType\Create.cshtml" />
     <Content Include="Views\PaymentMethod\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -875,10 +873,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Shared\BaseModifyActionViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Shared\BaseIndexViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\MyCashFlow\Knockout\BindingHandlers\datepicker.ts" />
     <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Shared\BaseViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Transaction\TransactionIndexViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Transaction\Transaction.ts" />
+    <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Transaction\TransactionIndexItem.ts" />
     <TypeScriptCompile Include="Scripts\MyCashFlow\Models\Transaction\TransactionViewModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jqueryui\jqueryui.d.ts" />

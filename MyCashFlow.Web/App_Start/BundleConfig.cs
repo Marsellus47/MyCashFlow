@@ -32,7 +32,8 @@ namespace MyCashFlow.Web
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.Knockout)
 				.Include("~/Scripts/knockout-{version}.js",
-						 "~/Scripts/moment-with-locales.min.js"));
+						 "~/Scripts/moment-with-locales.min.js")
+				.IncludeDirectory("~/Scripts/MyCashFlow/Knockout", "*.js", true));
 
 			bundles.Add(new ScriptBundle(Bundles.Scripts.MyCashFlow.Models.Shared)
 				.Include("~/Scripts/MyCashFlow/Models/Shared/*.js"));

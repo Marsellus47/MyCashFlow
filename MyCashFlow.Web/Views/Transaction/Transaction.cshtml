@@ -4,3 +4,7 @@
 <div data-bind="if: view() === 'Index'">
 	@Html.Partial(MVC.Transaction.Views._Index)
 </div>
+
+<div data-bind="if: view() === 'Modify'">
+	@Html.Partial(MVC.Transaction.Views._Modify)
+</div>

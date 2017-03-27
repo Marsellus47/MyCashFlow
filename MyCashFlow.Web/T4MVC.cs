@@ -87,6 +87,8 @@ namespace Links
         public static readonly string jquery_3_1_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.slim.min.js") ? Url("jquery-3.1.1.slim.min.js") : Url("jquery-3.1.1.slim.js");
         public static readonly string jquery_3_1_1_slim_min_js = Url("jquery-3.1.1.slim.min.js");
         public static readonly string jquery_3_1_1_slim_min_map = Url("jquery-3.1.1.slim.min.map");
+        public static readonly string jquery_ui_1_12_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui-1.12.1.min.js") ? Url("jquery-ui-1.12.1.min.js") : Url("jquery-ui-1.12.1.js");
+        public static readonly string jquery_ui_1_12_1_min_js = Url("jquery-ui-1.12.1.min.js");
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
         public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
@@ -116,8 +118,6 @@ namespace Links
                     public const string UrlPath = "~/Scripts/MyCashFlow/Models/Shared";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string BaseIndexViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseIndexViewModel.min.js") ? Url("BaseIndexViewModel.min.js") : Url("BaseIndexViewModel.js");
-                    public static readonly string BaseModifyActionViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseModifyActionViewModel.min.js") ? Url("BaseModifyActionViewModel.min.js") : Url("BaseModifyActionViewModel.js");
                     public static readonly string BaseViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/BaseViewModel.min.js") ? Url("BaseViewModel.min.js") : Url("BaseViewModel.js");
                 }
             
@@ -126,7 +126,8 @@ namespace Links
                     public const string UrlPath = "~/Scripts/MyCashFlow/Models/Transaction";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-                    public static readonly string TransactionIndexViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TransactionIndexViewModel.min.js") ? Url("TransactionIndexViewModel.min.js") : Url("TransactionIndexViewModel.js");
+                    public static readonly string Transaction_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Transaction.min.js") ? Url("Transaction.min.js") : Url("Transaction.js");
+                    public static readonly string TransactionIndexItem_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TransactionIndexItem.min.js") ? Url("TransactionIndexItem.min.js") : Url("TransactionIndexItem.js");
                     public static readonly string TransactionViewModel_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TransactionViewModel.min.js") ? Url("TransactionViewModel.min.js") : Url("TransactionViewModel.js");
                 }
             
@@ -140,11 +141,27 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class bootstrap {
+                public const string UrlPath = "~/Scripts/typings/bootstrap";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string index_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/index.d.min.js") ? Url("index.d.min.js") : Url("index.d.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class jquery {
                 public const string UrlPath = "~/Scripts/typings/jquery";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
                 public static readonly string jquery_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.d.min.js") ? Url("jquery.d.min.js") : Url("jquery.d.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jqueryui {
+                public const string UrlPath = "~/Scripts/typings/jqueryui";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string jqueryui_d_ts = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jqueryui.d.min.js") ? Url("jqueryui.d.min.js") : Url("jqueryui.d.js");
             }
         
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -189,6 +206,793 @@ namespace Links
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class themes {
+            public const string UrlPath = "~/Content/themes";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class @base {
+                public const string UrlPath = "~/Content/themes/base";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                public static readonly string accordion_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/accordion.min.css") ? Url("accordion.min.css") : Url("accordion.css");
+                public static readonly string all_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/all.min.css") ? Url("all.min.css") : Url("all.css");
+                public static readonly string autocomplete_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/autocomplete.min.css") ? Url("autocomplete.min.css") : Url("autocomplete.css");
+                public static readonly string base_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/base.min.css") ? Url("base.min.css") : Url("base.css");
+                public static readonly string button_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/button.min.css") ? Url("button.min.css") : Url("button.css");
+                public static readonly string core_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/core.min.css") ? Url("core.min.css") : Url("core.css");
+                public static readonly string datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/datepicker.min.css") ? Url("datepicker.min.css") : Url("datepicker.css");
+                public static readonly string dialog_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/dialog.min.css") ? Url("dialog.min.css") : Url("dialog.css");
+                public static readonly string draggable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/draggable.min.css") ? Url("draggable.min.css") : Url("draggable.css");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/base/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
+                    public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");
+                    public static readonly string ui_bg_glass_65_ffffff_1x400_png = Url("ui-bg_glass_65_ffffff_1x400.png");
+                    public static readonly string ui_bg_glass_75_dadada_1x400_png = Url("ui-bg_glass_75_dadada_1x400.png");
+                    public static readonly string ui_bg_glass_75_e6e6e6_1x400_png = Url("ui-bg_glass_75_e6e6e6_1x400.png");
+                    public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
+                    public static readonly string ui_bg_highlight_soft_75_cccccc_1x100_png = Url("ui-bg_highlight-soft_75_cccccc_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
+                    public static readonly string ui_icons_444444_256x240_png = Url("ui-icons_444444_256x240.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_555555_256x240_png = Url("ui-icons_555555_256x240.png");
+                    public static readonly string ui_icons_777620_256x240_png = Url("ui-icons_777620_256x240.png");
+                    public static readonly string ui_icons_777777_256x240_png = Url("ui-icons_777777_256x240.png");
+                    public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
+                    public static readonly string ui_icons_cc0000_256x240_png = Url("ui-icons_cc0000_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.min.css") ? Url("jquery-ui.min.css") : Url("jquery-ui.css");
+                public static readonly string jquery_ui_min_css = Url("jquery-ui.min.css");
+                public static readonly string menu_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/menu.min.css") ? Url("menu.min.css") : Url("menu.css");
+                public static readonly string progressbar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/progressbar.min.css") ? Url("progressbar.min.css") : Url("progressbar.css");
+                public static readonly string resizable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/resizable.min.css") ? Url("resizable.min.css") : Url("resizable.css");
+                public static readonly string selectable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/selectable.min.css") ? Url("selectable.min.css") : Url("selectable.css");
+                public static readonly string selectmenu_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/selectmenu.min.css") ? Url("selectmenu.min.css") : Url("selectmenu.css");
+                public static readonly string slider_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/slider.min.css") ? Url("slider.min.css") : Url("slider.css");
+                public static readonly string sortable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/sortable.min.css") ? Url("sortable.min.css") : Url("sortable.css");
+                public static readonly string spinner_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/spinner.min.css") ? Url("spinner.min.css") : Url("spinner.css");
+                public static readonly string tabs_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tabs.min.css") ? Url("tabs.min.css") : Url("tabs.css");
+                public static readonly string theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/theme.min.css") ? Url("theme.min.css") : Url("theme.css");
+                public static readonly string tooltip_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tooltip.min.css") ? Url("tooltip.min.css") : Url("tooltip.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class black_tie {
+                public const string UrlPath = "~/Content/themes/black-tie";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/black-tie/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_thick_8_333333_40x40_png = Url("ui-bg_diagonals-thick_8_333333_40x40.png");
+                    public static readonly string ui_bg_flat_65_ffffff_40x100_png = Url("ui-bg_flat_65_ffffff_40x100.png");
+                    public static readonly string ui_bg_glass_40_111111_1x400_png = Url("ui-bg_glass_40_111111_1x400.png");
+                    public static readonly string ui_bg_glass_55_1c1c1c_1x400_png = Url("ui-bg_glass_55_1c1c1c_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_100_f9f9f9_1x100_png = Url("ui-bg_highlight-hard_100_f9f9f9_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_40_aaaaaa_1x100_png = Url("ui-bg_highlight-hard_40_aaaaaa_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_50_aaaaaa_1x100_png = Url("ui-bg_highlight-soft_50_aaaaaa_1x100.png");
+                    public static readonly string ui_bg_inset_hard_45_cd0a0a_1x100_png = Url("ui-bg_inset-hard_45_cd0a0a_1x100.png");
+                    public static readonly string ui_bg_inset_hard_55_ffeb80_1x100_png = Url("ui-bg_inset-hard_55_ffeb80_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_4ca300_256x240_png = Url("ui-icons_4ca300_256x240.png");
+                    public static readonly string ui_icons_bbbbbb_256x240_png = Url("ui-icons_bbbbbb_256x240.png");
+                    public static readonly string ui_icons_ededed_256x240_png = Url("ui-icons_ededed_256x240.png");
+                    public static readonly string ui_icons_ffcf29_256x240_png = Url("ui-icons_ffcf29_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_black_tie_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.black-tie.min.css") ? Url("jquery-ui.black-tie.min.css") : Url("jquery-ui.black-tie.css");
+                public static readonly string jquery_ui_black_tie_min_css = Url("jquery-ui.black-tie.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class blitzer {
+                public const string UrlPath = "~/Content/themes/blitzer";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/blitzer/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_thick_75_f3d8d8_40x40_png = Url("ui-bg_diagonals-thick_75_f3d8d8_40x40.png");
+                    public static readonly string ui_bg_dots_small_65_a6a6a6_2x2_png = Url("ui-bg_dots-small_65_a6a6a6_2x2.png");
+                    public static readonly string ui_bg_flat_0_333333_40x100_png = Url("ui-bg_flat_0_333333_40x100.png");
+                    public static readonly string ui_bg_flat_65_ffffff_40x100_png = Url("ui-bg_flat_65_ffffff_40x100.png");
+                    public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
+                    public static readonly string ui_bg_glass_55_fbf8ee_1x400_png = Url("ui-bg_glass_55_fbf8ee_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_100_eeeeee_1x100_png = Url("ui-bg_highlight-hard_100_eeeeee_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_100_f6f6f6_1x100_png = Url("ui-bg_highlight-hard_100_f6f6f6_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_15_cc0000_1x100_png = Url("ui-bg_highlight-soft_15_cc0000_1x100.png");
+                    public static readonly string ui_icons_004276_256x240_png = Url("ui-icons_004276_256x240.png");
+                    public static readonly string ui_icons_cc0000_256x240_png = Url("ui-icons_cc0000_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_blitzer_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.blitzer.min.css") ? Url("jquery-ui.blitzer.min.css") : Url("jquery-ui.blitzer.css");
+                public static readonly string jquery_ui_blitzer_min_css = Url("jquery-ui.blitzer.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class cupertino {
+                public const string UrlPath = "~/Content/themes/cupertino";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/cupertino/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_thick_90_eeeeee_40x40_png = Url("ui-bg_diagonals-thick_90_eeeeee_40x40.png");
+                    public static readonly string ui_bg_flat_15_cd0a0a_40x100_png = Url("ui-bg_flat_15_cd0a0a_40x100.png");
+                    public static readonly string ui_bg_glass_100_e4f1fb_1x400_png = Url("ui-bg_glass_100_e4f1fb_1x400.png");
+                    public static readonly string ui_bg_glass_50_3baae3_1x400_png = Url("ui-bg_glass_50_3baae3_1x400.png");
+                    public static readonly string ui_bg_glass_80_d7ebf9_1x400_png = Url("ui-bg_glass_80_d7ebf9_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_100_f2f5f7_1x100_png = Url("ui-bg_highlight-hard_100_f2f5f7_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_70_000000_1x100_png = Url("ui-bg_highlight-hard_70_000000_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_deedf7_1x100_png = Url("ui-bg_highlight-soft_100_deedf7_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_25_ffef8f_1x100_png = Url("ui-bg_highlight-soft_25_ffef8f_1x100.png");
+                    public static readonly string ui_icons_2694e8_256x240_png = Url("ui-icons_2694e8_256x240.png");
+                    public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
+                    public static readonly string ui_icons_3d80b3_256x240_png = Url("ui-icons_3d80b3_256x240.png");
+                    public static readonly string ui_icons_72a7cf_256x240_png = Url("ui-icons_72a7cf_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_cupertino_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.cupertino.min.css") ? Url("jquery-ui.cupertino.min.css") : Url("jquery-ui.cupertino.css");
+                public static readonly string jquery_ui_cupertino_min_css = Url("jquery-ui.cupertino.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class dark_hive {
+                public const string UrlPath = "~/Content/themes/dark-hive";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/dark-hive/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_30_cccccc_40x100_png = Url("ui-bg_flat_30_cccccc_40x100.png");
+                    public static readonly string ui_bg_flat_50_5c5c5c_40x100_png = Url("ui-bg_flat_50_5c5c5c_40x100.png");
+                    public static readonly string ui_bg_glass_40_ffc73d_1x400_png = Url("ui-bg_glass_40_ffc73d_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_20_0972a5_1x100_png = Url("ui-bg_highlight-hard_20_0972a5_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_33_003147_1x100_png = Url("ui-bg_highlight-soft_33_003147_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_35_222222_1x100_png = Url("ui-bg_highlight-soft_35_222222_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_44_444444_1x100_png = Url("ui-bg_highlight-soft_44_444444_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_80_eeeeee_1x100_png = Url("ui-bg_highlight-soft_80_eeeeee_1x100.png");
+                    public static readonly string ui_bg_loop_25_000000_21x21_png = Url("ui-bg_loop_25_000000_21x21.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_4b8e0b_256x240_png = Url("ui-icons_4b8e0b_256x240.png");
+                    public static readonly string ui_icons_a83300_256x240_png = Url("ui-icons_a83300_256x240.png");
+                    public static readonly string ui_icons_cccccc_256x240_png = Url("ui-icons_cccccc_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_dark_hive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.dark-hive.min.css") ? Url("jquery-ui.dark-hive.min.css") : Url("jquery-ui.dark-hive.css");
+                public static readonly string jquery_ui_dark_hive_min_css = Url("jquery-ui.dark-hive.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class dot_luv {
+                public const string UrlPath = "~/Content/themes/dot-luv";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/dot-luv/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_thick_15_0b3e6f_40x40_png = Url("ui-bg_diagonals-thick_15_0b3e6f_40x40.png");
+                    public static readonly string ui_bg_dots_medium_30_0b58a2_4x4_png = Url("ui-bg_dots-medium_30_0b58a2_4x4.png");
+                    public static readonly string ui_bg_dots_small_20_333333_2x2_png = Url("ui-bg_dots-small_20_333333_2x2.png");
+                    public static readonly string ui_bg_dots_small_30_a32d00_2x2_png = Url("ui-bg_dots-small_30_a32d00_2x2.png");
+                    public static readonly string ui_bg_dots_small_40_00498f_2x2_png = Url("ui-bg_dots-small_40_00498f_2x2.png");
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_40_292929_40x100_png = Url("ui-bg_flat_40_292929_40x100.png");
+                    public static readonly string ui_bg_gloss_wave_20_111111_500x100_png = Url("ui-bg_gloss-wave_20_111111_500x100.png");
+                    public static readonly string ui_icons_00498f_256x240_png = Url("ui-icons_00498f_256x240.png");
+                    public static readonly string ui_icons_98d2fb_256x240_png = Url("ui-icons_98d2fb_256x240.png");
+                    public static readonly string ui_icons_9ccdfc_256x240_png = Url("ui-icons_9ccdfc_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_dot_luv_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.dot-luv.min.css") ? Url("jquery-ui.dot-luv.min.css") : Url("jquery-ui.dot-luv.css");
+                public static readonly string jquery_ui_dot_luv_min_css = Url("jquery-ui.dot-luv.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class eggplant {
+                public const string UrlPath = "~/Content/themes/eggplant";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/eggplant/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_0_eeeeee_40x100_png = Url("ui-bg_flat_0_eeeeee_40x100.png");
+                    public static readonly string ui_bg_flat_55_994d53_40x100_png = Url("ui-bg_flat_55_994d53_40x100.png");
+                    public static readonly string ui_bg_flat_55_fafafa_40x100_png = Url("ui-bg_flat_55_fafafa_40x100.png");
+                    public static readonly string ui_bg_gloss_wave_30_3d3644_500x100_png = Url("ui-bg_gloss-wave_30_3d3644_500x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_dcd9de_1x100_png = Url("ui-bg_highlight-soft_100_dcd9de_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_eae6ea_1x100_png = Url("ui-bg_highlight-soft_100_eae6ea_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_25_30273a_1x100_png = Url("ui-bg_highlight-soft_25_30273a_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_45_5f5964_1x100_png = Url("ui-bg_highlight-soft_45_5f5964_1x100.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_734d99_256x240_png = Url("ui-icons_734d99_256x240.png");
+                    public static readonly string ui_icons_8d78a5_256x240_png = Url("ui-icons_8d78a5_256x240.png");
+                    public static readonly string ui_icons_a8a3ae_256x240_png = Url("ui-icons_a8a3ae_256x240.png");
+                    public static readonly string ui_icons_ebccce_256x240_png = Url("ui-icons_ebccce_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_eggplant_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.eggplant.min.css") ? Url("jquery-ui.eggplant.min.css") : Url("jquery-ui.eggplant.css");
+                public static readonly string jquery_ui_eggplant_min_css = Url("jquery-ui.eggplant.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class excite_bike {
+                public const string UrlPath = "~/Content/themes/excite-bike";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/excite-bike/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_small_25_c5ddfc_40x40_png = Url("ui-bg_diagonals-small_25_c5ddfc_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_20_e69700_40x40_png = Url("ui-bg_diagonals-thick_20_e69700_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_22_1484e6_40x40_png = Url("ui-bg_diagonals-thick_22_1484e6_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_26_2293f7_40x40_png = Url("ui-bg_diagonals-thick_26_2293f7_40x40.png");
+                    public static readonly string ui_bg_flat_0_e69700_40x100_png = Url("ui-bg_flat_0_e69700_40x100.png");
+                    public static readonly string ui_bg_flat_0_e6b900_40x100_png = Url("ui-bg_flat_0_e6b900_40x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_f9f9f9_1x100_png = Url("ui-bg_highlight-soft_100_f9f9f9_1x100.png");
+                    public static readonly string ui_bg_inset_hard_100_eeeeee_1x100_png = Url("ui-bg_inset-hard_100_eeeeee_1x100.png");
+                    public static readonly string ui_icons_0a82eb_256x240_png = Url("ui-icons_0a82eb_256x240.png");
+                    public static readonly string ui_icons_0b54d5_256x240_png = Url("ui-icons_0b54d5_256x240.png");
+                    public static readonly string ui_icons_5fa5e3_256x240_png = Url("ui-icons_5fa5e3_256x240.png");
+                    public static readonly string ui_icons_fcdd4a_256x240_png = Url("ui-icons_fcdd4a_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_excite_bike_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.excite-bike.min.css") ? Url("jquery-ui.excite-bike.min.css") : Url("jquery-ui.excite-bike.css");
+                public static readonly string jquery_ui_excite_bike_min_css = Url("jquery-ui.excite-bike.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class flick {
+                public const string UrlPath = "~/Content/themes/flick";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/flick/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_0_eeeeee_40x100_png = Url("ui-bg_flat_0_eeeeee_40x100.png");
+                    public static readonly string ui_bg_flat_55_ffffff_40x100_png = Url("ui-bg_flat_55_ffffff_40x100.png");
+                    public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
+                    public static readonly string ui_bg_glass_65_ffffff_1x400_png = Url("ui-bg_glass_65_ffffff_1x400.png");
+                    public static readonly string ui_bg_highlight_soft_100_f6f6f6_1x100_png = Url("ui-bg_highlight-soft_100_f6f6f6_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_25_0073ea_1x100_png = Url("ui-bg_highlight-soft_25_0073ea_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_50_dddddd_1x100_png = Url("ui-bg_highlight-soft_50_dddddd_1x100.png");
+                    public static readonly string ui_icons_0073ea_256x240_png = Url("ui-icons_0073ea_256x240.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_666666_256x240_png = Url("ui-icons_666666_256x240.png");
+                    public static readonly string ui_icons_ff0084_256x240_png = Url("ui-icons_ff0084_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_flick_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.flick.min.css") ? Url("jquery-ui.flick.min.css") : Url("jquery-ui.flick.css");
+                public static readonly string jquery_ui_flick_min_css = Url("jquery-ui.flick.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class hot_sneaks {
+                public const string UrlPath = "~/Content/themes/hot-sneaks";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/hot-sneaks/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_small_40_db4865_40x40_png = Url("ui-bg_diagonals-small_40_db4865_40x40.png");
+                    public static readonly string ui_bg_diagonals_small_50_93c3cd_40x40_png = Url("ui-bg_diagonals-small_50_93c3cd_40x40.png");
+                    public static readonly string ui_bg_diagonals_small_50_ff3853_40x40_png = Url("ui-bg_diagonals-small_50_ff3853_40x40.png");
+                    public static readonly string ui_bg_diagonals_small_75_ccd232_40x40_png = Url("ui-bg_diagonals-small_75_ccd232_40x40.png");
+                    public static readonly string ui_bg_dots_medium_80_ffff38_4x4_png = Url("ui-bg_dots-medium_80_ffff38_4x4.png");
+                    public static readonly string ui_bg_dots_small_35_35414f_2x2_png = Url("ui-bg_dots-small_35_35414f_2x2.png");
+                    public static readonly string ui_bg_flat_75_ba9217_40x100_png = Url("ui-bg_flat_75_ba9217_40x100.png");
+                    public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
+                    public static readonly string ui_bg_white_lines_85_f7f7ba_40x100_png = Url("ui-bg_white-lines_85_f7f7ba_40x100.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_88a206_256x240_png = Url("ui-icons_88a206_256x240.png");
+                    public static readonly string ui_icons_c02669_256x240_png = Url("ui-icons_c02669_256x240.png");
+                    public static readonly string ui_icons_e1e463_256x240_png = Url("ui-icons_e1e463_256x240.png");
+                    public static readonly string ui_icons_ffeb33_256x240_png = Url("ui-icons_ffeb33_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_hot_sneaks_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.hot-sneaks.min.css") ? Url("jquery-ui.hot-sneaks.min.css") : Url("jquery-ui.hot-sneaks.css");
+                public static readonly string jquery_ui_hot_sneaks_min_css = Url("jquery-ui.hot-sneaks.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class humanity {
+                public const string UrlPath = "~/Content/themes/humanity";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/humanity/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_75_aaaaaa_40x100_png = Url("ui-bg_flat_75_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_glass_100_f5f0e5_1x400_png = Url("ui-bg_glass_100_f5f0e5_1x400.png");
+                    public static readonly string ui_bg_glass_25_cb842e_1x400_png = Url("ui-bg_glass_25_cb842e_1x400.png");
+                    public static readonly string ui_bg_glass_70_ede4d4_1x400_png = Url("ui-bg_glass_70_ede4d4_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_100_f4f0ec_1x100_png = Url("ui-bg_highlight-hard_100_f4f0ec_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_65_fee4bd_1x100_png = Url("ui-bg_highlight-hard_65_fee4bd_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_75_f5f5b5_1x100_png = Url("ui-bg_highlight-hard_75_f5f5b5_1x100.png");
+                    public static readonly string ui_bg_inset_soft_100_f4f0ec_1x100_png = Url("ui-bg_inset-soft_100_f4f0ec_1x100.png");
+                    public static readonly string ui_icons_c47a23_256x240_png = Url("ui-icons_c47a23_256x240.png");
+                    public static readonly string ui_icons_cb672b_256x240_png = Url("ui-icons_cb672b_256x240.png");
+                    public static readonly string ui_icons_f08000_256x240_png = Url("ui-icons_f08000_256x240.png");
+                    public static readonly string ui_icons_f35f07_256x240_png = Url("ui-icons_f35f07_256x240.png");
+                    public static readonly string ui_icons_ff7519_256x240_png = Url("ui-icons_ff7519_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_humanity_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.humanity.min.css") ? Url("jquery-ui.humanity.min.css") : Url("jquery-ui.humanity.css");
+                public static readonly string jquery_ui_humanity_min_css = Url("jquery-ui.humanity.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class le_frog {
+                public const string UrlPath = "~/Content/themes/le-frog";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/le-frog/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_small_0_aaaaaa_40x40_png = Url("ui-bg_diagonals-small_0_aaaaaa_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_15_444444_40x40_png = Url("ui-bg_diagonals-thick_15_444444_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_95_ffdc2e_40x40_png = Url("ui-bg_diagonals-thick_95_ffdc2e_40x40.png");
+                    public static readonly string ui_bg_glass_55_fbf5d0_1x400_png = Url("ui-bg_glass_55_fbf5d0_1x400.png");
+                    public static readonly string ui_bg_highlight_hard_30_285c00_1x100_png = Url("ui-bg_highlight-hard_30_285c00_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_33_3a8104_1x100_png = Url("ui-bg_highlight-soft_33_3a8104_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_50_4eb305_1x100_png = Url("ui-bg_highlight-soft_50_4eb305_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_60_4ca20b_1x100_png = Url("ui-bg_highlight-soft_60_4ca20b_1x100.png");
+                    public static readonly string ui_bg_inset_soft_10_285c00_1x100_png = Url("ui-bg_inset-soft_10_285c00_1x100.png");
+                    public static readonly string ui_icons_4eb305_256x240_png = Url("ui-icons_4eb305_256x240.png");
+                    public static readonly string ui_icons_72b42d_256x240_png = Url("ui-icons_72b42d_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_le_frog_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.le-frog.min.css") ? Url("jquery-ui.le-frog.min.css") : Url("jquery-ui.le-frog.css");
+                public static readonly string jquery_ui_le_frog_min_css = Url("jquery-ui.le-frog.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class mint_choc {
+                public const string UrlPath = "~/Content/themes/mint-choc";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/mint-choc/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_glass_15_5f391b_1x400_png = Url("ui-bg_glass_15_5f391b_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_20_1c160d_500x100_png = Url("ui-bg_gloss-wave_20_1c160d_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_25_453326_500x100_png = Url("ui-bg_gloss-wave_25_453326_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_30_44372c_500x100_png = Url("ui-bg_gloss-wave_30_44372c_500x100.png");
+                    public static readonly string ui_bg_highlight_soft_20_201913_1x100_png = Url("ui-bg_highlight-soft_20_201913_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_20_619226_1x100_png = Url("ui-bg_highlight-soft_20_619226_1x100.png");
+                    public static readonly string ui_bg_inset_soft_10_201913_1x100_png = Url("ui-bg_inset-soft_10_201913_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_9bcc60_256x240_png = Url("ui-icons_9bcc60_256x240.png");
+                    public static readonly string ui_icons_add978_256x240_png = Url("ui-icons_add978_256x240.png");
+                    public static readonly string ui_icons_e3ddc9_256x240_png = Url("ui-icons_e3ddc9_256x240.png");
+                    public static readonly string ui_icons_f1fd86_256x240_png = Url("ui-icons_f1fd86_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_mint_choc_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.mint-choc.min.css") ? Url("jquery-ui.mint-choc.min.css") : Url("jquery-ui.mint-choc.css");
+                public static readonly string jquery_ui_mint_choc_min_css = Url("jquery-ui.mint-choc.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class overcast {
+                public const string UrlPath = "~/Content/themes/overcast";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/overcast/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_0_eeeeee_40x100_png = Url("ui-bg_flat_0_eeeeee_40x100.png");
+                    public static readonly string ui_bg_flat_55_c0402a_40x100_png = Url("ui-bg_flat_55_c0402a_40x100.png");
+                    public static readonly string ui_bg_flat_55_eeeeee_40x100_png = Url("ui-bg_flat_55_eeeeee_40x100.png");
+                    public static readonly string ui_bg_glass_100_f8f8f8_1x400_png = Url("ui-bg_glass_100_f8f8f8_1x400.png");
+                    public static readonly string ui_bg_glass_35_dddddd_1x400_png = Url("ui-bg_glass_35_dddddd_1x400.png");
+                    public static readonly string ui_bg_glass_60_eeeeee_1x400_png = Url("ui-bg_glass_60_eeeeee_1x400.png");
+                    public static readonly string ui_bg_inset_hard_75_999999_1x100_png = Url("ui-bg_inset-hard_75_999999_1x100.png");
+                    public static readonly string ui_bg_inset_soft_50_c9c9c9_1x100_png = Url("ui-bg_inset-soft_50_c9c9c9_1x100.png");
+                    public static readonly string ui_icons_3383bb_256x240_png = Url("ui-icons_3383bb_256x240.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_70b2e1_256x240_png = Url("ui-icons_70b2e1_256x240.png");
+                    public static readonly string ui_icons_999999_256x240_png = Url("ui-icons_999999_256x240.png");
+                    public static readonly string ui_icons_fbc856_256x240_png = Url("ui-icons_fbc856_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_overcast_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.overcast.min.css") ? Url("jquery-ui.overcast.min.css") : Url("jquery-ui.overcast.css");
+                public static readonly string jquery_ui_overcast_min_css = Url("jquery-ui.overcast.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class pepper_grinder {
+                public const string UrlPath = "~/Content/themes/pepper-grinder";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/pepper-grinder/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonal_maze_20_6e4f1c_10x10_png = Url("ui-bg_diagonal-maze_20_6e4f1c_10x10.png");
+                    public static readonly string ui_bg_diagonal_maze_40_000000_10x10_png = Url("ui-bg_diagonal-maze_40_000000_10x10.png");
+                    public static readonly string ui_bg_fine_grain_10_eceadf_60x60_png = Url("ui-bg_fine-grain_10_eceadf_60x60.png");
+                    public static readonly string ui_bg_fine_grain_10_f8f7f6_60x60_png = Url("ui-bg_fine-grain_10_f8f7f6_60x60.png");
+                    public static readonly string ui_bg_fine_grain_15_eceadf_60x60_png = Url("ui-bg_fine-grain_15_eceadf_60x60.png");
+                    public static readonly string ui_bg_fine_grain_15_f7f3de_60x60_png = Url("ui-bg_fine-grain_15_f7f3de_60x60.png");
+                    public static readonly string ui_bg_fine_grain_15_ffffff_60x60_png = Url("ui-bg_fine-grain_15_ffffff_60x60.png");
+                    public static readonly string ui_bg_fine_grain_65_654b24_60x60_png = Url("ui-bg_fine-grain_65_654b24_60x60.png");
+                    public static readonly string ui_bg_fine_grain_68_b83400_60x60_png = Url("ui-bg_fine-grain_68_b83400_60x60.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_3572ac_256x240_png = Url("ui-icons_3572ac_256x240.png");
+                    public static readonly string ui_icons_8c291d_256x240_png = Url("ui-icons_8c291d_256x240.png");
+                    public static readonly string ui_icons_b83400_256x240_png = Url("ui-icons_b83400_256x240.png");
+                    public static readonly string ui_icons_fbdb93_256x240_png = Url("ui-icons_fbdb93_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_pepper_grinder_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.pepper-grinder.min.css") ? Url("jquery-ui.pepper-grinder.min.css") : Url("jquery-ui.pepper-grinder.css");
+                public static readonly string jquery_ui_pepper_grinder_min_css = Url("jquery-ui.pepper-grinder.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class redmond {
+                public const string UrlPath = "~/Content/themes/redmond";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/redmond/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_55_fbec88_40x100_png = Url("ui-bg_flat_55_fbec88_40x100.png");
+                    public static readonly string ui_bg_glass_75_d0e5f5_1x400_png = Url("ui-bg_glass_75_d0e5f5_1x400.png");
+                    public static readonly string ui_bg_glass_85_dfeffc_1x400_png = Url("ui-bg_glass_85_dfeffc_1x400.png");
+                    public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_55_5c9ccc_500x100_png = Url("ui-bg_gloss-wave_55_5c9ccc_500x100.png");
+                    public static readonly string ui_bg_inset_hard_100_f5f8f9_1x100_png = Url("ui-bg_inset-hard_100_f5f8f9_1x100.png");
+                    public static readonly string ui_bg_inset_hard_100_fcfdfd_1x100_png = Url("ui-bg_inset-hard_100_fcfdfd_1x100.png");
+                    public static readonly string ui_icons_217bc0_256x240_png = Url("ui-icons_217bc0_256x240.png");
+                    public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
+                    public static readonly string ui_icons_469bdd_256x240_png = Url("ui-icons_469bdd_256x240.png");
+                    public static readonly string ui_icons_6da8d5_256x240_png = Url("ui-icons_6da8d5_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_d8e7f3_256x240_png = Url("ui-icons_d8e7f3_256x240.png");
+                    public static readonly string ui_icons_f9bd01_256x240_png = Url("ui-icons_f9bd01_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_redmond_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.redmond.min.css") ? Url("jquery-ui.redmond.min.css") : Url("jquery-ui.redmond.css");
+                public static readonly string jquery_ui_redmond_min_css = Url("jquery-ui.redmond.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class smoothness {
+                public const string UrlPath = "~/Content/themes/smoothness";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/smoothness/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_flat_75_ffffff_40x100_png = Url("ui-bg_flat_75_ffffff_40x100.png");
+                    public static readonly string ui_bg_glass_55_fbf9ee_1x400_png = Url("ui-bg_glass_55_fbf9ee_1x400.png");
+                    public static readonly string ui_bg_glass_65_ffffff_1x400_png = Url("ui-bg_glass_65_ffffff_1x400.png");
+                    public static readonly string ui_bg_glass_75_dadada_1x400_png = Url("ui-bg_glass_75_dadada_1x400.png");
+                    public static readonly string ui_bg_glass_75_e6e6e6_1x400_png = Url("ui-bg_glass_75_e6e6e6_1x400.png");
+                    public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
+                    public static readonly string ui_bg_highlight_soft_75_cccccc_1x100_png = Url("ui-bg_highlight-soft_75_cccccc_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
+                    public static readonly string ui_icons_454545_256x240_png = Url("ui-icons_454545_256x240.png");
+                    public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_smoothness_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.smoothness.min.css") ? Url("jquery-ui.smoothness.min.css") : Url("jquery-ui.smoothness.css");
+                public static readonly string jquery_ui_smoothness_min_css = Url("jquery-ui.smoothness.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class south_street {
+                public const string UrlPath = "~/Content/themes/south-street";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/south-street/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_glass_55_fcf0ba_1x400_png = Url("ui-bg_glass_55_fcf0ba_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_100_ece8da_500x100_png = Url("ui-bg_gloss-wave_100_ece8da_500x100.png");
+                    public static readonly string ui_bg_highlight_hard_100_f5f3e5_1x100_png = Url("ui-bg_highlight-hard_100_f5f3e5_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_100_fafaf4_1x100_png = Url("ui-bg_highlight-hard_100_fafaf4_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_15_459e00_1x100_png = Url("ui-bg_highlight-hard_15_459e00_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_95_cccccc_1x100_png = Url("ui-bg_highlight-hard_95_cccccc_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_25_67b021_1x100_png = Url("ui-bg_highlight-soft_25_67b021_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_95_ffedad_1x100_png = Url("ui-bg_highlight-soft_95_ffedad_1x100.png");
+                    public static readonly string ui_bg_inset_soft_15_2b2922_1x100_png = Url("ui-bg_inset-soft_15_2b2922_1x100.png");
+                    public static readonly string ui_icons_808080_256x240_png = Url("ui-icons_808080_256x240.png");
+                    public static readonly string ui_icons_847e71_256x240_png = Url("ui-icons_847e71_256x240.png");
+                    public static readonly string ui_icons_8DC262_256x240_png = Url("ui-icons_8DC262_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_eeeeee_256x240_png = Url("ui-icons_eeeeee_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_south_street_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.south-street.min.css") ? Url("jquery-ui.south-street.min.css") : Url("jquery-ui.south-street.css");
+                public static readonly string jquery_ui_south_street_min_css = Url("jquery-ui.south-street.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class start {
+                public const string UrlPath = "~/Content/themes/start";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/start/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_55_999999_40x100_png = Url("ui-bg_flat_55_999999_40x100.png");
+                    public static readonly string ui_bg_flat_75_aaaaaa_40x100_png = Url("ui-bg_flat_75_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_glass_45_0078ae_1x400_png = Url("ui-bg_glass_45_0078ae_1x400.png");
+                    public static readonly string ui_bg_glass_55_f8da4e_1x400_png = Url("ui-bg_glass_55_f8da4e_1x400.png");
+                    public static readonly string ui_bg_glass_75_79c9ec_1x400_png = Url("ui-bg_glass_75_79c9ec_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_45_e14f1c_500x100_png = Url("ui-bg_gloss-wave_45_e14f1c_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_50_6eac2c_500x100_png = Url("ui-bg_gloss-wave_50_6eac2c_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_75_2191c0_500x100_png = Url("ui-bg_gloss-wave_75_2191c0_500x100.png");
+                    public static readonly string ui_bg_inset_hard_100_fcfdfd_1x100_png = Url("ui-bg_inset-hard_100_fcfdfd_1x100.png");
+                    public static readonly string ui_icons_0078ae_256x240_png = Url("ui-icons_0078ae_256x240.png");
+                    public static readonly string ui_icons_056b93_256x240_png = Url("ui-icons_056b93_256x240.png");
+                    public static readonly string ui_icons_d8e7f3_256x240_png = Url("ui-icons_d8e7f3_256x240.png");
+                    public static readonly string ui_icons_e0fdff_256x240_png = Url("ui-icons_e0fdff_256x240.png");
+                    public static readonly string ui_icons_f5e175_256x240_png = Url("ui-icons_f5e175_256x240.png");
+                    public static readonly string ui_icons_f7a50d_256x240_png = Url("ui-icons_f7a50d_256x240.png");
+                    public static readonly string ui_icons_fcd113_256x240_png = Url("ui-icons_fcd113_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_start_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.start.min.css") ? Url("jquery-ui.start.min.css") : Url("jquery-ui.start.css");
+                public static readonly string jquery_ui_start_min_css = Url("jquery-ui.start.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class sunny {
+                public const string UrlPath = "~/Content/themes/sunny";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/sunny/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_medium_20_d34d17_40x40_png = Url("ui-bg_diagonals-medium_20_d34d17_40x40.png");
+                    public static readonly string ui_bg_flat_30_cccccc_40x100_png = Url("ui-bg_flat_30_cccccc_40x100.png");
+                    public static readonly string ui_bg_flat_50_5c5c5c_40x100_png = Url("ui-bg_flat_50_5c5c5c_40x100.png");
+                    public static readonly string ui_bg_gloss_wave_45_817865_500x100_png = Url("ui-bg_gloss-wave_45_817865_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_60_fece2f_500x100_png = Url("ui-bg_gloss-wave_60_fece2f_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_70_ffdd57_500x100_png = Url("ui-bg_gloss-wave_70_ffdd57_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_90_fff9e5_500x100_png = Url("ui-bg_gloss-wave_90_fff9e5_500x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_feeebd_1x100_png = Url("ui-bg_highlight-soft_100_feeebd_1x100.png");
+                    public static readonly string ui_bg_inset_soft_30_ffffff_1x100_png = Url("ui-bg_inset-soft_30_ffffff_1x100.png");
+                    public static readonly string ui_icons_3d3d3d_256x240_png = Url("ui-icons_3d3d3d_256x240.png");
+                    public static readonly string ui_icons_bd7b00_256x240_png = Url("ui-icons_bd7b00_256x240.png");
+                    public static readonly string ui_icons_d19405_256x240_png = Url("ui-icons_d19405_256x240.png");
+                    public static readonly string ui_icons_eb990f_256x240_png = Url("ui-icons_eb990f_256x240.png");
+                    public static readonly string ui_icons_ed9f26_256x240_png = Url("ui-icons_ed9f26_256x240.png");
+                    public static readonly string ui_icons_fadc7a_256x240_png = Url("ui-icons_fadc7a_256x240.png");
+                    public static readonly string ui_icons_ffe180_256x240_png = Url("ui-icons_ffe180_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_sunny_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.sunny.min.css") ? Url("jquery-ui.sunny.min.css") : Url("jquery-ui.sunny.css");
+                public static readonly string jquery_ui_sunny_min_css = Url("jquery-ui.sunny.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class swanky_purse {
+                public const string UrlPath = "~/Content/themes/swanky-purse";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/swanky-purse/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diamond_10_4f4221_10x8_png = Url("ui-bg_diamond_10_4f4221_10x8.png");
+                    public static readonly string ui_bg_diamond_20_372806_10x8_png = Url("ui-bg_diamond_20_372806_10x8.png");
+                    public static readonly string ui_bg_diamond_25_675423_10x8_png = Url("ui-bg_diamond_25_675423_10x8.png");
+                    public static readonly string ui_bg_diamond_25_d5ac5d_10x8_png = Url("ui-bg_diamond_25_d5ac5d_10x8.png");
+                    public static readonly string ui_bg_diamond_8_261803_10x8_png = Url("ui-bg_diamond_8_261803_10x8.png");
+                    public static readonly string ui_bg_diamond_8_443113_10x8_png = Url("ui-bg_diamond_8_443113_10x8.png");
+                    public static readonly string ui_bg_flat_75_ddd4b0_40x100_png = Url("ui-bg_flat_75_ddd4b0_40x100.png");
+                    public static readonly string ui_bg_highlight_hard_65_fee4bd_1x100_png = Url("ui-bg_highlight-hard_65_fee4bd_1x100.png");
+                    public static readonly string ui_icons_070603_256x240_png = Url("ui-icons_070603_256x240.png");
+                    public static readonly string ui_icons_e8e2b5_256x240_png = Url("ui-icons_e8e2b5_256x240.png");
+                    public static readonly string ui_icons_e9cd86_256x240_png = Url("ui-icons_e9cd86_256x240.png");
+                    public static readonly string ui_icons_efec9f_256x240_png = Url("ui-icons_efec9f_256x240.png");
+                    public static readonly string ui_icons_f2ec64_256x240_png = Url("ui-icons_f2ec64_256x240.png");
+                    public static readonly string ui_icons_f9f2bd_256x240_png = Url("ui-icons_f9f2bd_256x240.png");
+                    public static readonly string ui_icons_ff7519_256x240_png = Url("ui-icons_ff7519_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_swanky_purse_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.swanky-purse.min.css") ? Url("jquery-ui.swanky-purse.min.css") : Url("jquery-ui.swanky-purse.css");
+                public static readonly string jquery_ui_swanky_purse_min_css = Url("jquery-ui.swanky-purse.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class trontastic {
+                public const string UrlPath = "~/Content/themes/trontastic";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/trontastic/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_small_50_262626_40x40_png = Url("ui-bg_diagonals-small_50_262626_40x40.png");
+                    public static readonly string ui_bg_flat_0_303030_40x100_png = Url("ui-bg_flat_0_303030_40x100.png");
+                    public static readonly string ui_bg_flat_0_4c4c4c_40x100_png = Url("ui-bg_flat_0_4c4c4c_40x100.png");
+                    public static readonly string ui_bg_glass_40_0a0a0a_1x400_png = Url("ui-bg_glass_40_0a0a0a_1x400.png");
+                    public static readonly string ui_bg_glass_55_f1fbe5_1x400_png = Url("ui-bg_glass_55_f1fbe5_1x400.png");
+                    public static readonly string ui_bg_glass_60_000000_1x400_png = Url("ui-bg_glass_60_000000_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_55_000000_500x100_png = Url("ui-bg_gloss-wave_55_000000_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_85_9fda58_500x100_png = Url("ui-bg_gloss-wave_85_9fda58_500x100.png");
+                    public static readonly string ui_bg_gloss_wave_95_f6ecd5_500x100_png = Url("ui-bg_gloss-wave_95_f6ecd5_500x100.png");
+                    public static readonly string ui_icons_000000_256x240_png = Url("ui-icons_000000_256x240.png");
+                    public static readonly string ui_icons_1f1f1f_256x240_png = Url("ui-icons_1f1f1f_256x240.png");
+                    public static readonly string ui_icons_9fda58_256x240_png = Url("ui-icons_9fda58_256x240.png");
+                    public static readonly string ui_icons_b8ec79_256x240_png = Url("ui-icons_b8ec79_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_trontastic_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.trontastic.min.css") ? Url("jquery-ui.trontastic.min.css") : Url("jquery-ui.trontastic.css");
+                public static readonly string jquery_ui_trontastic_min_css = Url("jquery-ui.trontastic.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class ui_darkness {
+                public const string UrlPath = "~/Content/themes/ui-darkness";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/ui-darkness/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_30_cccccc_40x100_png = Url("ui-bg_flat_30_cccccc_40x100.png");
+                    public static readonly string ui_bg_flat_50_5c5c5c_40x100_png = Url("ui-bg_flat_50_5c5c5c_40x100.png");
+                    public static readonly string ui_bg_glass_20_555555_1x400_png = Url("ui-bg_glass_20_555555_1x400.png");
+                    public static readonly string ui_bg_glass_40_0078a3_1x400_png = Url("ui-bg_glass_40_0078a3_1x400.png");
+                    public static readonly string ui_bg_glass_40_ffc73d_1x400_png = Url("ui-bg_glass_40_ffc73d_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_25_333333_500x100_png = Url("ui-bg_gloss-wave_25_333333_500x100.png");
+                    public static readonly string ui_bg_highlight_soft_80_eeeeee_1x100_png = Url("ui-bg_highlight-soft_80_eeeeee_1x100.png");
+                    public static readonly string ui_bg_inset_soft_25_000000_1x100_png = Url("ui-bg_inset-soft_25_000000_1x100.png");
+                    public static readonly string ui_bg_inset_soft_30_f58400_1x100_png = Url("ui-bg_inset-soft_30_f58400_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_4b8e0b_256x240_png = Url("ui-icons_4b8e0b_256x240.png");
+                    public static readonly string ui_icons_a83300_256x240_png = Url("ui-icons_a83300_256x240.png");
+                    public static readonly string ui_icons_cccccc_256x240_png = Url("ui-icons_cccccc_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_ui_darkness_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.ui-darkness.min.css") ? Url("jquery-ui.ui-darkness.min.css") : Url("jquery-ui.ui-darkness.css");
+                public static readonly string jquery_ui_ui_darkness_min_css = Url("jquery-ui.ui-darkness.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class ui_lightness {
+                public const string UrlPath = "~/Content/themes/ui-lightness";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/ui-lightness/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_diagonals_thick_18_b81900_40x40_png = Url("ui-bg_diagonals-thick_18_b81900_40x40.png");
+                    public static readonly string ui_bg_diagonals_thick_20_666666_40x40_png = Url("ui-bg_diagonals-thick_20_666666_40x40.png");
+                    public static readonly string ui_bg_flat_10_000000_40x100_png = Url("ui-bg_flat_10_000000_40x100.png");
+                    public static readonly string ui_bg_glass_100_f6f6f6_1x400_png = Url("ui-bg_glass_100_f6f6f6_1x400.png");
+                    public static readonly string ui_bg_glass_100_fdf5ce_1x400_png = Url("ui-bg_glass_100_fdf5ce_1x400.png");
+                    public static readonly string ui_bg_glass_65_ffffff_1x400_png = Url("ui-bg_glass_65_ffffff_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_35_f6a828_500x100_png = Url("ui-bg_gloss-wave_35_f6a828_500x100.png");
+                    public static readonly string ui_bg_highlight_soft_100_eeeeee_1x100_png = Url("ui-bg_highlight-soft_100_eeeeee_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_75_ffe45c_1x100_png = Url("ui-bg_highlight-soft_75_ffe45c_1x100.png");
+                    public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                    public static readonly string ui_icons_228ef1_256x240_png = Url("ui-icons_228ef1_256x240.png");
+                    public static readonly string ui_icons_ef8c08_256x240_png = Url("ui-icons_ef8c08_256x240.png");
+                    public static readonly string ui_icons_ffd27a_256x240_png = Url("ui-icons_ffd27a_256x240.png");
+                    public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_ui_lightness_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.ui-lightness.min.css") ? Url("jquery-ui.ui-lightness.min.css") : Url("jquery-ui.ui-lightness.css");
+                public static readonly string jquery_ui_ui_lightness_min_css = Url("jquery-ui.ui-lightness.min.css");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class vader {
+                public const string UrlPath = "~/Content/themes/vader";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class images {
+                    public const string UrlPath = "~/Content/themes/vader/images";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+                    public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                    public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
+                    public static readonly string ui_bg_gloss_wave_16_121212_500x100_png = Url("ui-bg_gloss-wave_16_121212_500x100.png");
+                    public static readonly string ui_bg_highlight_hard_15_888888_1x100_png = Url("ui-bg_highlight-hard_15_888888_1x100.png");
+                    public static readonly string ui_bg_highlight_hard_55_555555_1x100_png = Url("ui-bg_highlight-hard_55_555555_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_35_adadad_1x100_png = Url("ui-bg_highlight-soft_35_adadad_1x100.png");
+                    public static readonly string ui_bg_highlight_soft_60_dddddd_1x100_png = Url("ui-bg_highlight-soft_60_dddddd_1x100.png");
+                    public static readonly string ui_bg_inset_soft_15_121212_1x100_png = Url("ui-bg_inset-soft_15_121212_1x100.png");
+                    public static readonly string ui_icons_666666_256x240_png = Url("ui-icons_666666_256x240.png");
+                    public static readonly string ui_icons_aaaaaa_256x240_png = Url("ui-icons_aaaaaa_256x240.png");
+                    public static readonly string ui_icons_bbbbbb_256x240_png = Url("ui-icons_bbbbbb_256x240.png");
+                    public static readonly string ui_icons_c98000_256x240_png = Url("ui-icons_c98000_256x240.png");
+                    public static readonly string ui_icons_cccccc_256x240_png = Url("ui-icons_cccccc_256x240.png");
+                    public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                    public static readonly string ui_icons_f29a00_256x240_png = Url("ui-icons_f29a00_256x240.png");
+                }
+            
+                public static readonly string jquery_ui_vader_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui.vader.min.css") ? Url("jquery-ui.vader.min.css") : Url("jquery-ui.vader.css");
+                public static readonly string jquery_ui_vader_min_css = Url("jquery-ui.vader.min.css");
+            }
+        
+        }
+    
     }
 
     
@@ -223,7 +1027,19 @@ namespace Links
             }
             public static partial class typings 
             {
+                public static partial class bootstrap 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
                 public static partial class jquery 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class jqueryui 
                 {
                     public static class Assets
                     {
@@ -260,6 +1076,8 @@ namespace Links
                 public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 
                 public const string jquery_3_1_1_slim_js = "~/Scripts/jquery-3.1.1.slim.js"; 
                 public const string jquery_3_1_1_slim_min_js = "~/Scripts/jquery-3.1.1.slim.min.js"; 
+                public const string jquery_ui_1_12_1_js = "~/Scripts/jquery-ui-1.12.1.js"; 
+                public const string jquery_ui_1_12_1_min_js = "~/Scripts/jquery-ui-1.12.1.min.js"; 
                 public const string jquery_unobtrusive_ajax_js = "~/Scripts/jquery.unobtrusive-ajax.js"; 
                 public const string jquery_unobtrusive_ajax_min_js = "~/Scripts/jquery.unobtrusive-ajax.min.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
@@ -277,6 +1095,382 @@ namespace Links
         }
         public static partial class Content 
         {
+            public static partial class themes 
+            {
+                public static partial class @base 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string accordion_css = "~/Content/themes/base/accordion.css";
+                        public const string all_css = "~/Content/themes/base/all.css";
+                        public const string autocomplete_css = "~/Content/themes/base/autocomplete.css";
+                        public const string base_css = "~/Content/themes/base/base.css";
+                        public const string button_css = "~/Content/themes/base/button.css";
+                        public const string core_css = "~/Content/themes/base/core.css";
+                        public const string datepicker_css = "~/Content/themes/base/datepicker.css";
+                        public const string dialog_css = "~/Content/themes/base/dialog.css";
+                        public const string draggable_css = "~/Content/themes/base/draggable.css";
+                        public const string jquery_ui_css = "~/Content/themes/base/jquery-ui.css";
+                        public const string jquery_ui_min_css = "~/Content/themes/base/jquery-ui.min.css";
+                        public const string menu_css = "~/Content/themes/base/menu.css";
+                        public const string progressbar_css = "~/Content/themes/base/progressbar.css";
+                        public const string resizable_css = "~/Content/themes/base/resizable.css";
+                        public const string selectable_css = "~/Content/themes/base/selectable.css";
+                        public const string selectmenu_css = "~/Content/themes/base/selectmenu.css";
+                        public const string slider_css = "~/Content/themes/base/slider.css";
+                        public const string sortable_css = "~/Content/themes/base/sortable.css";
+                        public const string spinner_css = "~/Content/themes/base/spinner.css";
+                        public const string tabs_css = "~/Content/themes/base/tabs.css";
+                        public const string theme_css = "~/Content/themes/base/theme.css";
+                        public const string tooltip_css = "~/Content/themes/base/tooltip.css";
+                    }
+                }
+                public static partial class black_tie 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_black_tie_css = "~/Content/themes/black-tie/jquery-ui.black-tie.css";
+                        public const string jquery_ui_black_tie_min_css = "~/Content/themes/black-tie/jquery-ui.black-tie.min.css";
+                    }
+                }
+                public static partial class blitzer 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_blitzer_css = "~/Content/themes/blitzer/jquery-ui.blitzer.css";
+                        public const string jquery_ui_blitzer_min_css = "~/Content/themes/blitzer/jquery-ui.blitzer.min.css";
+                    }
+                }
+                public static partial class cupertino 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_cupertino_css = "~/Content/themes/cupertino/jquery-ui.cupertino.css";
+                        public const string jquery_ui_cupertino_min_css = "~/Content/themes/cupertino/jquery-ui.cupertino.min.css";
+                    }
+                }
+                public static partial class dark_hive 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_dark_hive_css = "~/Content/themes/dark-hive/jquery-ui.dark-hive.css";
+                        public const string jquery_ui_dark_hive_min_css = "~/Content/themes/dark-hive/jquery-ui.dark-hive.min.css";
+                    }
+                }
+                public static partial class dot_luv 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_dot_luv_css = "~/Content/themes/dot-luv/jquery-ui.dot-luv.css";
+                        public const string jquery_ui_dot_luv_min_css = "~/Content/themes/dot-luv/jquery-ui.dot-luv.min.css";
+                    }
+                }
+                public static partial class eggplant 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_eggplant_css = "~/Content/themes/eggplant/jquery-ui.eggplant.css";
+                        public const string jquery_ui_eggplant_min_css = "~/Content/themes/eggplant/jquery-ui.eggplant.min.css";
+                    }
+                }
+                public static partial class excite_bike 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_excite_bike_css = "~/Content/themes/excite-bike/jquery-ui.excite-bike.css";
+                        public const string jquery_ui_excite_bike_min_css = "~/Content/themes/excite-bike/jquery-ui.excite-bike.min.css";
+                    }
+                }
+                public static partial class flick 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_flick_css = "~/Content/themes/flick/jquery-ui.flick.css";
+                        public const string jquery_ui_flick_min_css = "~/Content/themes/flick/jquery-ui.flick.min.css";
+                    }
+                }
+                public static partial class hot_sneaks 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_hot_sneaks_css = "~/Content/themes/hot-sneaks/jquery-ui.hot-sneaks.css";
+                        public const string jquery_ui_hot_sneaks_min_css = "~/Content/themes/hot-sneaks/jquery-ui.hot-sneaks.min.css";
+                    }
+                }
+                public static partial class humanity 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_humanity_css = "~/Content/themes/humanity/jquery-ui.humanity.css";
+                        public const string jquery_ui_humanity_min_css = "~/Content/themes/humanity/jquery-ui.humanity.min.css";
+                    }
+                }
+                public static partial class le_frog 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_le_frog_css = "~/Content/themes/le-frog/jquery-ui.le-frog.css";
+                        public const string jquery_ui_le_frog_min_css = "~/Content/themes/le-frog/jquery-ui.le-frog.min.css";
+                    }
+                }
+                public static partial class mint_choc 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_mint_choc_css = "~/Content/themes/mint-choc/jquery-ui.mint-choc.css";
+                        public const string jquery_ui_mint_choc_min_css = "~/Content/themes/mint-choc/jquery-ui.mint-choc.min.css";
+                    }
+                }
+                public static partial class overcast 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_overcast_css = "~/Content/themes/overcast/jquery-ui.overcast.css";
+                        public const string jquery_ui_overcast_min_css = "~/Content/themes/overcast/jquery-ui.overcast.min.css";
+                    }
+                }
+                public static partial class pepper_grinder 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_pepper_grinder_css = "~/Content/themes/pepper-grinder/jquery-ui.pepper-grinder.css";
+                        public const string jquery_ui_pepper_grinder_min_css = "~/Content/themes/pepper-grinder/jquery-ui.pepper-grinder.min.css";
+                    }
+                }
+                public static partial class redmond 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_redmond_css = "~/Content/themes/redmond/jquery-ui.redmond.css";
+                        public const string jquery_ui_redmond_min_css = "~/Content/themes/redmond/jquery-ui.redmond.min.css";
+                    }
+                }
+                public static partial class smoothness 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_smoothness_css = "~/Content/themes/smoothness/jquery-ui.smoothness.css";
+                        public const string jquery_ui_smoothness_min_css = "~/Content/themes/smoothness/jquery-ui.smoothness.min.css";
+                    }
+                }
+                public static partial class south_street 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_south_street_css = "~/Content/themes/south-street/jquery-ui.south-street.css";
+                        public const string jquery_ui_south_street_min_css = "~/Content/themes/south-street/jquery-ui.south-street.min.css";
+                    }
+                }
+                public static partial class start 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_start_css = "~/Content/themes/start/jquery-ui.start.css";
+                        public const string jquery_ui_start_min_css = "~/Content/themes/start/jquery-ui.start.min.css";
+                    }
+                }
+                public static partial class sunny 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_sunny_css = "~/Content/themes/sunny/jquery-ui.sunny.css";
+                        public const string jquery_ui_sunny_min_css = "~/Content/themes/sunny/jquery-ui.sunny.min.css";
+                    }
+                }
+                public static partial class swanky_purse 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_swanky_purse_css = "~/Content/themes/swanky-purse/jquery-ui.swanky-purse.css";
+                        public const string jquery_ui_swanky_purse_min_css = "~/Content/themes/swanky-purse/jquery-ui.swanky-purse.min.css";
+                    }
+                }
+                public static partial class trontastic 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_trontastic_css = "~/Content/themes/trontastic/jquery-ui.trontastic.css";
+                        public const string jquery_ui_trontastic_min_css = "~/Content/themes/trontastic/jquery-ui.trontastic.min.css";
+                    }
+                }
+                public static partial class ui_darkness 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_ui_darkness_css = "~/Content/themes/ui-darkness/jquery-ui.ui-darkness.css";
+                        public const string jquery_ui_ui_darkness_min_css = "~/Content/themes/ui-darkness/jquery-ui.ui-darkness.min.css";
+                    }
+                }
+                public static partial class ui_lightness 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_ui_lightness_css = "~/Content/themes/ui-lightness/jquery-ui.ui-lightness.css";
+                        public const string jquery_ui_ui_lightness_min_css = "~/Content/themes/ui-lightness/jquery-ui.ui-lightness.min.css";
+                    }
+                }
+                public static partial class vader 
+                {
+                    public static partial class images 
+                    {
+                        public static class Assets
+                        {
+                        }
+                    }
+                    public static class Assets
+                    {
+                        public const string jquery_ui_vader_css = "~/Content/themes/vader/jquery-ui.vader.css";
+                        public const string jquery_ui_vader_min_css = "~/Content/themes/vader/jquery-ui.vader.min.css";
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
             public static class Assets
             {
                 public const string bootstrap_theme_css = "~/Content/bootstrap-theme.css";

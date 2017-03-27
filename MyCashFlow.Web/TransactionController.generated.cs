@@ -191,18 +191,14 @@ namespace MyCashFlow.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _Create = "_Create";
                 public readonly string _Index = "_Index";
-                public readonly string Delete = "Delete";
+                public readonly string _Modify = "_Modify";
                 public readonly string Details = "Details";
-                public readonly string Edit = "Edit";
                 public readonly string Transaction = "Transaction";
             }
-            public readonly string _Create = "~/Views/Transaction/_Create.cshtml";
             public readonly string _Index = "~/Views/Transaction/_Index.cshtml";
-            public readonly string Delete = "~/Views/Transaction/Delete.cshtml";
+            public readonly string _Modify = "~/Views/Transaction/_Modify.cshtml";
             public readonly string Details = "~/Views/Transaction/Details.cshtml";
-            public readonly string Edit = "~/Views/Transaction/Edit.cshtml";
             public readonly string Transaction = "~/Views/Transaction/Transaction.cshtml";
         }
     }

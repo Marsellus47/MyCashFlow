@@ -1,0 +1,44 @@
+﻿<div class="section panel panel-primary">
+	<div class="panel-heading"><span data-bind="text: header"></span></div>
+	<div class="panel-body">
+		<form role="form" data-bind="with: transaction">
+			<div class="form-group">
+				<label for="date">Date</label>
+				<input type="text" class="form-control datepicker" data-bind="datepicker: date, datepickerOptions: { maxDate: new Date() }" />
+			</div>
+
+			<div class="form-group">
+				<label for="amount">Amount</label>
+				<input type="text" class="form-control" data-bind="value: amount" />
+			</div>
+
+			<div class="form-group">
+				<label for="income">Income</label>
+				<input type="checkbox" class="form-control" data-bind="value: income" />
+			</div>
+
+			<div class="form-group">
+				<label for="note">Note</label>
+				<textarea class="form-control" rows="3" cols="50" data-bind="value: note"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="projectID">Project</label>
+				<select class="form-control" data-bind="options: projects, value: projectID"></select>
+			</div>
+
+			<div class="form-group">
+				<label for="transactionTypeID">Transaction type</label>
+				<select class="form-control" data-bind="options: transactionTypes, value: transactionTypeID"></select>
+			</div>
+
+			<div class="form-group">
+				<label for="paymentMethodID">Payment method</label>
+				<select class="form-control" data-bind="options: paymentMethods, value: paymentMethodID"></select>
+			</div>
+		</form>
+
+		<button class="btn btn-success" data-bind="text: btnSaveLabel"></button>
+		<button class="btn btn-primary" data-bind="text: btnBackLabel, click: index"></button>
+	</div>
+</div>

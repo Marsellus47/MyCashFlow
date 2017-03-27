@@ -1,6 +1,7 @@
 ﻿using MyCashFlow.Web.Infrastructure.Controllers;
 using MyCashFlow.Web.Services.Transaction;
 using MyCashFlow.Web.ViewModels.Transaction;
+using Rsx = MyCashFlow.Resources.Localization.Views.Transaction._Shared;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
@@ -25,6 +26,7 @@ namespace MyCashFlow.Web.Controllers
 		{
 			/*int userId = await GetCurrentUserIdAsync();
 			var model = _transactionService.BuildTransactionIndexViewModel(userId, id);*/
+			ViewBag.Title = Rsx.Title;
 			return View(MVC.Transaction.Views.Transaction);
 		}
 
